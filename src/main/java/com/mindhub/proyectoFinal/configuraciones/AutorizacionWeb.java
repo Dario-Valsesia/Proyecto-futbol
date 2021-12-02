@@ -23,7 +23,6 @@ public class AutorizacionWeb extends WebSecurityConfigurerAdapter{
                 .passwordParameter("password")
                 .loginPage("/api/login");
         http.logout().logoutUrl("/api/logout").deleteCookies("JSESSIONID");
-
         http.csrf().disable();
         http.headers().frameOptions().disable();
         http.exceptionHandling().authenticationEntryPoint(((request, response, authException) -> {
