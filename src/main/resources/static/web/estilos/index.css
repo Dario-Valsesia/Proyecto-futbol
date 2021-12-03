@@ -11,7 +11,7 @@ main{
     height: 100% !important;
     width: 100%;
     background-image: url("../img/background-index.jpg");    
-    background-size: contain;
+    background-size: cover;
 }
 .contenedorImgIndex{
     width: 50%;
