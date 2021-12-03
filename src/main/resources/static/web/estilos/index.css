@@ -11,7 +11,8 @@ main{
     height: 100% !important;
     width: 100%;
     background-image: url("../img/background-index.jpg");    
-    background-size: contain;
+    background-size: cover;
+    color:#fff;
 }
 .contenedorImgIndex{
     width: 50%;
@@ -25,6 +26,10 @@ main{
 .form .contenedorInput{
     width: 50%;
     margin: 1rem 0;
+}
+form h2{
+    font-family: 'Racing Sans One', cursive;
+    font-size: 8vh;
 }
 
 
