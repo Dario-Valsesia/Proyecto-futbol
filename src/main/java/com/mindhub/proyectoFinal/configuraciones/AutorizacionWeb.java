@@ -17,7 +17,7 @@ public class AutorizacionWeb extends WebSecurityConfigurerAdapter{
     @Override
     protected void configure(HttpSecurity http) throws Exception{
         http.authorizeRequests()
-                .antMatchers("/web/**").hasAuthority("CLIENTE");
+                .antMatchers("/web/**").permitAll();
         http.formLogin()
                 .usernameParameter("email")
                 .passwordParameter("password")
