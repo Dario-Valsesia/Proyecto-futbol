@@ -1,11 +1,7 @@
 package com.mindhub.proyectoFinal;
 
-import com.mindhub.proyectoFinal.modelos.Cancha;
-import com.mindhub.proyectoFinal.modelos.Cliente;
-import com.mindhub.proyectoFinal.modelos.Reserva;
-import com.mindhub.proyectoFinal.repositorios.RepositorioCancha;
-import com.mindhub.proyectoFinal.repositorios.RepositorioCliente;
-import com.mindhub.proyectoFinal.repositorios.RepositorioReserva;
+import com.mindhub.proyectoFinal.modelos.*;
+import com.mindhub.proyectoFinal.repositorios.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -25,7 +21,7 @@ public class ProyectoFinalApplication {
 	}
 
 	@Bean
-	public CommandLineRunner initData(RepositorioCliente repositorioCliente, RepositorioCancha repositorioCancha, RepositorioReserva repositorioReserva){
+	public CommandLineRunner initData(RepositorioCliente repositorioCliente, RepositorioCancha repositorioCancha, RepositorioReserva repositorioReserva, RepositorioCamiseta repositorioCamiseta, RepositorioBotin repositorioBotin){
 		return (args) -> {
 			Cliente cliente1 = new Cliente("Dario","Valsesia","dariovalsesia14@gmail.com", passwordEncoder.encode("123"));
 			repositorioCliente.save(cliente1);
@@ -33,6 +29,11 @@ public class ProyectoFinalApplication {
 			repositorioCancha.save(cancha1);
 			Reserva reserva1 = new Reserva(LocalDateTime.now(),LocalDateTime.now().plusHours(1),false,cliente1,cancha1);
 			repositorioReserva.save(reserva1);
+
+			Camiseta camiseta1 = new Camiseta(2500, 4000, 30, "Kappa", "XL", "Belgrano");
+			repositorioCamiseta.save(camiseta1);
+			Botin botin1 = new Botin(2100, 4300, 15, "Lotto", "42", "Futbol 5");
+			repositorioBotin.save(botin1);
 		};
 	}
 
