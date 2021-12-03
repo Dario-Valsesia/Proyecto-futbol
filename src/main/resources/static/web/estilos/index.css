@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    width: 100vw;
+    height: 100vh;
+}
+main{
+    height: 100% !important;
+    width: 100%;
+    background-image: url("../img/background-index.jpg");    
+    background-size: contain;
+}
+.contenedorImgIndex{
+    width: 50%;
+}
+.contenedorImgIndex img{
+    width: 80%;
+}
+.form{
+    width: 50%;
+}
+.form .contenedorInput{
+    width: 50%;
+    margin: 1rem 0;
+}
+
+
