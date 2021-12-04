@@ -13,14 +13,15 @@ public abstract class Producto{
     private String name;
     private double costo, precio;
     private int stock;
-    private String marca, talle;
+    private String marca;
+    private String[] talle;
 
 
 
     public Producto() {
     }
 
-    public Producto(String name, double costo, double precio, int stock, String marca, String talle) {
+    public Producto(String name, double costo, double precio, int stock, String marca, String[] talle) {
         this.name = name;
         this.costo = costo;
         this.precio = precio;
@@ -73,11 +74,15 @@ public abstract class Producto{
         this.marca = marca;
     }
 
-    public String getTalle() {
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String[] getTalle() {
         return talle;
     }
 
-    public void setTalle(String talle) {
+    public void setTalle(String[] talle) {
         this.talle = talle;
     }
 }

@@ -12,7 +12,7 @@ public class Camiseta extends Producto{
     public Camiseta() {
     }
 
-    public Camiseta(String name, double costo, double precio, int stock, String marca, String talle, String equipo) {
+    public Camiseta(String name, double costo, double precio, int stock, String marca, String[] talle, String equipo) {
         super(name, costo, precio, stock, marca, talle);
         this.equipo = equipo;
     }
