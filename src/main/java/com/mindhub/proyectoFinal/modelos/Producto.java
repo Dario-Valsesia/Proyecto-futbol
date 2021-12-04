@@ -1,29 +1,27 @@
 package com.mindhub.proyectoFinal.modelos;
 
-import org.hibernate.annotations.DiscriminatorOptions;
-import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "prod_tipo")
-@DiscriminatorOptions(force = true)
-@Table(name = "productos")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Producto{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
-    @GenericGenerator(name = "native", strategy = "native")
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private Long id;
+    @Column(name = "name")
+    private String name;
     private double costo, precio;
     private int stock;
     private String marca, talle;
 
+
+
     public Producto() {
     }
 
-    public Producto(double costo, double precio, int stock, String marca, String talle) {
+    public Producto(String name, double costo, double precio, int stock, String marca, String talle) {
+        this.name = name;
         this.costo = costo;
         this.precio = precio;
         this.stock = stock;
@@ -33,6 +31,14 @@ public abstract class Producto{
 
     public Long getId() {
         return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public double getCosto() {

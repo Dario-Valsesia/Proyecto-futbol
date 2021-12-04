@@ -1,20 +1,18 @@
 package com.mindhub.proyectoFinal.modelos;
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import java.io.Serializable;
+import javax.persistence.*;
 
 @Entity
-@DiscriminatorValue("Botin")
-public class Botin extends Producto implements Serializable {
+@Table(name = "botin")
+public class Botin extends Producto{
 
     private String tipo;
 
     public Botin() {
     }
 
-    public Botin(double costo, double precio, int stock, String marca, String talle, String tipo) {
-        super(costo, precio, stock, marca, talle);
+    public Botin(String name, double costo, double precio, int stock, String marca, String talle, String tipo) {
+        super(name, costo, precio, stock, marca, talle);
         this.tipo = tipo;
     }
 

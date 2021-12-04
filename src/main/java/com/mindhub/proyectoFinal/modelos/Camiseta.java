@@ -1,19 +1,19 @@
 package com.mindhub.proyectoFinal.modelos;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
-@DiscriminatorValue("Camiseta")
-public class Camiseta extends Producto implements Serializable {
+@Table(name = "camiseta")
+public class Camiseta extends Producto{
 
+    private Long id;
     private String equipo;
 
     public Camiseta() {
     }
 
-    public Camiseta(double costo, double precio, int stock, String marca, String talle, String equipo) {
-        super(costo, precio, stock, marca, talle);
+    public Camiseta(String name, double costo, double precio, int stock, String marca, String talle, String equipo) {
+        super(name, costo, precio, stock, marca, talle);
         this.equipo = equipo;
     }
 
