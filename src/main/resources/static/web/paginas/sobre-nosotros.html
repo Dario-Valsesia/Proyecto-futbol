@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre nosotros</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../estilos/style.css">
+</head>
+<body id="app">
+<!-- Encabezado de página -->
+    <header class="row g-0" id="webPages">
+        <nav class="navbar navbar-expand-lg col-4">
+            <a href="home.html"><img src="../assets/logo.png" alt="Logo" id="logo"></a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="home.html" id="navegation">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="" id="navegation">Tienda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="" id="navegation">Reservas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contacto.html" id="navegation">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="col-5 align-self-center">
+            <h1 id="name-title">BALL d'or</h1>
+        </div>
+        <div class="col-3 align-self-center header">
+            <a href="" class="d-block link-light text-decoration-none" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false" style="float: right; margin-left: .5rem;"><div id="avatar"></div></a>
+            <a class="d-block link-light text-decoration-none" id="name-profile">Eugenio Vidal</a>
+            <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+                <li><a class="dropdown-item" id="go-to" href="">Perfil</a></li>
+                <li><a class="dropdown-item" id="go-to" href="">Configuración</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" id="go-to" href="">Cerrar sesión <img src="../assets/logout.png" alt="Sign out"></a></li>
+            </ul>
+        </div>
+    </header>
+<!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg row g-0 justify-content-end" id="navbar-1">
+        <div class="container-fluid col">
+            <button class="btn btn-primary navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" id="menu"><span class="menu">&equiv;</span></button>
+        </div>
+    </nav>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" style="width: 280px;">
+        <div class="offcanvas-body position-relative" id="body-menu-canvas1">
+            <div class="flex-shrink-0 p-3 position-absolute top-0 end-0" style="width: 280px;">
+                <p class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+                <svg class="bi me-5" width="30" height="24"></svg>
+                <span class="fs-5 fw-semibold">MENU</span></p>
+                <ul class="list-unstyled ps-0">
+                    <li class="mb-1">
+                        <a class="nav-link link-dark rounded others" href="home.html">Inicio <img src="../assets/home.png" alt="Home"></a>
+                    </li>
+                    <li class="mb-1">
+                        <a class="nav-link link-dark rounded others" href="">Tienda <img src="../assets/store.png" alt="Store"></a>
+                    </li>
+                    <li class="mb-1">
+                        <a class="nav-link link-dark rounded others" href="">Reservas <img src="../assets/reservation.png" alt="Reservation"></a>
+                    </li>
+                    <li class="mb-1">
+                        <a class="nav-link link-dark rounded others" href="contacto.html">Contacto <img src="../assets/contact.png" alt="Contact"></a>
+                    </li>
+                    <li class="border-top my-3"></li>
+                    <li class="mb-1">
+                        <a class="nav-link link-dark rounded others" href="">Cerrar sesión <img src="../assets/logout.png" alt="Sign out"></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+<!-- Cuerpo de página -->
+    <main id="pages">
+        <h2 class="subtitle">Nuestros sponsors</h2>
+        <div class="container-fluid">
+            <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner" id="sponsors">
+                    <div class="carousel-item active">
+                        <img src="../assets/sponsor1.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="../assets/sponsor2.jpg" class="d-block w-100" alt="...">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-around">
+            <div class="col-md-5">
+                <h2 class="subtitle">¿Quiénes somos?</h2>
+                <p class="text">Somos una empresa dedicada a la organización de torneos de fútbol amateur, reserva de canchas, a laproducción de eventos deportivos, empresariales y eventos de marketing.</p>
+                <p class="text">Nuestras actividades fomentan el entretenimiento, el deporte en equipo, la diversión y el encuentro entre amigos, motivando a la realización de actividad física en un ambiente de respeto y compañerismo.</p>
+                <p class="text">Contamos con canchas de fútbol 5, 7, 9 y 11 con el mejor césped sintético del mercado, con una iluminación de excelente calidad. Además, contamos con estacionamiento dentro del predio y excelentes vestuarios, tienda deportiva, bar y restaurant a donde los jugadores podrán pasar un buen momento con sus amigos después de los partidos.</p>
+                <p class="text">Contamos con un equipo de profesionales capacitados para brindar atención personalizada para quetanto los equipos como las empresas que nos eligen puedan disfrutar de una experiencia únicaelmejor asesoramiento, seguimiento y ejecución de las actividades y eventos que realizanosotros.</p>
+            </div>
+            <div class="col-md-5">
+                <h2 class="subtitle">Nuestro equipo</h2>
+                
+            </div>
+        </div>
+    </main>
+<!-- Pie de página -->
+    <footer>
+        <section id="footer-social">
+            <a href="https://www.facebook.com" id="social"><img src="../assets/facebook.png" alt="Facebook"></a>
+            <a href="https://www.instagram.com" id="social"><img src="../assets/instagram.png" alt="instagram"></a>
+            <a href="https://www.twitter.com" id="social"><img src="../assets/twitter.png" alt="Twitter"></a>
+            <a href=""><img src="../assets/whatsapp.png" alt="Whatsapp"></a>
+        </section>
+        <section class="row g-0 align-items-center" id="footer_suscribete">
+            <div class="col">
+                <p class="familia">Forma parte de nuestra familia.</p>
+                <p style="font-size: small">Suscribite para recibir todas nuestras ofertas y novedades</p>
+            </div>
+            <form class="col-md-7">
+                <div class="row g-0">
+                    <div class="col" style=" margin-right: 1rem;">
+                        <input type="text" class="form-control" id="name" placeholder="Nombre">
+                    </div>
+                    <div class="col" style="margin-bottom: 1rem; margin-right: .5rem;">
+                        <input type="email" class="form-control" id="email" placeholder="E-mail">
+                    </div>
+                    <div class="col-md-2 form-floating" id="enviar_footer">
+                        <input class="btn btn-primary" type="submit" value="Enviar" id="footer_enviar">
+                    </div>
+                </div>
+            </form>
+        </section>
+        <section class="row g-0" id="footer_nav">
+            <div class="col-md-6">
+                <h2 class="tittle-footer">Nos encontramos</h2>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1708.2923166644136!2d-64.5028028738467!3d-31.093478997046123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd4aee8909d7ac72c!2zMzHCsDA1JzM2LjUiUyA2NMKwMzAnMDYuOSJX!5e0!3m2!1ses-419!2sar!4v1638541288134!5m2!1ses-419!2sar" width="100%" height="75%" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            <nav class="navbar navbar-expand-lg col-md-3 align-self-start">
+                <div class="container-fluid position-relative">
+                    <div class="flex-shrink-0 position-relative top-0 start-50 translate-middle-x" id="navbar-2">
+                        <p class="fs-5 fw-semibold" style="text-align: center;">MENÚ PRINCIPAL</p>
+                        <ul class="list-unstyled ps-0">
+                            <li class="mb-1">
+                                <a class="nav-link" id="footer" href="">Tienda</a>
+                                <a class="nav-link" id="footer" href="">Reservas</a>
+                                <a class="nav-link" id="footer" href="contacto.html">Contacto</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <nav class="navbar navbar-expand-lg col-md-3 align-self-start">
+                <div class="container-fluid position-relative">
+                    <div class="flex-shrink-0 position-relative top-0 start-50 translate-middle-x" id="navbar-2">
+                        <p class="fs-5 fw-semibold" style="text-align: center;">OTROS LINKS</p>
+                        <ul class="list-unstyled ps-0">
+                            <li class="mb-1">
+                                <a class="nav-link" id="footer" href="sobre-nosotros.html">Sobre nosotros</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </section>
+        <section class="row g-0" id="footer_copy_tyc">
+            <p id="footer-page">&copy; TODOS LOS DERECHOS RESERVADOS.</p>
+        </section>
+    </footer>
+<!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+<!-- Veu.js -->
+<script src="https://unpkg.com/vue@next"></script>
+<script src="../scripts/main.js"></script>
+
+</body>
+</html>

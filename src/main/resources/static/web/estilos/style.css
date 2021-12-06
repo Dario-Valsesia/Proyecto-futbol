@@ -1,0 +1,293 @@
+/* Paleta de colores */
+
+.color1 {color: #191A19;}
+.color2 {color: #1E5128;}
+.color3 {color: #4E9F3D;}
+.color4 {color: #D8E9A8;}
+
+body{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+[v-cloak]{
+    display: none;
+}
+
+/* HEADER */
+
+header#webPages{
+    padding: 0 2rem 0 2rem;
+    background-color: #4E9F3D;
+}
+img#logo{
+    width: 80px !important;
+    padding: .3rem 1.5rem 0 0 !important;
+}
+h1#name-title{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center !important;
+    margin-top: .5rem;
+    color: #D8E9A8;
+    font-style: italic;
+    font-weight: bold;
+    text-decoration: underline;
+}
+div#avatar{
+    background-image: url("../assets/profile.png"); /* Es dinámico, cambiar cuando se aplique Veu.js */
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+a#name-profile{
+    float: right;
+    font-size: larger !important;
+    margin-top: 2vh !important;
+}
+ul.shadow{
+    background-color: #D8E9A8;
+}
+a#go-to{
+    text-decoration: none;
+    color: black;
+}
+a#go-to:hover{
+    background-color: #4E9F3D;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/* BARRA DE NAVEGACIÓN */
+
+nav#navbar-1{
+    padding: .5rem 2rem .5rem 2rem;
+    background-color: #D8E9A8;
+}
+button#menu{
+    width: 3rem;
+    height: 2.5rem;
+    background-color: #4E9F3D;
+    border: none;
+}
+a#navegation{
+    color: #191A19;
+    font-weight: bold;
+    font-size: large;
+}
+a#navegation:hover{
+    color: #1E5128;
+    text-decoration: underline;
+}
+div#body-menu-canvas1{
+    background-color: #D8E9A8;
+}
+a.others{
+    color: #191A19;
+    font-weight: bold;
+}
+a.others:hover{
+    background-color: #4E9F3D;
+    text-decoration: underline;
+}
+
+/* MAIN */
+
+main#pages{
+    margin: 1rem 2rem 1rem  2rem;
+}
+
+/* FOOTER */
+
+section#footer-social{
+    margin: 0 0 .5rem 2rem;
+}
+a#social{
+    margin-right: .5rem;
+}
+section#footer_suscribete{
+    background-color: #4E9F3D;
+    padding: 2.5vh 1vw 1vh 2.5vw;
+}
+p.familia{
+    font-weight: 900;
+    font-size: 1.2rem;
+    margin: 0;
+}
+input#footer_enviar{
+    background-color: #D8E9A8;
+    color: black;
+    border: none;
+}
+input#footer_enviar:hover{
+    font-weight: bold;
+}
+div#enviar_footer{
+    text-align: center;
+}
+section#footer_nav{
+    background-color: #D8E9A8;
+    padding: 2.5vh 1vw 1vh 2.5vw;
+}
+h2.tittle-footer{
+    text-indent: 1.5rem;
+}
+div#navbar-2{
+    width: 250px !important;
+}
+a#footer{
+    color: #191A19;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 1px solid #191A19;
+}
+a#footer:hover{
+    color: #1E5128;
+}
+section#footer_copy_tyc{
+    background-color: #191A19;
+    padding: 1rem 0 0 0;
+}
+p#footer-page{
+    color: #646b63;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* HOME */
+
+h2.subtitle{
+    margin-bottom: 1rem;
+}
+
+/* SOBRE NOSOTROS */
+
+div#sponsors{
+    margin-bottom: 1rem;
+}
+p.text{
+    text-indent: 2rem;
+    text-align: justify;
+}
+
+/* CONTACTO */
+
+p.contacto{
+    margin: 0;
+    font-weight: 900;
+}
+div#iconos{
+    margin-right: 2rem !important;
+}
+a.mail{
+    color: black;
+    text-decoration: none;
+}
+a.mail:hover{
+    font-weight: 900;
+    text-decoration: underline;
+}
+form#consults{
+    padding: 0 1rem 0 1rem;
+}
+label.label-form{
+    margin-bottom: .3rem;
+}
+p#counter{
+    text-align: right;
+}
+input#form-enviar{
+    background-color: #D8E9A8;
+    border: none;
+    color: #000;
+}
+input#form-enviar:hover{
+    background-color: #4E9F3D;
+    font-weight: bold
+}
+
+@media screen and (max-width: 1024px) {
+    /* HEADER */
+
+    img#logo{
+        width: 70px !important;
+        padding: .3rem 1rem 0 0 !important;
+    }
+    a#name-profile{
+        float: right;
+        font-size: large !important;
+        margin-top: 2vh !important;
+    }
+
+    /* BARRA DE NAVEGACIÓN */
+
+    a#navegation{
+        color: #191A19;
+        font-weight: bold;
+        font-size: medium;
+    }
+    a#navegation:hover{
+        color: #1E5128;
+        text-decoration: underline;
+    }
+
+    /* FOOTER */
+
+    div#navbar-2{
+        width: 200px !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    /* HEADER */
+
+    h1#name-title{
+        text-align: left !important;
+    }
+    
+    /* FOOTER */
+
+    div#navbar-2{
+        width: 150px !important;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    /* HEADER */
+
+    img#logo{
+        width: 60px !important;
+    }
+    h1#name-title{
+        font-size: larger !important;
+    }
+    a#name-profile{
+        display: none !important;
+    }
+
+    /* FOOTER */
+
+    div#navbar-2{
+        width: 250px !important;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    /* HEADER */
+
+    a#name-profile{
+        display: none !important;
+    }
+
+    /* CONTACTO */
+
+    div#iconos{
+        margin-right: 1.7rem !important;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    
+}
