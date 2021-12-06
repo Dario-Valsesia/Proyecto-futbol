@@ -9,6 +9,7 @@ const app= Vue.createApp({
     },
     created(){
         this.cargarFecha()
+       console.log(this.diaComienza())
     },
     methods:{
         mesAnterior(){
@@ -49,10 +50,10 @@ const app= Vue.createApp({
         
             } else {
         
-                return esBisiesto() ? 29:28;
+                return this.esBisiesto() ? 29:28;
             }
         },
-
+        
     },
     computed:{
         mesSelec(){

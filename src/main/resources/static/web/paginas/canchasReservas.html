@@ -84,8 +84,8 @@
         <main>
             <h2>Reserva tu Cancha</h2>
             <div> <!--v if true/false dependiendo si esta seleccionado una cancha -->
-                <label for="">Seleccionar cancha:</label>
-                <select name="" id="" v-model="">
+                <label >Seleccionar cancha:</label><!-- for="" -->
+                <select ><!-- name="" id="" v-model="" -->
                     <option value="">Select</option> <!-- con un v for donde vea las canchas donde el value va a ser ej: cancha.name-->
                 </select>
             </div>
@@ -110,7 +110,7 @@
                     <tbody>
                         <tr> <!-- hacer un v for para recorrer los horarios disponibles -->
                         
-                            <td>numero dia</td>
+                            <td v-for="numero in diasTotalMes()">{{numero}}</td>
                             
                         </tr>
                     </tbody>
