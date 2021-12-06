@@ -41,6 +41,14 @@ public class ProductoCliente {
         this.talle = talle;
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public Integer getNumCompra() {
         return numCompra;
     }

@@ -10,15 +10,26 @@ public class ProductoClienteDTO {
     private LocalDateTime fechaCompra;
     private String nameProducto;
     private String talle;
+    private String marca;
 
     public ProductoClienteDTO() {
     }
 
     public ProductoClienteDTO(ProductoCliente productoCliente) {
+        this.id = productoCliente.getId();
         this.numCompra = productoCliente.getNumCompra();
         this.fechaCompra = productoCliente.getFechaCompra();
         this.nameProducto = productoCliente.getProducto().getName();
         this.talle = productoCliente.getTalle();
+        this.marca = productoCliente.getProducto().getMarca();
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
     }
 
     public long getId() {

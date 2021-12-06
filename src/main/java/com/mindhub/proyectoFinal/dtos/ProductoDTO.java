@@ -15,6 +15,7 @@ public class ProductoDTO {
     private int stock;
     private String marca;
     private String[] talle;
+    private String urlImg;
     //camiseta
     private String equipo;
     //botin
@@ -31,6 +32,7 @@ public class ProductoDTO {
         this.stock= camiseta.getStock();
         this.marca= camiseta.getMarca();
         this.talle= camiseta.getTalle();
+        this.urlImg = camiseta.getUrlImg();
         this.equipo= camiseta.getEquipo();
     }
     public ProductoDTO(Botin botin) {
@@ -41,6 +43,7 @@ public class ProductoDTO {
         this.stock = botin.getStock();
         this.marca = botin.getMarca();
         this.talle = botin.getTalle();
+        this.urlImg = botin.getUrlImg();
         this.tipo = botin.getTipo();
     }
     public ProductoDTO(Medias medias){
@@ -51,6 +54,15 @@ public class ProductoDTO {
             this.stock= medias.getStock();
             this.marca= medias.getMarca();
             this.talle= medias.getTalle();
+            this.urlImg = medias.getUrlImg();
+    }
+
+    public String getUrlImg() {
+        return urlImg;
+    }
+
+    public void setUrlImg(String urlImg) {
+        this.urlImg = urlImg;
     }
 
     public Long getId() {

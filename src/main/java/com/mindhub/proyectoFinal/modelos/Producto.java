@@ -17,6 +17,7 @@ public abstract class Producto{
     private int stock;
     private String marca;
     private String[] talle;
+    private String urlImg;
     @OneToMany(mappedBy="producto", fetch=FetchType.EAGER)
     private Set<ProductoCliente> productosCliente = new HashSet<>();
 
@@ -25,13 +26,22 @@ public abstract class Producto{
     public Producto() {
     }
 
-    public Producto(String name, double costo, double precio, int stock, String marca, String[] talle) {
+    public Producto(String name, double costo, double precio, int stock, String marca, String[] talle,String urlImg) {
         this.name = name;
         this.costo = costo;
         this.precio = precio;
         this.stock = stock;
         this.marca = marca;
         this.talle = talle;
+        this.urlImg = urlImg;
+    }
+
+    public String getUrlImg() {
+        return urlImg;
+    }
+
+    public void setUrlImg(String urlImg) {
+        this.urlImg = urlImg;
     }
 
     public Set<ProductoCliente> getProductosCliente() {

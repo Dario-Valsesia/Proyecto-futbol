@@ -30,17 +30,12 @@ public class ProyectoFinalApplication {
 			Reserva reserva1 = new Reserva(LocalDateTime.now(),LocalDateTime.now().plusHours(1),false,cliente1,cancha1);
 			repositorioReserva.save(reserva1);
 
-			/*Camiseta camiseta1 = new Camiseta("Camiseta", 2500, 4000, 30, "Kappa", "XL", "Belgrano");
-			repositorioCamiseta.save(camiseta1);
-			Botin botin1 = new Botin("Botin",2100, 4300, 15, "Lotto", "42", "Futbol 5");
-			repositorioBotin.save(botin1);
-			Medias medias1 = new Medias("Medias",400, 1200, 75, "Nike", "42");
-			repositorioMedias.save(medias1);*/
-			Producto camiseta1 = new Camiseta("Camiseta", 2500, 4000, 30, "Kappa", new String[]{"XL","L"}, "Belgrano");
+
+			Producto camiseta1 = new Camiseta("Camiseta", 2500, 4000, 30, "Kappa", new String[]{"XL","L"},"https://www.oscarbraessasdeportes.com.ar/wp-content/uploads/2020/07/WhatsApp-Image-2020-06-30-at-18.51.57.jpeg","Belgrano");
 			repositorioProducto.save(camiseta1);
-			Producto botin1 = new Botin("Botin",2100, 4300, 15, "Lotto", new String[]{"40","42","44"}, "Futbol 5");
+			Producto botin1 = new Botin("Botin",2100, 4300, 15, "Lotto", new String[]{"40","42","44"},"https://www.oscarbraessasdeportes.com.ar/wp-content/uploads/2020/07/WhatsApp-Image-2020-06-30-at-18.51.57.jpeg", "Futbol 5");
 			repositorioProducto.save(botin1);
-			Producto medias1 =  new Medias("Medias",400, 1200, 75, "Nike", new String[]{"38","40","44"});
+			Producto medias1 =  new Medias("Medias",400, 1200, 75, "Nike", new String[]{"38","40","44"},"https://www.oscarbraessasdeportes.com.ar/wp-content/uploads/2020/07/WhatsApp-Image-2020-06-30-at-18.51.57.jpeg");
 			repositorioProducto.save(medias1);
 			ProductoCliente productoCliente = new ProductoCliente(1,LocalDateTime.now(),"42",cliente1,botin1);
 			repositorioProductoCliente.save(productoCliente);

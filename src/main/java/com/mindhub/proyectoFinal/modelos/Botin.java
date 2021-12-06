@@ -11,8 +11,8 @@ public class Botin extends Producto{
     public Botin() {
     }
 
-    public Botin(String name, double costo, double precio, int stock, String marca, String[] talle, String tipo) {
-        super(name, costo, precio, stock, marca, talle);
+    public Botin(String name, double costo, double precio, int stock, String marca, String[] talle,String url, String tipo) {
+        super(name, costo, precio, stock, marca, talle,url);
         this.tipo = tipo;
     }
 
