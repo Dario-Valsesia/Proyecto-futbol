@@ -10,7 +10,7 @@ public class Pelota extends Producto{
     public Pelota() {
     }
 
-    public Pelota(String name, double costo, double precio, int stock, String marca, String[] talle) {
-        super(name, costo, precio, stock, marca, talle);
+    public Pelota(String name, double costo, double precio, int stock, String marca, String[] talle,String url) {
+        super(name, costo, precio, stock, marca, talle,url);
     }
 }

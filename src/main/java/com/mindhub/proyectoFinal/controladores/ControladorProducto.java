@@ -3,10 +3,8 @@ package com.mindhub.proyectoFinal.controladores;
 
 import com.mindhub.proyectoFinal.dtos.AplicarProductoDTO;
 import com.mindhub.proyectoFinal.dtos.ProductoDTO;
-import com.mindhub.proyectoFinal.modelos.Botin;
-import com.mindhub.proyectoFinal.modelos.Camiseta;
-import com.mindhub.proyectoFinal.modelos.Medias;
-import com.mindhub.proyectoFinal.modelos.Producto;
+import com.mindhub.proyectoFinal.modelos.*;
+import com.mindhub.proyectoFinal.modelos.Short;
 import com.mindhub.proyectoFinal.repositorios.RepositorioCliente;
 import com.mindhub.proyectoFinal.repositorios.RepositorioProducto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,22 +50,40 @@ public class ControladorProducto {
     public ResponseEntity<Object> agregarProducto(AplicarProductoDTO aplicarProductoDTO){
         String name = aplicarProductoDTO.getName();
         double precioCosto = aplicarProductoDTO.getPrecioCosto();
+        Integer porcentajeGanacia = aplicarProductoDTO.getPorcentajeGanancia();
         int stock = aplicarProductoDTO.getStock();
         String marca = aplicarProductoDTO.getMarca();
         String[] talles = aplicarProductoDTO.getTalle();
         String equipo = aplicarProductoDTO.getEquipo();
         String tipo = aplicarProductoDTO.getTipo();
         String url = aplicarProductoDTO.getUrl();
+        if(name.isEmpty()||marca.isEmpty()||talles.length==0||url.isEmpty()){
+            return new ResponseEntity<>("Data vacia", HttpStatus.FORBIDDEN);
+        }
+        if (stock<=0){
+            return new ResponseEntity<>("El stock tiene que ser mayor a 0", HttpStatus.FORBIDDEN);
+        }
+        if (precioCosto<=0){
+            return new ResponseEntity<>("El precio tiene que ser mayor a 0", HttpStatus.FORBIDDEN);
+        }
         if (name.equals("Botin")){
-            Producto producto = new Botin(name,precioCosto,precioCosto+precioCosto*0.3,stock,marca,talles,url,tipo);
+            Producto producto = new Botin(name,precioCosto,precioCosto+((porcentajeGanacia*precioCosto)/100),stock,marca,talles,url,tipo);
             repositorioProducto.save(producto);
         }
         if(name.equals("Camiseta")){
-            Producto producto = new Camiseta(name,precioCosto,precioCosto+precioCosto*0.3,stock,marca,talles,url,equipo);
+            Producto producto = new Camiseta(name,precioCosto,precioCosto+((porcentajeGanacia*precioCosto)/100),stock,marca,talles,url,equipo);
             repositorioProducto.save(producto);
         }
         if (name.equals("Media")){
-            Producto producto = new Medias(name,precioCosto,precioCosto+precioCosto*0.3,stock,marca,talles,url);
+            Producto producto = new Medias(name,precioCosto,precioCosto+((porcentajeGanacia*precioCosto)/100),stock,marca,talles,url);
+            repositorioProducto.save(producto);
+        }
+        if(name.equals("Pelota")){
+            Producto producto = new Pelota(name,precioCosto,precioCosto+((porcentajeGanacia*precioCosto)/100),stock,marca,talles,url);
+            repositorioProducto.save(producto);
+        }
+        if(name.equals("Short")){
+            Producto producto = new Short(name,precioCosto,precioCosto+((porcentajeGanacia*precioCosto)/100),stock,marca,talles,url,equipo);
             repositorioProducto.save(producto);
         }
         return new ResponseEntity<>("creado", HttpStatus.OK);
