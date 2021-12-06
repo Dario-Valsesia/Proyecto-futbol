@@ -1,6 +1,8 @@
 package com.mindhub.proyectoFinal.modelos;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
@@ -15,6 +17,8 @@ public abstract class Producto{
     private int stock;
     private String marca;
     private String[] talle;
+    @OneToMany(mappedBy="producto", fetch=FetchType.EAGER)
+    private Set<ProductoCliente> productosCliente = new HashSet<>();
 
 
 
@@ -28,6 +32,14 @@ public abstract class Producto{
         this.stock = stock;
         this.marca = marca;
         this.talle = talle;
+    }
+
+    public Set<ProductoCliente> getProductosCliente() {
+        return productosCliente;
+    }
+
+    public void setProductosCliente(Set<ProductoCliente> productosCliente) {
+        this.productosCliente = productosCliente;
     }
 
     public Long getId() {

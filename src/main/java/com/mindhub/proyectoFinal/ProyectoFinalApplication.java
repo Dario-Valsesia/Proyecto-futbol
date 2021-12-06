@@ -21,7 +21,7 @@ public class ProyectoFinalApplication {
 	}
 
 	@Bean
-	public CommandLineRunner initData(RepositorioCliente repositorioCliente, RepositorioCancha repositorioCancha, RepositorioReserva repositorioReserva, RepositorioCamiseta repositorioCamiseta, RepositorioBotin repositorioBotin, RepositorioMedias repositorioMedias, RepositorioProducto repositorioProducto){
+	public CommandLineRunner initData(RepositorioCliente repositorioCliente, RepositorioCancha repositorioCancha, RepositorioReserva repositorioReserva, RepositorioProducto repositorioProducto, RepositorioProductoCliente repositorioProductoCliente){
 		return (args) -> {
 			Cliente cliente1 = new Cliente("Dario","Valsesia","dariovalsesia14@gmail.com", passwordEncoder.encode("123"));
 			repositorioCliente.save(cliente1);
@@ -36,12 +36,14 @@ public class ProyectoFinalApplication {
 			repositorioBotin.save(botin1);
 			Medias medias1 = new Medias("Medias",400, 1200, 75, "Nike", "42");
 			repositorioMedias.save(medias1);*/
-			Producto camiseta1 = new Camiseta("Camiseta", 2500, 4000, 30, "Kappa", new String[]{"XL,L"}, "Belgrano");
+			Producto camiseta1 = new Camiseta("Camiseta", 2500, 4000, 30, "Kappa", new String[]{"XL","L"}, "Belgrano");
 			repositorioProducto.save(camiseta1);
 			Producto botin1 = new Botin("Botin",2100, 4300, 15, "Lotto", new String[]{"40","42","44"}, "Futbol 5");
 			repositorioProducto.save(botin1);
 			Producto medias1 =  new Medias("Medias",400, 1200, 75, "Nike", new String[]{"38","40","44"});
 			repositorioProducto.save(medias1);
+			ProductoCliente productoCliente = new ProductoCliente(1,LocalDateTime.now(),"42",cliente1,botin1);
+			repositorioProductoCliente.save(productoCliente);
 		};
 	}
 

@@ -32,7 +32,6 @@ public class ProductoDTO {
         this.marca= camiseta.getMarca();
         this.talle= camiseta.getTalle();
         this.equipo= camiseta.getEquipo();
-        //this.tipo=null;
     }
     public ProductoDTO(Botin botin) {
         this.id = botin.getId();
@@ -43,7 +42,6 @@ public class ProductoDTO {
         this.marca = botin.getMarca();
         this.talle = botin.getTalle();
         this.tipo = botin.getTipo();
-        //this.equipo = null;
     }
     public ProductoDTO(Medias medias){
             this.id = medias.getId();

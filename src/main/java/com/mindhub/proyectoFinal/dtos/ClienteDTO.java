@@ -1,6 +1,7 @@
 package com.mindhub.proyectoFinal.dtos;
 
 import com.mindhub.proyectoFinal.modelos.Cliente;
+import com.mindhub.proyectoFinal.modelos.ProductoCliente;
 import com.mindhub.proyectoFinal.modelos.Reserva;
 
 import java.util.HashSet;
@@ -13,6 +14,7 @@ public class ClienteDTO {
     private String lastName;
     private String email;
     private Set<ReservaDTO> reservas = new HashSet<>();
+    private Set<ProductoClienteDTO> productoClientes = new HashSet<>();
 
     public ClienteDTO() {
     }
@@ -23,6 +25,15 @@ public class ClienteDTO {
         this.lastName = cliente.getLastName();
         this.email = cliente.getEmail();
         this.reservas = cliente.getReservas().stream().map(reserva -> new ReservaDTO(reserva)).collect(Collectors.toSet());
+        this.productoClientes = cliente.getProductosCliente().stream().map(productoCliente -> new ProductoClienteDTO(productoCliente)).collect(Collectors.toSet());
+    }
+
+    public Set<ProductoClienteDTO> getProductoClientes() {
+        return productoClientes;
+    }
+
+    public void setProductoClientes(Set<ProductoClienteDTO> productoClientes) {
+        this.productoClientes = productoClientes;
     }
 
     public long getId() {

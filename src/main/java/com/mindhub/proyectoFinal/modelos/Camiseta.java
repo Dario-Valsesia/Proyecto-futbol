@@ -6,7 +6,6 @@ import javax.persistence.*;
 @Table(name = "camiseta")
 public class Camiseta extends Producto{
 
-    private Long id;
     private String equipo;
 
     public Camiseta() {

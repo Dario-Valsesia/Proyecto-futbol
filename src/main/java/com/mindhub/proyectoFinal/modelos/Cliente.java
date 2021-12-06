@@ -21,6 +21,9 @@ public class Cliente {
     @OneToMany(mappedBy="cliente", fetch=FetchType.EAGER)
     private Set<Reserva> reservas = new HashSet<>();
 
+    @OneToMany(mappedBy="clienteCompra", fetch=FetchType.EAGER)
+    private Set<ProductoCliente> productosCliente = new HashSet<>();
+
     public Cliente() {
     }
 
@@ -29,6 +32,14 @@ public class Cliente {
         this.lastName = lastName;
         this.email = email;
         this.password = password;
+    }
+
+    public Set<ProductoCliente> getProductosCliente() {
+        return productosCliente;
+    }
+
+    public void setProductosCliente(Set<ProductoCliente> productosCliente) {
+        this.productosCliente = productosCliente;
     }
 
     public long getId() {
