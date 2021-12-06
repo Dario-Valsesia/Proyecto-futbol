@@ -23,7 +23,11 @@ main{
 .form{
     width: 50%;
 }
-.form .contenedorInput{
+.form.inicioSesion.contenedorInput{
+    width: 50%;
+    margin: 1rem 0;
+}
+.form .inicioSesion button{
     width: 50%;
     margin: 1rem 0;
 }
