@@ -146,15 +146,13 @@
             <div class="offcanvas-body">
                 <div v-if="!carrito.length==0">
                     <div v-for="producto in carrito">
-                        <div class="item-1 align-middle text-wrap">asd</div>
-                        <div class="item-2"><img v-bind:src="producto.imagen" alt="imagen de producto">
-                        </div>
+                        <div class="item-1 align-middle text-wrap">asdf{{producto.nombreProducto}}</div>
+                        
                         <div class="item-3"></div>
-                        <div class="item-5"><button class=" btn btn-dark btn-block"
-                                >&#43;</button></div>
-                        <div class="item-4"><button class=" btn btn-dark btn-block"
+                        
+                        <div class="item-4"><button class=" btn btn-dark btn-block btn-miniatura"
                                 >&minus;</button></div>
-                        <div class="item-7">&times;</div>
+                        <div class="item-7 btn btn-danger">vaciar carrito</div>
                         <div class="item-6 align-middle">Subtotal</div>
                         <div class="item-8 align-middle">$</div>
                     </div>

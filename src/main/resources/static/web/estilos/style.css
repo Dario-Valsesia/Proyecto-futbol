@@ -287,6 +287,28 @@ input#form-enviar:hover{
     align-items: center;
 }
 
+/* CARRITO DE COMPRAS */
+.btn-miniatura {
+    padding: .2rem .1rem!important;
+    line-height: .5!important;
+}
+
+.item-1 {
+    grid-column: 1/4;
+    grid-row: 1;
+    text-align: left;
+    align-self: center;
+    font-style: italic;
+    font-weight: 600;
+}
+
+.item-2 {
+    grid-column: 1/2;
+    grid-row: 2/4;
+    text-align: center;
+    align-self: center;
+}
+
 @media screen and (max-width: 1024px) {
     /* HEADER */
 

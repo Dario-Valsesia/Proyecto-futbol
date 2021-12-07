@@ -4,7 +4,7 @@ const app= Vue.createApp({
             busqueda:"",
             existeProd: false,
             productos:[],
-            carrito: [],
+            carrito: ['perro'],
 
         }
     },
