@@ -212,18 +212,29 @@ input#form-enviar:hover{
     width: 10rem;
 }
 /*CALENDARIO*/
-
-.contenedorCalendario{
+.contenedorPrincipalCalendario{
     width: 80%;
-    min-height: auto;
+    min-height: 50vh; 
     background-image: url(../assets/fondoCalendario.jpg);
     background-size: cover;
     background-position: bottom;
-    color: #fff;
-      
     margin: auto;
-    border-radius: 1rem;
-    
+    border-radius: 1rem; 
+}
+
+.contenedorCalendario{
+    width: 100%;
+     
+    color: #fff;  
+    animation: calendario 1.5s;        
+}
+@keyframes calendario {
+    0%{
+        transform: scale(0);
+    }
+    100%{
+        transform: scale(1);
+    }
 }
 .contenedorMes{
     width: 100%;
@@ -274,10 +285,23 @@ input#form-enviar:hover{
 .diasAnteriores{
     opacity: .6;
 }
-.contenedorReserva{
+.contenedorPrincipalReserva{
     width: 50%;
     margin: auto;
     margin-top: 1rem;
+    overflow: hidden;
+}
+.contenedorReserva{
+    width: 100%;  
+    animation: reserva 1.5s;
+}
+@keyframes reserva {
+    0%{
+        transform: translateY(-100%);
+    }
+    100%{
+        transform: translateY(0);
+    }
 }
 .contenedorReserva li{
     border-radius: .5rem;

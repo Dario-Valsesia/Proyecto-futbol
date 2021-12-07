@@ -6,6 +6,7 @@ const app = Vue.createApp({
             fechaActual:"",
             numeroMes: "",    
             diaActual:'',
+            verCalendario:false,
             ////////////
             canchas:[],
             horarios:["17","18","19","20","21","22","23"],
@@ -31,15 +32,18 @@ const app = Vue.createApp({
         cargarCanchas(){
             axios.get('/api/canchas')
             .then(res=>{
-                this.canchas = res.data;                   
+                this.canchas = res.data;            
             })
             .catch(e=>console.error(e))
         },
         canchaSeleccionada(e){
+            this.verCalendario=false;
             this.idCancha = parseInt(e.target.value); 
+            this.verCalendario=true;
             this.verHorarios = false;
         },
         fechaSeleccionada(e){
+            this.verHorarios=false;
             this.diaSeleccionado = e.target.dataset.id
             let mesSeleccionado = this.numeroMes + 1 ;
             this.fechaArray = [parseInt(this.year) ,mesSeleccionado,parseInt(this.diaSeleccionado)];
@@ -124,6 +128,10 @@ const app = Vue.createApp({
         mesSelec(){
             return this.meses[this.numeroMes];
         },
+        nombreCancha(){
+            let cancha =  this.canchas.filter(cancha=>cancha.id==this.idCancha);
+            return (parseInt(cancha[0].cantidadJugadores) / 2);
+        }
               
     }
 });

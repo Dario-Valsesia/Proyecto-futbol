@@ -87,8 +87,8 @@
             <div v-cloak class="text-center my-3 contenedorBtnCanchas">
                 <button v-for="cancha in canchas" @click="canchaSeleccionada" class="btn btn-primary mx-2" :value="cancha.id">{{cancha.nombre}}</button>      
             </div>
-
-            <div class="contenedorCalendario d-flex flex-column p-2">
+        <div class="contenedorPrincipalCalendario p-2">      
+            <div v-if="verCalendario" class="contenedorCalendario d-flex flex-column">
                 <div class="contenedorMes d-flex justify-content-around align-items-center my-2">
                     <div @click="mesAnterior" class="btnMes">&#9664;</div>
                     <div class="divMes" v-cloak>{{mesSelec.toUpperCase()}} {{year}}</div>
@@ -112,17 +112,20 @@
                     </div>
                 </div>             
             </div><!-- Fin contenedor calendario -->
-
+        </div>
+        <div class="contenedorPrincipalReserva">
             <div v-if="verHorarios" class="contenedorReserva">
-                <h3 class="text-center">{{diaSeleccionado}} de {{mesSelec}}</h3>
+                <h3 class="text-center">{{diaSeleccionado}} de {{mesSelec}} cancha de Futbol {{nombreCancha}}</h3>
                 <ul class="list-group">
-                    <li v-for="horario in horarios" class="list-group-item">
-                        <p class="m-0">{{horario}}:00 horas</p>
-                        <button v-if="!horariosReservados.includes(horario)" @click="realizarReserva" :value="horario" class="btn btn-primary">Reservar</button>
-                        <p class="text-danger m-0" v-else>No disponible</p>
-                    </li>   
+                       <li v-for="horario in horarios" class="list-group-item">
+                            <p class="m-0">{{horario}}:00 horas</p>
+                            <button v-if="!horariosReservados.includes(horario)" @click="realizarReserva" :value="horario" class="btn btn-primary">Reservar</button>
+                            <p class="text-danger m-0" v-else>No disponible</p>
+                        </li>   
                 </ul>
             </div>
+        </div>
+        
         </main>
         <!-- Pie de página -->
         <footer>
