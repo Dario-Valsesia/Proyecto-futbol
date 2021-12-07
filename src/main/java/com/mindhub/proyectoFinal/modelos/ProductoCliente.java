@@ -11,7 +11,6 @@ public class ProductoCliente {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
-    private Integer numCompra;
     private LocalDateTime fechaCompra;
     private String talle;
     @ManyToOne(fetch = FetchType.EAGER)
@@ -25,8 +24,7 @@ public class ProductoCliente {
     public ProductoCliente() {
     }
 
-    public ProductoCliente(Integer numCompra, LocalDateTime fechaCompra,String talle, Cliente clienteCompra, Producto producto) {
-        this.numCompra = numCompra;
+    public ProductoCliente( LocalDateTime fechaCompra,String talle, Cliente clienteCompra, Producto producto) {
         this.fechaCompra = fechaCompra;
         this.clienteCompra = clienteCompra;
         this.producto = producto;
@@ -49,13 +47,7 @@ public class ProductoCliente {
         this.id = id;
     }
 
-    public Integer getNumCompra() {
-        return numCompra;
-    }
 
-    public void setNumCompra(Integer numCompra) {
-        this.numCompra = numCompra;
-    }
 
     public LocalDateTime getFechaCompra() {
         return fechaCompra;

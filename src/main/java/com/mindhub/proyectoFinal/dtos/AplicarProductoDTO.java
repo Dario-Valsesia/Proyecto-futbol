@@ -2,6 +2,7 @@ package com.mindhub.proyectoFinal.dtos;
 
 public class AplicarProductoDTO {
     private String name;
+    private String nombreProducto;
     private double precioCosto;
     private Integer porcentajeGanancia;
     private int stock;
@@ -17,8 +18,9 @@ public class AplicarProductoDTO {
     public AplicarProductoDTO() {
     }
 
-    public AplicarProductoDTO(String name, double precioCosto,Integer porcentajeGanancia, int stock, String marca, String[] talle, String equipo, String tipo,String url) {
+    public AplicarProductoDTO(String name,String nombreProducto, double precioCosto,Integer porcentajeGanancia, int stock, String marca, String[] talle, String equipo, String tipo,String url) {
         this.name = name;
+        this.nombreProducto= nombreProducto;
         this.precioCosto = precioCosto;
         this.porcentajeGanancia = porcentajeGanancia;
         this.stock = stock;
@@ -27,6 +29,14 @@ public class AplicarProductoDTO {
         this.url=url;
         this.equipo = equipo;
         this.tipo = tipo;
+    }
+
+    public String getNombreProducto() {
+        return nombreProducto;
+    }
+
+    public void setNombreProducto(String nombreProducto) {
+        this.nombreProducto = nombreProducto;
     }
 
     public Integer getPorcentajeGanancia() {

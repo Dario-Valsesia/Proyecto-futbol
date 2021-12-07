@@ -13,7 +13,9 @@ public abstract class Producto{
     private Long id;
     @Column(name = "name")
     private String name;
-    private double costo, precio;
+    private String nombreProducto;
+    private double costo;
+    private double precio;
     private int stock;
     private String marca;
     private String[] talle;
@@ -26,8 +28,9 @@ public abstract class Producto{
     public Producto() {
     }
 
-    public Producto(String name, double costo, double precio, int stock, String marca, String[] talle,String urlImg) {
+    public Producto(String name, String nombreProducto,double costo, double precio, int stock, String marca, String[] talle,String urlImg) {
         this.name = name;
+        this.nombreProducto=nombreProducto;
         this.costo = costo;
         this.precio = precio;
         this.stock = stock;
@@ -42,6 +45,14 @@ public abstract class Producto{
 
     public void setUrlImg(String urlImg) {
         this.urlImg = urlImg;
+    }
+
+    public String getNombreProducto() {
+        return nombreProducto;
+    }
+
+    public void setNombreProducto(String nombreProducto) {
+        this.nombreProducto = nombreProducto;
     }
 
     public Set<ProductoCliente> getProductosCliente() {
