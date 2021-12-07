@@ -102,7 +102,7 @@ main#pages{
 /* FOOTER */
 
 section#footer-social{
-    margin: 0 0 .5rem 2rem;
+    margin:  .5rem;
 }
 a#social{
     margin-right: .5rem;
@@ -206,6 +206,57 @@ input#form-enviar{
 input#form-enviar:hover{
     background-color: #4E9F3D;
     font-weight: bold
+}
+/*CANCHAS*/
+.contenedorBtnCanchas button{
+    width: 10rem;
+}
+/*CALENDARIO*/
+
+.contenedorCalendario{
+    width: 80%;
+    min-height: auto;
+    background-color: #D8E9A899;
+    margin: auto;
+    border-radius: 1rem;
+    
+}
+.contenedorMes{
+    width: 100%;
+    margin: auto;
+}
+.contenedorMes div{
+    width: 33%;
+    text-align: center;
+    font-weight: 900;
+
+}
+.btnMes{
+    font-size: 30px;
+    cursor: pointer;
+}
+.contenedorDias,.contenedorNumDia{
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    grid-gap: 10px;
+}
+.contenedorDias div{
+    text-align: center;
+    font-weight: 800;
+    background-color: #0003;
+}
+.contenedorNumDia div{
+    text-align: center;
+    width: 2rem;
+    margin: auto;
+    cursor: pointer;
+}
+.hoy{
+    background-color: #4E9F3D;
+    border-radius: 50%;
+}
+.diasAnteriores{
+    opacity: .3;
 }
 
 @media screen and (max-width: 1024px) {

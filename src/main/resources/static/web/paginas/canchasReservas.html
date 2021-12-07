@@ -81,40 +81,37 @@
                 </div>
             </div>
         </div>
-        <main>
-            <h2>Reserva tu Cancha</h2>
-            <div> <!--v if true/false dependiendo si esta seleccionado una cancha -->
-                <label >Seleccionar cancha:</label><!-- for="" -->
-                <select ><!-- name="" id="" v-model="" -->
-                    <option value="">Select</option> <!-- con un v for donde vea las canchas donde el value va a ser ej: cancha.name-->
-                </select>
+        <main class="mainReserva">
+            <h2 class="text-center my-3">Reserva tu Cancha</h2>
+            <div class="text-center my-3 contenedorBtnCanchas">
+                <button class="btn btn-primary mx-2">Futbol 5</button>
+                <button class="btn btn-primary mx-2">Futbol 7</button>
+                <button class="btn btn-primary mx-2">Futbol 9</button>
+                <button class="btn btn-primary mx-2">Futbol 11</button>
             </div>
-            <div> <!-- hacer un v if que se muestre dependiendo de lo que se seleccione ej F7 -->
-                <table>
-                    <thead>
-                        <tr>
-                            <th @click="mesAnterior">&#9664;</th>
-                            <th >{{mesSelec}} {{year}}</th><!-- es con un v-model="mes" o un v bind :mes??? -->
-                            <th @click="mesSiguiente">&#9654;</th>
-                        </tr>
-                        <tr>
-                            <th scope="col">Lunes</th>
-                            <th scope="col">Martes</th>
-                            <th scope="col">Miercoles</th>
-                            <th scope="col">Jueves</th>
-                            <th scope="col">Viernes</th>
-                            <th scope="col">Sabado</th>
-                            <th scope="col">Domingo</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr> <!-- hacer un v for para recorrer los horarios disponibles -->
-                        
-                            <td v-for="numero in diasTotalMes()">{{numero}}</td>
-                            
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="contenedorCalendario d-flex flex-column p-2">
+                <div class="contenedorMes d-flex justify-content-around align-items-center my-4">
+                    <div @click="mesAnterior" class="btnMes">&#9664;</div>
+                    <div>{{mesSelec}} {{year}}</div>
+                    <div @click="mesSiguiente" class="btnMes">&#9654;</div>
+                </div>
+                <div class="contenedorDias my-3">
+                    <div>Lunes</div>
+                    <div>Martes</div>
+                    <div>Miercoles</div>
+                    <div>Jueves</div>
+                    <div>Viernes</div>
+                    <div>Sabado</div>
+                    <div>Domingo</div>
+                </div>
+                <div class="contenedorNumDia">
+                    <div v-for="diaAnterior in escribirDias()" class="diasAnteriores">
+                        {{diaAnterior}}
+                    </div>  
+                    <div v-for="dia in diasTotalMes(numeroMes)" :class="{hoy : dia == diaActual && fechaActual.getMonth() == numeroMes}">
+                        {{dia}}
+                    </div>
+                </div>
             </div>
         </main>
         <!-- Pie de página -->

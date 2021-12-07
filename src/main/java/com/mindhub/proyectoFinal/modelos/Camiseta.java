@@ -11,8 +11,8 @@ public class Camiseta extends Producto{
     public Camiseta() {
     }
 
-    public Camiseta(String name, double costo, double precio, int stock, String marca, String[] talle,String url, String equipo) {
-        super(name, costo, precio, stock, marca, talle,url);
+    public Camiseta(String name, String nombreProducto,double costo, double precio, int stock, String marca, String[] talle,String url, String equipo) {
+        super(name, nombreProducto,costo, precio, stock, marca, talle,url);
         this.equipo = equipo;
     }
 

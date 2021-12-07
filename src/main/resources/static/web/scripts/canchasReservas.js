@@ -1,15 +1,18 @@
-const app= Vue.createApp({
+
+const app = Vue.createApp({
     data(){
         return{
             meses: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre','Octubre', 'Noviembre', 'Diciembre'],
+            fechaActual:'',
             numeroMes: "",
             year: "",
-            mes:""
+            mes:"",
+            diaActual:'',
+            diasTotales:0,
         }
     },
     created(){
         this.cargarFecha()
-       console.log(this.diaComienza())
     },
     methods:{
         mesAnterior(){
@@ -29,9 +32,10 @@ const app= Vue.createApp({
             }
         },
         cargarFecha(){
-            let fechaActual= new Date()
-            this.numeroMes= fechaActual.getMonth()
-            this.year= fechaActual.getFullYear()
+            this.fechaActual= new Date()
+            this.numeroMes= this.fechaActual.getMonth()
+            this.year= this.fechaActual.getFullYear()
+            this.diaActual = this.fechaActual.getDate();
         },
         diaComienza(){
             let comienza = new Date(this.year, this.numeroMes, 1);
@@ -40,26 +44,33 @@ const app= Vue.createApp({
         esBisiesto(){
             return ((this.year % 100 !==0) && (this.year % 4 === 0) || (this.year % 400 === 0))
         },
-        diasTotalMes(){
-        
-            if (this.mes == 0 ||this.mes == 2 || this.mes == 4 || this.mes == 6 || this.mes == 7 || this.mes == 9 || this.mes == 11) {
-                return  31;
-        
-            } else if (this.mes == 3 || this.mes == 5 || this.mes == 8 || this.mes == 10) {
-                return 30;
-        
-            } else {
-        
-                return this.esBisiesto() ? 29:28;
+        diasTotalMes(numeroMes){
+            if (numeroMes == 0 ||numeroMes == 2 || numeroMes == 4 || numeroMes == 6 || numeroMes == 7 || numeroMes == 9 || numeroMes == 11) {
+               return diasTotales = 31; 
+            } else if (numeroMes == 3 || numeroMes == 5 || numeroMes == 8 || numeroMes == 10) {
+               return diasTotales = 30;
+            } else {  
+               return diasTotales = this.esBisiesto() ? 29:28;
             }
         },
+        escribirDias(){
+            let arrayPrueba = [];
+            for(let i = this.diaComienza();i>0;i--){
+              arrayPrueba.push(this.diasTotalMes(this.numeroMes-1)-(i-1));               
+            }
+            return arrayPrueba;          
+        },
         
+      
     },
     computed:{
         mesSelec(){
-            return this.mes= this.meses[this.numeroMes]
-        }
+            return this.meses[this.numeroMes]
+        },
+        
+        
+        
     }
 });
 
-app.mount("#app");
+let mount = app.mount("#app");
