@@ -68,7 +68,7 @@
                             <a class="nav-link link-dark rounded others" href="">Tienda <img src="../assets/store.png" alt="Store"></a>
                         </li>
                         <li class="mb-1">
-                            <a class="nav-link link-dark rounded others" href="">Reservas <img src="../assets/reservation.png" alt="Reservation"></a>
+                            <a class="nav-link link-dark rounded others" href="canchasReservas.html">Reservas <img src="../assets/reservation.png" alt="Reservation"></a>
                         </li>
                         <li class="mb-1">
                             <a class="nav-link link-dark rounded others" href="contacto.html">Contacto <img src="../assets/contact.png" alt="Contact"></a>
@@ -90,9 +90,9 @@
                 </p>
             </div>
             <form class="row">
-                <div class="col align-self-start" id="search">
+                <div class="col-4 align-self-start" id="search">
                     <label for="busqueda" class="visually-hidden"></label>
-                    <input type="text" class="form-control" id="busqueda" placeholder="Buscar producto">
+                    <input type="text" class="form-control" id="busqueda" placeholder="Buscar producto" v-model="busqueda">
                 </div>
             </form>
             <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRightCompra"
@@ -100,15 +100,69 @@
                 <i class="fas fa-shopping-bag shopping-bag"></i>
             </button>
 
+            <div class="album py-5 bg-light">
+                <div class="container">
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                        <div class="col" v-for="producto in busquedaProductos" class="tamano-card">
+                            <div class="card shadow-sm">
+                                <img v-bind:src="producto.urlImg" alt="imagen de producto" class="img-producto">
+                                
+                                <div class="card-body">
+                                    <h6 v-cloak>{{producto.nombreProducto}}</h6>
+                                    <p class="card-text" v-cloak>{{}}</p>
+                                </div>
+                                <div class="d-column justify-content-around align-items-center pb-4">
+                                    <span class="d-flex justify-content-around align-items-center">
+                                        <p> Cantidad: </p>
+                                        <p> Precio Unitario: ${{producto.precio}}</p>
+                                    </span>
+                                    <div class="d-flex justify-content-around align-items-center">
+                                        <button type="button" class="btn btn-dark">Agregar</button>
+
+                                        <button type="button" class="btn btn-dark">Quitar</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div v-if="existeProd" class="row justify-content-around">
+                    <div class="card shadow-sm">
+                        <p class="col-sm-12 col-md-10 text-center mt-5">No tenemos {{busqueda}}</p>
+                    </div>
+                </div>
+            </div>
+
             
             <!-- carrito de compras -->
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRightCompra" aria-labelledby="offcanvasRightLabel">
             <div class="offcanvas-header">
-                <h5 id="offcanvasRightLabel">Offcanvas right</h5>
+                <h5 id="offcanvasRightLabel" v-if="carrito.length==0">Tu carrito está vacío</h5>
+                <h4 id="offcanvasRightLabel" v-else>Tu carrito tiene los siguientes productos</h4>
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
-                ...
+                <div v-if="!carrito.length==0">
+                    <div v-for="producto in carrito">
+                        <div class="item-1 align-middle text-wrap">asd</div>
+                        <div class="item-2"><img v-bind:src="producto.imagen" alt="imagen de producto">
+                        </div>
+                        <div class="item-3"></div>
+                        <div class="item-5"><button class=" btn btn-dark btn-block"
+                                >&#43;</button></div>
+                        <div class="item-4"><button class=" btn btn-dark btn-block"
+                                >&minus;</button></div>
+                        <div class="item-7">&times;</div>
+                        <div class="item-6 align-middle">Subtotal</div>
+                        <div class="item-8 align-middle">$</div>
+                    </div>
+                    <div class="row justify-content-between">
+                        <p class="col-6 text-right"><span>Total productos:</span> </p>
+                        <p class="col-6 text-right"><span> Precio total:</span> $ </p>
+                    </div>
+                </div>
             </div>
             </div>
 
@@ -153,7 +207,7 @@
                             <ul class="list-unstyled ps-0">
                                 <li class="mb-1">
                                     <a class="nav-link" id="footer" href="">Tienda</a>
-                                    <a class="nav-link" id="footer" href="">Reservas</a>
+                                    <a class="nav-link" id="footer" href="canchasReservas.html">Reservas</a>
                                     <a class="nav-link" id="footer" href="contacto.html">Contacto</a>
                                 </li>
                             </ul>
@@ -185,5 +239,11 @@
     crossorigin="anonymous"></script>
 
     <script src="https://kit.fontawesome.com/58d99c8dac.js" crossorigin="anonymous"></script>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script src="https://unpkg.com/vue@next"></script>
+
+    <script src="../scripts/tienda.js"></script>
 </body>
 </html>
