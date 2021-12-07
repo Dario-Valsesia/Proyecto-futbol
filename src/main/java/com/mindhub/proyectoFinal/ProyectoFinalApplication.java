@@ -26,11 +26,23 @@ public class ProyectoFinalApplication {
 		return (args) -> {
 			Cliente cliente1 = new Cliente("Dario","Valsesia","dariovalsesia14@gmail.com", passwordEncoder.encode("123"));
 			repositorioCliente.save(cliente1);
-			Cancha cancha1 = new Cancha(22,4400D);
-			repositorioCancha.save(cancha1);
-			Reserva reserva1 = new Reserva(LocalDateTime.now(),LocalDateTime.now().plusHours(1),false,cliente1,cancha1);
-			repositorioReserva.save(reserva1);
 
+			Cancha cancha1 = new Cancha(10,2000D,"Futbol 5");
+			repositorioCancha.save(cancha1);
+			Cancha cancha2 = new Cancha(14,2800D,"Futbol 7");
+			repositorioCancha.save(cancha2);
+			Cancha cancha3 = new Cancha(18,3600D,"Futbol 9");
+			repositorioCancha.save(cancha3);
+			Cancha cancha4 = new Cancha(22,4400D,"Futbol 11");
+			repositorioCancha.save(cancha4);
+			Reserva reserva1 = new Reserva(LocalDateTime.of(2021,12,7,18,00),LocalDateTime.of(2021,12,7,19,00),false,cliente1,cancha1);
+			repositorioReserva.save(reserva1);
+			Reserva reserva2 = new Reserva(LocalDateTime.of(2021,12,7,19,00),LocalDateTime.of(2021,12,7,20,00),false,cliente1,cancha2);
+			repositorioReserva.save(reserva2);
+			Reserva reserva3 = new Reserva(LocalDateTime.of(2021,12,8,16,00),LocalDateTime.of(2021,12,8,17,00),false,cliente1,cancha1);
+			repositorioReserva.save(reserva3);
+			Reserva reserva4 = new Reserva(LocalDateTime.of(2021,12,7,19,00),LocalDateTime.of(2021,12,7,20,00),false,cliente1,cancha1);
+			repositorioReserva.save(reserva4);
 
 			Producto camiseta1 = new Camiseta("Camiseta","Camiseta de Boca", 2500, 4000, 30, "Kappa", new String[]{"XL","L"},"https://www.oscarbraessasdeportes.com.ar/wp-content/uploads/2020/07/WhatsApp-Image-2020-06-30-at-18.51.57.jpeg","Belgrano");
 			repositorioProducto.save(camiseta1);

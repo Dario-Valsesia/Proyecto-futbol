@@ -11,6 +11,7 @@ public class CanchaDTO {
     private long id;
     private Integer cantidadJugadores;
     private Double precio;
+    private String nombre;
     private Set<ReservaDTO> reservas = new HashSet<>();
 
     public CanchaDTO() {
@@ -20,7 +21,16 @@ public class CanchaDTO {
         this.id = cancha.getId();
         this.cantidadJugadores = cancha.getCantidadJugadores();
         this.precio = cancha.getPrecio();
+        this.nombre = cancha.getNombre();
         this.reservas = cancha.getReservas().stream().map(reserva -> new ReservaDTO(reserva)).collect(Collectors.toSet());
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public long getId() {

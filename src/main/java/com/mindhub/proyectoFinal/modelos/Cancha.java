@@ -12,6 +12,7 @@ public class Cancha {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
+    private String nombre;
     private Integer cantidadJugadores;
     private Double precio;
 
@@ -21,9 +22,18 @@ public class Cancha {
     public Cancha() {
     }
 
-    public Cancha(Integer cantidadJugadores, Double precio) {
+    public Cancha(Integer cantidadJugadores, Double precio, String nombre) {
         this.cantidadJugadores = cantidadJugadores;
         this.precio = precio;
+        this.nombre= nombre;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public long getId() {

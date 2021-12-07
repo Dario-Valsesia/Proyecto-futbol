@@ -216,7 +216,11 @@ input#form-enviar:hover{
 .contenedorCalendario{
     width: 80%;
     min-height: auto;
-    background-color: #D8E9A899;
+    background-image: url(../assets/fondoCalendario.jpg);
+    background-size: cover;
+    background-position: bottom;
+    color: #fff;
+      
     margin: auto;
     border-radius: 1rem;
     
@@ -231,6 +235,12 @@ input#form-enviar:hover{
     font-weight: 900;
 
 }
+.divMes{
+    background-color: #fff9;
+    padding: 0.5rem 0;
+    border-radius: .5rem;
+    color: #000;
+}
 .btnMes{
     font-size: 30px;
     cursor: pointer;
@@ -243,20 +253,38 @@ input#form-enviar:hover{
 .contenedorDias div{
     text-align: center;
     font-weight: 800;
-    background-color: #0003;
+    background-color: #0009;
+    padding: .3rem;
+    border-radius: .5rem;
 }
 .contenedorNumDia div{
     text-align: center;
     width: 2rem;
     margin: auto;
     cursor: pointer;
-}
-.hoy{
-    background-color: #4E9F3D;
+    background-color: #0007;
+    padding: .3rem;
     border-radius: 50%;
 }
+.hoy{
+    background-color: #ddd !important;
+    border-radius: 50%;
+    color: #000;
+}
 .diasAnteriores{
-    opacity: .3;
+    opacity: .6;
+}
+.contenedorReserva{
+    width: 50%;
+    margin: auto;
+    margin-top: 1rem;
+}
+.contenedorReserva li{
+    border-radius: .5rem;
+    margin: .3rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 @media screen and (max-width: 1024px) {

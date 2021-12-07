@@ -56,7 +56,7 @@ public class ControladorProducto {
     }
 
     @PostMapping("/productos")
-    public ResponseEntity<Object> agregarProducto(AplicarProductoDTO aplicarProductoDTO){
+    public ResponseEntity<Object> agregarProducto(@RequestBody AplicarProductoDTO aplicarProductoDTO){
         String name = aplicarProductoDTO.getName();
         String nombreProducto = aplicarProductoDTO.getNombreProducto();
         double precioCosto = aplicarProductoDTO.getPrecioCosto();

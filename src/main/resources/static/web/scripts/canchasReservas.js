@@ -2,19 +2,75 @@
 const app = Vue.createApp({
     data(){
         return{
-            meses: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre','Octubre', 'Noviembre', 'Diciembre'],
-            fechaActual:'',
-            numeroMes: "",
-            year: "",
-            mes:"",
+            meses:['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre','Octubre', 'Noviembre', 'Diciembre'],
+            fechaActual:"",
+            numeroMes: "",    
             diaActual:'',
-            diasTotales:0,
+            ////////////
+            canchas:[],
+            horarios:["17","18","19","20","21","22","23"],
+            reservas:[],
+            horariosReservados:[],
+            verHorarios:false,
+            //Lo que selecciona el usuario
+            year: "",
+            idCancha:0,
+            diaSeleccionado:"",
+            horaSeleccionada:'',
+            fechaArray:[],
+            fechaCompleta:'',
+            //MENSAJE DE ERROR
+            mensajeError:'',
         }
     },
     created(){
-        this.cargarFecha()
+        this.cargarFecha();
+        this.cargarCanchas();
     },
     methods:{
+        cargarCanchas(){
+            axios.get('/api/canchas')
+            .then(res=>{
+                this.canchas = res.data;                   
+            })
+            .catch(e=>console.error(e))
+        },
+        canchaSeleccionada(e){
+            this.idCancha = parseInt(e.target.value); 
+            this.verHorarios = false;
+        },
+        fechaSeleccionada(e){
+            this.diaSeleccionado = e.target.dataset.id
+            let mesSeleccionado = this.numeroMes + 1 ;
+            this.fechaArray = [parseInt(this.year) ,mesSeleccionado,parseInt(this.diaSeleccionado)];
+            axios.get(`/api/reservas?id=${this.idCancha}&integers=${this.fechaArray}`).then(res=>{
+                this.reservas=res.data;
+                this.horariosReservados = this.reservas.map(reserva=>{
+                    return reserva.horaIngreso.slice(11,13);
+                })
+                this.verHorarios=true;
+            }).catch(e=>console.log(e));
+        },
+        realizarReserva(e){
+            this.horaSeleccionada = e.target.value;
+            if(this.diaSeleccionado<10){
+                this.diaSeleccionado = "0"+this.diaSeleccionado;
+            }
+            if(this.numeroMes<9){
+                this.numeroMes++
+                this.numeroMes = "0"+this.numeroMes;
+            }else{
+                this.numeroMes++
+            }
+            this.fechaCompleta = `${this.year}-${this.numeroMes}-${this.diaSeleccionado}T${this.horaSeleccionada}:00:00`
+            console.log(this.idCancha);
+            axios.post('/api/reservar',`fechaHora=${this.fechaCompleta}&id=${this.idCancha}`).then(res=>{
+                console.log(res.data);
+            }).catch(e=>this.mensajeError=e.response.data);
+        },
+
+
+        //METODOS PARA EL CALENDARIO
         mesAnterior(){
             if(this.numeroMes !== 0){
                 this.numeroMes--;
@@ -46,11 +102,11 @@ const app = Vue.createApp({
         },
         diasTotalMes(numeroMes){
             if (numeroMes == 0 ||numeroMes == 2 || numeroMes == 4 || numeroMes == 6 || numeroMes == 7 || numeroMes == 9 || numeroMes == 11) {
-               return diasTotales = 31; 
+               return 31; 
             } else if (numeroMes == 3 || numeroMes == 5 || numeroMes == 8 || numeroMes == 10) {
-               return diasTotales = 30;
+               return 30;
             } else {  
-               return diasTotales = this.esBisiesto() ? 29:28;
+               return this.esBisiesto() ? 29:28;
             }
         },
         escribirDias(){
@@ -60,16 +116,15 @@ const app = Vue.createApp({
             }
             return arrayPrueba;          
         },
+        //FIN METODOS CALENDARIO
         
       
     },
     computed:{
         mesSelec(){
-            return this.meses[this.numeroMes]
+            return this.meses[this.numeroMes];
         },
-        
-        
-        
+              
     }
 });
 
