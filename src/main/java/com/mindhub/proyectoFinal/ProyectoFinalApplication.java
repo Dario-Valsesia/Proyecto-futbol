@@ -16,11 +16,9 @@ import java.time.LocalDateTime;
 public class ProyectoFinalApplication {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
-
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoFinalApplication.class, args);
 	}
-
 	@Bean
 	public CommandLineRunner initData(RepositorioCliente repositorioCliente, RepositorioCancha repositorioCancha, RepositorioReserva repositorioReserva, RepositorioProducto repositorioProducto, RepositorioProductoCliente repositorioProductoCliente){
 		return (args) -> {
