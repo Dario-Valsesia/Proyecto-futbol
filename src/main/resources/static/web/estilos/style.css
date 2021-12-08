@@ -419,6 +419,10 @@ input#form-cambiar:hover{
 }
 
 /* CARRITO DE COMPRAS */
+.shopping-bag {
+    font-size: 2rem;
+}
+
 .offcanvas-header {
     height: 12vh!important;
     background-color: #D8E9A8;
@@ -481,6 +485,21 @@ input#form-cambiar:hover{
     grid-row: 3/4;
     text-align: center;
     align-self: start;
+}
+
+/* TIENDA */
+.contenedorTiendaHeader{
+    width: 80%;
+    min-height: 50vh; 
+    background-image: url(../assets/shop.jpg);
+    background-size: cover;
+    background-position: bottom;
+    margin: auto;
+    border-radius: 1rem;
+}
+
+.tituloTienda{
+    -webkit-text-stroke: 0.8px black;
 }
 
 @media screen and (max-width: 1024px) {

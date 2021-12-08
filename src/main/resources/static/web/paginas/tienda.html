@@ -81,22 +81,24 @@
     </div>
 <!-- Cuerpo de página -->
         <main id="pages">
-            <div class="col-12 mx-2 pt-5 text-center">
-                <h1 class="display-4 fw-normal my-5 pb-2 pt-5">¡Nuestra Tienda!</h1>
-                <p class="col-12 text-justify">En nuestro catálogo encontraras los articulos que estas buscando para
-                    para realizar el deporte que más te gusta.
-                </p>
+            <div class="d-flex justify-content-center">
+                <div class="contenedorTiendaHeader col-12 mx-2 pt-5 text-center align-items-center text-white">
+                    <h1 class="tituloTienda display-4 fw-normal my-5 pb-2 pt-5">¡Nuestra Tienda!</h1>
+                    <p class="col-12 text-justify">En nuestro catálogo encontraras los articulos que estas buscando para
+                        para realizar el deporte que más te gusta.
+                    </p>
+                </div>
             </div>
-            <form class="row">
-                <div class="col-4 align-self-start" id="search">
+            <form class="row justify-content-between pt-3">
+                <div class="col-md-6 align-self-start" id="search">
                     <label for="busqueda" class="visually-hidden"></label>
                     <input type="text" class="form-control" id="busqueda" placeholder="Buscar producto" v-model="busqueda">
                 </div>
+                <button class="btn col-md-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRightCompra"
+                    aria-controls="offcanvasRight">
+                    <i class="fas fa-shopping-bag shopping-bag"></i>
+                </button>
             </form>
-            <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRightCompra"
-                aria-controls="offcanvasRight">
-                <i class="fas fa-shopping-bag shopping-bag"></i>
-            </button>
 
             <div class="album py-5 bg-light">
                 <div class="container">
