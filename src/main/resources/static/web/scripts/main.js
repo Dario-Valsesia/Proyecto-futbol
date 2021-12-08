@@ -2,12 +2,14 @@ const app = Vue.createApp({
     data(){
         return{
             datosCliente: [],
+            listaProductos: [],
             description: "",
             lengthText: 0
         }
     },
     created(){
         this.datosClienteActual()
+        this.productos()
     },
     methods:{
         datosClienteActual(){
@@ -30,7 +32,13 @@ const app = Vue.createApp({
                     })
                 }
             })
-        }  
+        },
+        productos(){
+            axios.get("/api/productos")
+            .then(response => {
+                this.listaProductos = response.data   
+            })
+        } 
     },
     computed:{
         counter(){

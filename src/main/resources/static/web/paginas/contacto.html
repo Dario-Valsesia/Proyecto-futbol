@@ -10,8 +10,9 @@
     <link rel="shortcut icon" href="..favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../estilos/style.css">
 </head>
-<body id="app" v-cloak>
+<body>
 <!-- Encabezado de página -->
+<div id="app" v-cloak>
     <header class="row g-0" id="webPages">
         <nav class="navbar navbar-expand-lg col-4">
             <a href="home.html"><img src="../assets/logo.png" alt="Logo" id="logo"></a>
@@ -94,59 +95,61 @@
                 </div>
             </div>
         </div>
-        <div class="row justify-content-around">
-            <div class="col-md-6" style="margin-bottom: 1rem;">
-                <h2 class="subtitle">Contacto</h2>
-                <p>Para mayor información puede contactarnos a través de:</p>
-                <div class="row">
-                    <div class="col-1" id="iconos"><img src="../assets/map.png" alt="Map" id="icon-contact"></div>
-                    <div class="col-10">
-                        <p class="contacto">Dirección:</p>
-                        <p>Homero Manzi, Córdoba, Argentina</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-1" id="iconos"><img src="../assets/phone.png" alt="Phone" id="icon-contact"></div>
-                    <div class="col-10">
-                        <p class="contacto">Teléfono de contacto:</p>
-                        <p>0800 - BALLdor-0</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-1" id="iconos"><img src="../assets/email.png" alt="Email" id="icon-contact"></div>
-                    <div class="col-10">
-                        <p class="contacto">Correo electrónico:</p>
-                        <a class="mail" href="mailto:email@ejemplo.com">email@ejemplo.com</a>
-                    </div>
-                </div>                
-            </div>
-            <div class="col-md-5">
-                <h2 class="subtitle">Consultas:</h2>
-                <form class="position-relative" action="" id="form-data">
+        <div class="container">
+            <div class="row justify-content-around">
+                <div class="col-md-6" style="margin-bottom: 1rem;">
+                    <h2 class="subtitle">Contacto</h2>
+                    <p>Para mayor información puede contactarnos a través de:</p>
                     <div class="row">
-                        <div class="col-6 mb-3">
-                            <label for="name" class="label-form" id="formulary-conf">Nombre(s):</label>
-                            <input type="tex" class="form-control" id="name">
-                        </div>
-                        <div class="col-6 mb-3">
-                            <label for="apellido" class="label-form" id="formulary-conf">Apellido(s):</label>
-                            <input type="text" class="form-control" id="apellido">
+                        <div class="col-1" id="iconos"><img src="../assets/map.png" alt="Map" id="icon-contact"></div>
+                        <div class="col-10">
+                            <p class="contacto">Dirección:</p>
+                            <p>Homero Manzi, Córdoba, Argentina</p>
                         </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="email" class="label-form" id="formulary-conf">Correo electrónico:</label>
-                        <input type="email" class="form-control" id="email" placeholder="email@ejemplo.com">
+                    <div class="row">
+                        <div class="col-1" id="iconos"><img src="../assets/phone.png" alt="Phone" id="icon-contact"></div>
+                        <div class="col-10">
+                            <p class="contacto">Teléfono de contacto:</p>
+                            <p>0800 - BALLdor-0</p>
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="floatingTextarea" id="formulary-conf">Mensaje:</label>
-                        <textarea v-model="description" maxlength="1200" class="form-control" id="validationDefault05" rows="3" required></textarea>
-                        <p id="counter">{{counter}}/1200</p>
-                    </div>
-                    <div class="position-relative" id="send-consults">
-                        <input class="btn btn-primary" type="submit" value="Enviar" id="form-enviar" style="margin-right: .5rem;">
-                        <input class="btn btn-primary" type="reset" value="Limpiar" id="form-enviar">
-                    </div>
-                </form>
+                    <div class="row">
+                        <div class="col-1" id="iconos"><img src="../assets/email.png" alt="Email" id="icon-contact"></div>
+                        <div class="col-10">
+                            <p class="contacto">Correo electrónico:</p>
+                            <a class="mail" href="mailto:email@ejemplo.com">email@ejemplo.com</a>
+                        </div>
+                    </div>                
+                </div>
+                <div class="col-md-5">
+                    <h2 class="subtitle">Consultas:</h2>
+                    <form class="position-relative" action="" id="form-data">
+                        <div class="row">
+                            <div class="col-6 mb-3">
+                                <label for="name" class="label-form" id="formulary-conf">Nombre(s):</label>
+                                <input type="tex" class="form-control" id="name">
+                            </div>
+                            <div class="col-6 mb-3">
+                                <label for="apellido" class="label-form" id="formulary-conf">Apellido(s):</label>
+                                <input type="text" class="form-control" id="apellido">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="label-form" id="formulary-conf">Correo electrónico:</label>
+                            <input type="email" class="form-control" id="email" placeholder="email@ejemplo.com">
+                        </div>
+                        <div class="mb-3">
+                            <label for="floatingTextarea" id="formulary-conf">Mensaje:</label>
+                            <textarea v-model="description" maxlength="1200" class="form-control" id="validationDefault05" rows="3" required></textarea>
+                            <p id="counter">{{counter}}/1200</p>
+                        </div>
+                        <div class="position-relative" id="send-consults">
+                            <input class="btn btn-primary" type="submit" value="Enviar" id="form-enviar" style="margin-right: .5rem;">
+                            <input class="btn btn-primary" type="reset" value="Limpiar" id="form-enviar">
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </main>
@@ -213,6 +216,7 @@
             <p id="footer-page">&copy; TODOS LOS DERECHOS RESERVADOS.</p>
         </section>
     </footer>
+</div>
 <!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 

@@ -16,7 +16,7 @@ const app = Vue.createApp({
     login() {
         axios.post('/api/login', "email=" + this.email + "&password=" + this.contraseña)
             .then(() => {
-                 window.location.href = "./paginas/home.html"
+                window.location.href = "./paginas/home.html"
             })
             .catch(error => {
                 swal({
@@ -31,9 +31,18 @@ const app = Vue.createApp({
     registroCliente() {
         if(this.contraseña === this.contraseña2){
             axios.post('/api/clientes', "nombre=" + this.nombre + "&apellido=" + this.apellido + "&email=" + this.email + "&contraseña=" + this.contraseña, { headers: { 'content-type': 'application/x-www-form-urlencoded'} })
-            .then((response) => swal('Hola ' + this.nombre + " " + this.apellido + ', Bienvenido a SuperLeague!!!'))
-            .then((response) => {                
-                window.location.href = "./paginas/home.html"
+            .then(confirmation => {
+                swal({
+                title: 'Bienvenido a SuperLeague!!!',
+                text: 'Hola ' + this.nombre + " " + this.apellido + ', su registro fue exitoso.',
+                icon: "success"
+                })
+                .then(confirmation => {
+                    axios.post('/api/login', "email=" + this.email + "&password=" + this.contraseña)
+                    .then(confirmation => {
+                        window.location.href = "./paginas/home.html"
+                    })
+                })
             })
             .catch(err => {
                 swal({
@@ -46,7 +55,6 @@ const app = Vue.createApp({
                 text: "Las contraseñas no coinciden.",
                 icon: "error"
             })
-            .then(confirmation => this.contraseña2 === "")
         }
     },
     inicioSesionA(){

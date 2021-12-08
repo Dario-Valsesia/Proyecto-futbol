@@ -110,7 +110,7 @@ main#pages{
 /* FOOTER */
 
 section#footer-social{
-    margin:  .5rem;
+    margin: .5rem .5rem .5rem 2rem;
 }
 a#social{
     margin-right: .5rem;
@@ -201,6 +201,10 @@ div#sponsors{
 p.text{
     text-indent: 2rem;
     text-align: justify;
+}
+h5.title-nosotros{
+    margin: .5rem 0 .3rem 0;
+    text-align: center;
 }
 
 /* CONTACTO */
@@ -616,17 +620,17 @@ input#form-cambiar:hover{
     /* CONTACTO */
 
     div#iconos{
-        margin-right: 1.7rem !important;
+        margin-right: 1.5rem !important;
     }
     img#icon-contact{
         width: 30px !important;
     }
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 320px) {
     /* CONTACTO */
 
     div#iconos{
-        margin-right: 1.2rem !important;
+        margin-right: 1rem !important;
     }
 }

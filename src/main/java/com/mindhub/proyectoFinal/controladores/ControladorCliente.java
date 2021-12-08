@@ -35,12 +35,18 @@ public class ControladorCliente {
     @PostMapping("/clientes")
     public ResponseEntity<Object> register(@RequestParam String nombre, @RequestParam String apellido,
                                            @RequestParam String email, @RequestParam String contraseña){
+
         if(nombre.isEmpty()||apellido.isEmpty()||email.isEmpty()||contraseña.isEmpty()){
-            return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>("Algunos campos no pueden ir vacíos.", HttpStatus.FORBIDDEN);
         }
+
         if(repositorioCliente.findByEmail(email) != null){
-            return new ResponseEntity<>("Mail already in use", HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>("Correo electrónico en uso. Por favor, intente con uno diferente.", HttpStatus.FORBIDDEN);
         }
+        if(contraseña.length() < 8 || contraseña.length() > 12){
+            return new ResponseEntity<>("La contraseña debe contener entre 8 y 12 caracteres", HttpStatus.FORBIDDEN);
+        }
+
         repositorioCliente.save(new Cliente(nombre, apellido, email, passwordEncoder.encode(contraseña)));
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
