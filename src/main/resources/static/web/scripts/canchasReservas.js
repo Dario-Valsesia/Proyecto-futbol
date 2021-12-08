@@ -15,6 +15,7 @@ const app = Vue.createApp({
             reservas:[],
             horariosReservados:[],
             verHorarios:false,
+            verConfirmacion:false,
             //Lo que selecciona el usuario
             year: "",
             idCancha:0,
@@ -79,8 +80,13 @@ const app = Vue.createApp({
                 this.verHorarios=true;
             }).catch(e=>console.log(e));
         },
-        realizarReserva(e){
+        confirmarReserva(e){
             this.horaSeleccionada = e.target.value;
+            scrollTo(0,0);
+            this.verCalendario=false;
+            this.verConfirmacion=true;
+        },
+        realizarReserva(){   
             if(this.diaSeleccionado<10){
                 this.diaSeleccionado = "0"+this.diaSeleccionado;
             }
@@ -91,10 +97,16 @@ const app = Vue.createApp({
                 this.numeroMes++
             }
             this.fechaCompleta = `${this.year}-${this.numeroMes}-${this.diaSeleccionado}T${this.horaSeleccionada}:00:00`
-            console.log(this.idCancha);
             axios.post('/api/reservar',`fechaHora=${this.fechaCompleta}&id=${this.idCancha}`).then(res=>{
-                console.log(res.data);
+                swal({
+                    text: "Reserva realizada correctamente",
+                    icon: "success",
+                })
+                setTimeout(()=>location.reload(),1300)
             }).catch(e=>this.mensajeError=e.response.data);
+        },
+        cancelarReserva(){
+            location.reload()
         },
 
 
@@ -155,6 +167,10 @@ const app = Vue.createApp({
         nombreCancha(){
             let cancha =  this.canchas.filter(cancha=>cancha.id==this.idCancha);
             return (parseInt(cancha[0].cantidadJugadores) / 2);
+        },
+        precioCancha(){
+            let cancha =  this.canchas.filter(cancha=>cancha.id==this.idCancha);
+            return cancha[0].precio;
         }
               
     }

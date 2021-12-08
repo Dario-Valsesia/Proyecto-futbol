@@ -274,17 +274,25 @@ input#form-cambiar:hover{
     font-weight: bold;
 }
 
-/* CANCHAS */
-
-.contenedorBtnCanchas button{
-    width: 10rem;
-}
 
 /*CANCHAS*/
 
 .contenedorBtnCanchas button{
     width: 10rem;
+    background-color:#191A19 !important;
+    transition: 1s;
 }
+.contenedorBtnCanchas button:hover{
+    transform: scale(1.2);
+}
+
+.contenedorCanchas p{
+    padding: .5rem 1rem;
+    border-radius: 1rem;
+    background-color: #0003;
+    margin-top: .5rem;
+}
+
 
 /*CALENDARIO*/
 
@@ -299,8 +307,7 @@ input#form-cambiar:hover{
 }
 
 .contenedorCalendario{
-    width: 100%;
-     
+    width: 100%;   
     color: #fff;  
     animation: calendario 1.5s;        
 }
@@ -386,6 +393,30 @@ input#form-cambiar:hover{
     justify-content: space-between;
     align-items: center;
 }
+.contenedorReserva button,.btnReserva{
+    background-color: #191A19 !important;
+}
+.contenedorConfirma{
+    width: 60%;
+    height: 50%;
+    margin: auto;
+    background-color: #0009;
+    text-align: center;
+    border-radius: .5rem;
+    padding: .5rem;
+    animation: confirmacion 1.5s;
+}
+@keyframes confirmacion {
+    0%{
+        transform: scale(0);
+    }
+    60%{
+        transform: scale(1.2);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
 
 /* CARRITO DE COMPRAS */
 
@@ -466,9 +497,12 @@ input#form-cambiar:hover{
     }
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 426px) {
     /* HEADER */
-
+    main#pages{
+        margin: 0 !important;
+        width: 100%;
+    }
     img#logo{
         width: 60px !important;
     }
@@ -490,6 +524,25 @@ input#form-cambiar:hover{
     img#icon-contact{
         width: 40px !important;
     }
+    /* CALENDARIO */
+    .contenedorPrincipalCalendario{
+        width: 100%;
+        font-size: 12px;
+        padding: 0;
+    }
+    .contenedorDias{
+        font-size: 9px;
+        grid-gap: 0px;
+        padding: 0;
+    }
+    .contenedorBtnCanchas{
+        flex-direction: column;
+    }
+    .contenedorPrincipalReserva{
+        width: 100%;
+    }
+
+
 }
 
 @media screen and (max-width: 375px) {
