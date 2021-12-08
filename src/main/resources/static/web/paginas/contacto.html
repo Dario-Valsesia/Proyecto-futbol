@@ -7,9 +7,10 @@
     <title>Contacto</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="shortcut icon" href="..favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../estilos/style.css">
 </head>
-<body id="app">
+<body id="app" v-cloak>
 <!-- Encabezado de página -->
     <header class="row g-0" id="webPages">
         <nav class="navbar navbar-expand-lg col-4">
@@ -20,10 +21,10 @@
                         <a class="nav-link" href="home.html" id="navegation">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="" id="navegation">Tienda</a>
+                        <a class="nav-link" href="tienda.html" id="navegation">Tienda</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="" id="navegation">Reservas</a>
+                        <a class="nav-link" href="canchasReservas.html" id="navegation">Reservas</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="contacto.html" id="navegation">Contacto</a>
@@ -36,18 +37,18 @@
         </div>
         <div class="col-3 align-self-center header">
             <a href="" class="d-block link-light text-decoration-none" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false" style="float: right; margin-left: .5rem;"><div id="avatar"></div></a>
-            <a class="d-block link-light text-decoration-none" id="name-profile">Eugenio Vidal</a>
+            <a class="d-block text-decoration-none" id="name-profile">{{datosCliente.firstName}} {{datosCliente.lastName}}</a>
             <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
                 <li><a class="dropdown-item" id="go-to" href="">Perfil</a></li>
-                <li><a class="dropdown-item" id="go-to" href="">Configuración</a></li>
+                <li><a class="dropdown-item" id="go-to" :href="'configuracion.html?id=' + datosCliente.id">Configuración</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" id="go-to" href="">Cerrar sesión <img src="../assets/logout.png" alt="Sign out"></a></li>
+                <li><a class="dropdown-item" id="go-to" href="" @click.prevent="signOut">Cerrar sesión <img src="../assets/logout.png" alt="Sign out"></a></li>
             </ul>
         </div>
     </header>
 <!-- Barra de navegación -->
-    <nav class="navbar navbar-expand-lg row g-0 justify-content-end" id="navbar-1">
-        <div class="container-fluid col">
+    <nav class="navbar navbar-expand-lg" id="navbar-1">
+        <div class="container-fluid d-flex flex-row-reverse">
             <button class="btn btn-primary navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" id="menu"><span class="menu">&equiv;</span></button>
         </div>
     </nav>
@@ -62,17 +63,17 @@
                         <a class="nav-link link-dark rounded others" href="home.html">Inicio <img src="../assets/home.png" alt="Home"></a>
                     </li>
                     <li class="mb-1">
-                        <a class="nav-link link-dark rounded others" href="">Tienda <img src="../assets/store.png" alt="Store"></a>
+                        <a class="nav-link link-dark rounded others" href="tienda.html">Tienda <img src="../assets/store.png" alt="Store"></a>
                     </li>
                     <li class="mb-1">
-                        <a class="nav-link link-dark rounded others" href="">Reservas <img src="../assets/reservation.png" alt="Reservation"></a>
+                        <a class="nav-link link-dark rounded others" href="canchasReservas.html">Reservas <img src="../assets/reservation.png" alt="Reservation"></a>
                     </li>
                     <li class="mb-1">
                         <a class="nav-link link-dark rounded others" href="contacto.html">Contacto <img src="../assets/contact.png" alt="Contact"></a>
                     </li>
                     <li class="border-top my-3"></li>
                     <li class="mb-1">
-                        <a class="nav-link link-dark rounded others" href="">Cerrar sesión <img src="../assets/logout.png" alt="Sign out"></a>
+                        <a class="nav-link link-dark rounded others" href="" @click.prevent="signOut">Cerrar sesión <img src="../assets/logout.png" alt="Sign out"></a>
                     </li>
                 </ul>
             </div>
@@ -98,21 +99,21 @@
                 <h2 class="subtitle">Contacto</h2>
                 <p>Para mayor información puede contactarnos a través de:</p>
                 <div class="row">
-                    <div class="col-1" id="iconos"><img src="../assets/map.png" alt="Map" width="40"></div>
+                    <div class="col-1" id="iconos"><img src="../assets/map.png" alt="Map" id="icon-contact"></div>
                     <div class="col-10">
                         <p class="contacto">Dirección:</p>
                         <p>Homero Manzi, Córdoba, Argentina</p>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-1" id="iconos"><img src="../assets/phone.png" alt="Phone" width="40"></div>
+                    <div class="col-1" id="iconos"><img src="../assets/phone.png" alt="Phone" id="icon-contact"></div>
                     <div class="col-10">
                         <p class="contacto">Teléfono de contacto:</p>
-                        <p>0800 - NOMBRE00</p>
+                        <p>0800 - BALLdor-0</p>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-1" id="iconos"><img src="../assets/email.png" alt="Email" width="40"></div>
+                    <div class="col-1" id="iconos"><img src="../assets/email.png" alt="Email" id="icon-contact"></div>
                     <div class="col-10">
                         <p class="contacto">Correo electrónico:</p>
                         <a class="mail" href="mailto:email@ejemplo.com">email@ejemplo.com</a>
@@ -121,27 +122,27 @@
             </div>
             <div class="col-md-5">
                 <h2 class="subtitle">Consultas:</h2>
-                <form class="position-relative" action="" id="consults">
+                <form class="position-relative" action="" id="form-data">
                     <div class="row">
                         <div class="col-6 mb-3">
-                            <label for="name" class="label-form">Nombre:</label>
+                            <label for="name" class="label-form" id="formulary-conf">Nombre(s):</label>
                             <input type="tex" class="form-control" id="name">
                         </div>
                         <div class="col-6 mb-3">
-                            <label for="apellido" class="label-form">Apellido:</label>
+                            <label for="apellido" class="label-form" id="formulary-conf">Apellido(s):</label>
                             <input type="text" class="form-control" id="apellido">
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="email" class="label-form">Correo electrónico:</label>
+                        <label for="email" class="label-form" id="formulary-conf">Correo electrónico:</label>
                         <input type="email" class="form-control" id="email" placeholder="email@ejemplo.com">
                     </div>
                     <div class="mb-3">
-                        <label for="floatingTextarea">Mensaje:</label>
+                        <label for="floatingTextarea" id="formulary-conf">Mensaje:</label>
                         <textarea v-model="description" maxlength="1200" class="form-control" id="validationDefault05" rows="3" required></textarea>
                         <p id="counter">{{counter}}/1200</p>
                     </div>
-                    <div class="position-relative">
+                    <div class="position-relative" id="send-consults">
                         <input class="btn btn-primary" type="submit" value="Enviar" id="form-enviar" style="margin-right: .5rem;">
                         <input class="btn btn-primary" type="reset" value="Limpiar" id="form-enviar">
                     </div>
@@ -187,8 +188,8 @@
                         <p class="fs-5 fw-semibold" style="text-align: center;">MENÚ PRINCIPAL</p>
                         <ul class="list-unstyled ps-0">
                             <li class="mb-1">
-                                <a class="nav-link" id="footer" href="">Tienda</a>
-                                <a class="nav-link" id="footer" href="">Reservas</a>
+                                <a class="nav-link" id="footer" href="tienda.html">Tienda</a>
+                                <a class="nav-link" id="footer" href="canchasReservas.html">Reservas</a>
                                 <a class="nav-link" id="footer" href="contacto.html">Contacto</a>
                             </li>
                         </ul>
@@ -216,8 +217,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 
 <!-- Veu.js -->
-<script src="https://unpkg.com/vue@next"></script>
-<script src="../scripts/main.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="../scripts/main.js"></script>
 
 </body>
 </html>

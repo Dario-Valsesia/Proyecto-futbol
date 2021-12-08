@@ -2,6 +2,8 @@
 const app = Vue.createApp({
     data(){
         return{
+            datosCliente: [],
+            /////////////
             meses:['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre','Octubre', 'Noviembre', 'Diciembre'],
             fechaActual:"",
             numeroMes: "",    
@@ -25,10 +27,32 @@ const app = Vue.createApp({
         }
     },
     created(){
+        this.datosClienteActual();
         this.cargarFecha();
         this.cargarCanchas();
     },
     methods:{
+        datosClienteActual(){
+            axios.get("/api/cliente/actual")
+            .then(response => {
+                this.datosCliente = response.data
+            })
+        },
+        signOut(){
+            swal({
+                text: "¿Estás seguro que quieres cerrar su sesión?",
+                icon:"warning",
+                buttons: true
+            })
+            .then(confirmation => {
+                if(confirmation){
+                    axios.post("/api/logout")
+                    .then(response=>{
+                        window.location.replace("../index.html")
+                    })
+                }
+            })
+        },
         cargarCanchas(){
             axios.get('/api/canchas')
             .then(res=>{

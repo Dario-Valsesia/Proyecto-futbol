@@ -10,16 +10,23 @@ body{
     margin: 0;
     padding: 0;
     font-family: "Trebuchet MS", Helvetica, sans-serif;
+    user-select: none;
 }
 [v-cloak]{
     display: none;
+}
+.swal-button--confirm{
+    background-color: #4E9F3D;
 }
 
 /* HEADER */
 
 header#webPages{
     padding: 0 2rem 0 2rem;
-    background-color: #4E9F3D;
+    background-image: url("../assets/header.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: 60%;
 }
 img#logo{
     width: 80px !important;
@@ -43,6 +50,7 @@ div#avatar{
     background-size: cover;
 }
 a#name-profile{
+    color: #D8E9A8;
     float: right;
     font-size: larger !important;
     margin-top: 2vh !important;
@@ -52,7 +60,7 @@ ul.shadow{
 }
 a#go-to{
     text-decoration: none;
-    color: black;
+    color: #000;
 }
 a#go-to:hover{
     background-color: #4E9F3D;
@@ -73,12 +81,12 @@ button#menu{
     border: none;
 }
 a#navegation{
-    color: #191A19;
+    color: #000;
     font-weight: bold;
     font-size: large;
 }
 a#navegation:hover{
-    color: #1E5128;
+    color: #D8E9A8;
     text-decoration: underline;
 }
 div#body-menu-canvas1{
@@ -118,7 +126,7 @@ p.familia{
 }
 input#footer_enviar{
     background-color: #D8E9A8;
-    color: black;
+    color: #000;
     border: none;
 }
 input#footer_enviar:hover{
@@ -161,6 +169,29 @@ p#footer-page{
 h2.subtitle{
     margin-bottom: 1rem;
 }
+img#product{
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+}
+h3.title-product{
+    text-align: center;
+    margin: .3 0 .3rem 0;
+}
+p.description{
+    text-align: center;
+}
+a.view-details{
+    background-color: #4E9F3D;
+    color: #000;
+    border: none;
+    margin-bottom: 1rem;
+}
+a.view-details:hover{
+    background-color: #4E9F3D;
+    color: #000;
+    font-weight: bold;
+}
 
 /* SOBRE NOSOTROS */
 
@@ -181,8 +212,12 @@ p.contacto{
 div#iconos{
     margin-right: 2rem !important;
 }
+
+img#icon-contact{
+    width: 50px !important;
+}
 a.mail{
-    color: black;
+    color: #000;
     text-decoration: none;
 }
 a.mail:hover{
@@ -204,14 +239,55 @@ input#form-enviar{
     color: #000;
 }
 input#form-enviar:hover{
-    background-color: #4E9F3D;
     font-weight: bold
 }
-/*CANCHAS*/
+
+/* CONFIGURACIÓN */
+
+h2.title-page{
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+h3.title-conf{
+    text-align: center;
+}
+form#form-data{
+    padding: 1rem;
+    background-color: #4E9F3D;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+}
+label#formulary-conf{
+    margin: 0;
+    font-weight: bold;
+}
+div#send-consults{
+    text-align: center;
+}
+input#form-cambiar{
+    background-color: #D8E9A8;
+    color: #000;
+    border: none;
+}
+input#form-cambiar:hover{
+    font-weight: bold;
+}
+
+/* CANCHAS */
+
 .contenedorBtnCanchas button{
     width: 10rem;
 }
+
+/*CANCHAS*/
+
+.contenedorBtnCanchas button{
+    width: 10rem;
+}
+
 /*CALENDARIO*/
+
 .contenedorPrincipalCalendario{
     width: 80%;
     min-height: 50vh; 
@@ -312,6 +388,7 @@ input#form-enviar:hover{
 }
 
 /* CARRITO DE COMPRAS */
+
 .btn-miniatura {
     padding: .2rem .1rem!important;
     line-height: .5!important;
@@ -377,6 +454,16 @@ input#form-enviar:hover{
     div#navbar-2{
         width: 150px !important;
     }
+
+    /* CONTACTO */
+
+    div#iconos{
+        margin-right: 1.8rem !important;
+    }
+    
+    img#icon-contact{
+        width: 40px !important;
+    }
 }
 
 @media screen and (max-width: 425px) {
@@ -397,6 +484,12 @@ input#form-enviar:hover{
     div#navbar-2{
         width: 250px !important;
     }
+
+    /* CONTACTO */
+
+    img#icon-contact{
+        width: 40px !important;
+    }
 }
 
 @media screen and (max-width: 375px) {
@@ -411,8 +504,15 @@ input#form-enviar:hover{
     div#iconos{
         margin-right: 1.7rem !important;
     }
+    img#icon-contact{
+        width: 30px !important;
+    }
 }
 
-@media screen and (max-width: 320px) {
-    
+@media screen and (max-width: 375px) {
+    /* CONTACTO */
+
+    div#iconos{
+        margin-right: 1.2rem !important;
+    }
 }

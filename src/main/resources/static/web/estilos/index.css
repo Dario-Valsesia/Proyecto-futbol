@@ -15,53 +15,84 @@ main{
     color:#fff;
 }
 .contenedorImgIndex{
-    width: 50%;
+    width: 50% !important;
 }
 .contenedorImgIndex img{
-    width: 80%;
+    width: 80% !important;
 }
-.form{
-    width: 50%;
-}
-.form.inicioSesion.contenedorInput{
-    width: 50%;
-    margin: 1rem 0;
-}
-
-.form .inicioSesion button{
-    width: 50%;
-    margin: 1rem 0;
-}
-form h2{
+h2#title{
     font-family: 'Racing Sans One', cursive;
-    font-size: 6vw;
+    font-size: 8vh !important;
 }
-@media screen and (min-width: 427px){
-    
-    main{
-        display: flex;
-        justify-content: center;  
-    }
-    
-    form .btnGroup2{        
-        display: none !important;
-    }
+.container-form{
+    width: 50%;
+}
+form#sesion{
+    background-color: rgb(155, 155, 155, .5);
+    padding: .8rem;
+    border-radius: 15px;
+}
+form#registro{
+    height: 55vh !important;
+    overflow-y: scroll;
+    background-color: rgb(155, 155, 155, .5);
+    padding: .8rem;
+    border-radius: 15px;
+}
+form.registro, form.inicioSesion{
+    margin-top: 1rem;
+}
+label#sesion{
+    color: #000;
+    font-weight: bold;
+    margin-bottom: .3rem;
 }
 
-@media screen and (max-width: 426px){
-    
+@media screen and (max-width: 425px) {
     main{
-        display: flex;
-        justify-content: center;  
-    }
-    
-    form .btnGroup{        
-        display: none !important;
+        display: flex !important;
+        padding: 2rem;
     }
     .contenedorImgIndex{
-        width: 50%;
-        
+        width: 100% !important;
+    }
+    .contenedorImgIndex img{
+        display: absolute !important;
+        width: 80% !important;
+        margin-right: 5rem !important;
+    }
+    .container-form{
+        position: absolute !important;
+    }
+    h2#title{
+        font-size: 5vh !important;
+    }
+    div.btnGroup{
+        width: 75% !important;
+    }
+    button#sesion{
+        width: 10rem !important;
+    }
+    form#sesion{
+        width: 80vw !important;
+    }
+    form#registro{
+        height: 55vh !important;
+        width: 80vw !important;
     }
 }
 
+@media screen and (max-width: 375px) {
+    div.btnGroup{
+        width: 85% !important;
+    }
+}
 
+@media screen and (max-width: 320px) {
+    h2#title{
+        font-size: 4vh !important;
+    }
+    div.btnGroup{
+        width: 100% !important;
+    }
+}

@@ -7,9 +7,10 @@
     <title>Sobre nosotros</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="shortcut icon" href="..favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../estilos/style.css">
 </head>
-<body id="app">
+<body id="app" v-cloak>
 <!-- Encabezado de página -->
     <header class="row g-0" id="webPages">
         <nav class="navbar navbar-expand-lg col-4">
@@ -20,10 +21,10 @@
                         <a class="nav-link" href="home.html" id="navegation">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="" id="navegation">Tienda</a>
+                        <a class="nav-link" href="tienda.html" id="navegation">Tienda</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="" id="navegation">Reservas</a>
+                        <a class="nav-link" href="canchasReservas.html" id="navegation">Reservas</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="contacto.html" id="navegation">Contacto</a>
@@ -36,18 +37,18 @@
         </div>
         <div class="col-3 align-self-center header">
             <a href="" class="d-block link-light text-decoration-none" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false" style="float: right; margin-left: .5rem;"><div id="avatar"></div></a>
-            <a class="d-block link-light text-decoration-none" id="name-profile">Eugenio Vidal</a>
+            <a class="d-block text-decoration-none" id="name-profile">{{datosCliente.firstName}} {{datosCliente.lastName}}</a>
             <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
                 <li><a class="dropdown-item" id="go-to" href="">Perfil</a></li>
-                <li><a class="dropdown-item" id="go-to" href="">Configuración</a></li>
+                <li><a class="dropdown-item" id="go-to" :href="'configuracion.html?id=' + datosCliente.id">Configuración</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" id="go-to" href="">Cerrar sesión <img src="../assets/logout.png" alt="Sign out"></a></li>
+                <li><a class="dropdown-item" id="go-to" href="" @click.prevent="signOut">Cerrar sesión <img src="../assets/logout.png" alt="Sign out"></a></li>
             </ul>
         </div>
     </header>
 <!-- Barra de navegación -->
-    <nav class="navbar navbar-expand-lg row g-0 justify-content-end" id="navbar-1">
-        <div class="container-fluid col">
+    <nav class="navbar navbar-expand-lg" id="navbar-1">
+        <div class="container-fluid d-flex flex-row-reverse">
             <button class="btn btn-primary navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" id="menu"><span class="menu">&equiv;</span></button>
         </div>
     </nav>
@@ -62,17 +63,17 @@
                         <a class="nav-link link-dark rounded others" href="home.html">Inicio <img src="../assets/home.png" alt="Home"></a>
                     </li>
                     <li class="mb-1">
-                        <a class="nav-link link-dark rounded others" href="">Tienda <img src="../assets/store.png" alt="Store"></a>
+                        <a class="nav-link link-dark rounded others" href="tienda.html">Tienda <img src="../assets/store.png" alt="Store"></a>
                     </li>
                     <li class="mb-1">
-                        <a class="nav-link link-dark rounded others" href="">Reservas <img src="../assets/reservation.png" alt="Reservation"></a>
+                        <a class="nav-link link-dark rounded others" href="canchasReservas.html">Reservas <img src="../assets/reservation.png" alt="Reservation"></a>
                     </li>
                     <li class="mb-1">
                         <a class="nav-link link-dark rounded others" href="contacto.html">Contacto <img src="../assets/contact.png" alt="Contact"></a>
                     </li>
                     <li class="border-top my-3"></li>
                     <li class="mb-1">
-                        <a class="nav-link link-dark rounded others" href="">Cerrar sesión <img src="../assets/logout.png" alt="Sign out"></a>
+                        <a class="nav-link link-dark rounded others" href="" @click.prevent="signOut">Cerrar sesión <img src="../assets/logout.png" alt="Sign out"></a>
                     </li>
                 </ul>
             </div>
@@ -145,8 +146,8 @@
                         <p class="fs-5 fw-semibold" style="text-align: center;">MENÚ PRINCIPAL</p>
                         <ul class="list-unstyled ps-0">
                             <li class="mb-1">
-                                <a class="nav-link" id="footer" href="">Tienda</a>
-                                <a class="nav-link" id="footer" href="">Reservas</a>
+                                <a class="nav-link" id="footer" href="tienda.html">Tienda</a>
+                                <a class="nav-link" id="footer" href="canchasReservas.html">Reservas</a>
                                 <a class="nav-link" id="footer" href="contacto.html">Contacto</a>
                             </li>
                         </ul>
@@ -174,8 +175,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 
 <!-- Veu.js -->
-<script src="https://unpkg.com/vue@next"></script>
-<script src="../scripts/main.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="../scripts/main.js"></script>
 
 </body>
 </html>

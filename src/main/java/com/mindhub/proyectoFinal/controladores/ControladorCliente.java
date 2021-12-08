@@ -44,4 +44,41 @@ public class ControladorCliente {
         repositorioCliente.save(new Cliente(nombre, apellido, email, passwordEncoder.encode(contraseña)));
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
+
+    @GetMapping("/cliente/actual/{id}")
+    public ClienteDTO getCliente(@PathVariable Long id){
+        return repositorioCliente.findById(id).map(cliente -> new ClienteDTO(cliente)).orElse(null);
+    }
+
+    @PutMapping("/cliente/actual/personal")
+    public ResponseEntity<Object> cambioDatos(
+            @RequestParam String firstName,
+            @RequestParam String lastName,
+            Authentication authentication){
+
+        Cliente signCliente = repositorioCliente.findByEmail(authentication.getName());
+
+        signCliente.setFirstName(firstName);
+        signCliente.setLastName(lastName);
+
+        repositorioCliente.save(signCliente);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PutMapping("/cliente/actual/password")
+    public ResponseEntity<Object> cambioContraseña(
+            @RequestParam String password,
+            Authentication authentication){
+
+        Cliente signCliente = repositorioCliente.findByEmail(authentication.getName());
+
+        if(password.length() < 8 || password.length() > 12){
+            return new ResponseEntity<>("La contraseña debe contener entre 8 y 12 caracteres", HttpStatus.FORBIDDEN);
+        }
+
+        signCliente.setPassword(passwordEncoder.encode(password));
+
+        repositorioCliente.save(signCliente);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }
