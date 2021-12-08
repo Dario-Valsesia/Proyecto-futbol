@@ -419,6 +419,24 @@ input#form-cambiar:hover{
 }
 
 /* CARRITO DE COMPRAS */
+.offcanvas-header {
+    height: 12vh!important;
+    background-color: #D8E9A8;
+}
+
+.contenedor {
+    display: grid;
+    grid-template-columns: 1.5fr .5fr .5fr .5fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    border-bottom: 2px solid rgb(202, 200, 200);
+    padding-bottom: 1rem;
+}
+
+.carrito-miniatura {
+    margin-top: 5rem!important;
+    min-width: 1vw;
+    opacity: 55%;
+}
 
 .btn-miniatura {
     padding: .2rem .1rem!important;
@@ -435,10 +453,34 @@ input#form-cambiar:hover{
 }
 
 .item-2 {
-    grid-column: 1/2;
-    grid-row: 2/4;
+    grid-column: 1;
+    grid-row: 2/3;
     text-align: center;
-    align-self: center;
+    align-self: start;
+    font-size: 1rem;
+    font-weight: 500
+}
+
+.item-3 {
+    grid-column: 1;
+    text-align: right;
+    margin-right: .3rem;
+    align-self: start;
+}
+
+.item-4 {
+    grid-column: 2/5;
+    grid-row: 2/3;
+    text-align: center;
+    align-self: start;
+    font-size: 1rem;
+}
+
+.item-5 {
+    grid-column: 2/5;
+    grid-row: 3/4;
+    text-align: center;
+    align-self: start;
 }
 
 @media screen and (max-width: 1024px) {
