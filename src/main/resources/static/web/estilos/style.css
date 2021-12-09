@@ -81,11 +81,16 @@ button#menu{
     border: none;
 }
 a#navegation{
+    border: none;
+    border-radius: 25px;
+    background-color: rgb(78, 159, 61, .8);
+    width: 6.4rem;
     color: #000;
     font-weight: bold;
     font-size: large;
 }
 a#navegation:hover{
+    background-color: #4E9F3D;
     color: #D8E9A8;
     text-decoration: underline;
 }
@@ -191,6 +196,53 @@ a.view-details:hover{
     background-color: #4E9F3D;
     color: #000;
     font-weight: bold;
+}
+th.reservas{
+    text-align: center;
+    font-size: larger;
+    background-color: #4E9F3D;
+}
+th.header-tabla, td.body-tabla{
+    text-align: center;
+}
+a#cancelar, a#cancelar-card{
+    background-color: #4E9F3D;
+    border: none;
+    color: #000;
+}
+a#cancelar:hover, a#cancelar-card:hover{
+    font-weight: bold;
+}
+div.tabla-alert{
+    margin: 0;
+}
+p#alerta{
+    margin: 0;
+}
+div#accordionFlushExample, div#movil{
+    display: none !important;
+}
+button.accordion-button{
+    background-color: #4E9F3D;
+    font-weight: bold;
+}
+button.accordion-button:not(.collapsed){
+    background-color: #4E9F3D;
+    color: #000;
+}
+div#card-reserva{
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+p#card-body-name{
+    font-weight: bold;
+    font-size: x-large !important;
+}
+p#card-body{
+    margin: 0;
+}
+a#cancelar-card{
+    margin-top: .5rem;
 }
 
 /* SOBRE NOSOTROS */
@@ -514,6 +566,9 @@ input#form-cambiar:hover{
         width: 70px !important;
         padding: .3rem 1rem 0 0 !important;
     }
+    div#navbarSupportedContent{
+        display: none !important;
+    }
     a#name-profile{
         float: right;
         font-size: large !important;
@@ -522,6 +577,9 @@ input#form-cambiar:hover{
 
     /* BARRA DE NAVEGACIÓN */
 
+    button#menu{
+        display: block;
+    }
     a#navegation{
         color: #191A19;
         font-weight: bold;
@@ -563,7 +621,7 @@ input#form-cambiar:hover{
     }
 }
 
-@media screen and (max-width: 426px) {
+@media screen and (max-width: 425px) {
     /* HEADER */
     main#pages{
         margin: 0 !important;
@@ -579,10 +637,25 @@ input#form-cambiar:hover{
         display: none !important;
     }
 
+    /* BARRA DE NAVEGACIÓN */
+
+    nav#navbar-1{
+        margin-bottom: 1rem !important;
+    }
+
     /* FOOTER */
 
     div#navbar-2{
         width: 250px !important;
+    }
+
+    /* HOME */
+
+    div#ordenador{
+        display: none !important;
+    }
+    div#accordionFlushExample, div#movil{
+        display: block !important;
     }
 
     /* CONTACTO */
@@ -607,8 +680,6 @@ input#form-cambiar:hover{
     .contenedorPrincipalReserva{
         width: 100%;
     }
-
-
 }
 
 @media screen and (max-width: 375px) {
@@ -633,5 +704,14 @@ input#form-cambiar:hover{
 
     div#iconos{
         margin-right: 1rem !important;
+    }
+
+    /* HOME */
+
+    p#card-body-name{
+        font-size: larger !important;
+    }
+    p#card-body{
+        font-size: smaller;
     }
 }

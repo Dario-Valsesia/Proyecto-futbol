@@ -25,13 +25,13 @@ public class ProyectoFinalApplication {
 			Cliente cliente1 = new Cliente("Dario","Valsesia","dariovalsesia14@gmail.com", passwordEncoder.encode("123"));
 			repositorioCliente.save(cliente1);
 
-			Cancha cancha1 = new Cancha(10,2000D,"Futbol 5");
+			Cancha cancha1 = new Cancha(10,2000D,"Fútbol 5");
 			repositorioCancha.save(cancha1);
-			Cancha cancha2 = new Cancha(14,2800D,"Futbol 7");
+			Cancha cancha2 = new Cancha(14,2800D,"Fútbol 7");
 			repositorioCancha.save(cancha2);
-			Cancha cancha3 = new Cancha(18,3600D,"Futbol 9");
+			Cancha cancha3 = new Cancha(18,3600D,"Fútbol 9");
 			repositorioCancha.save(cancha3);
-			Cancha cancha4 = new Cancha(22,4400D,"Futbol 11");
+			Cancha cancha4 = new Cancha(22,4400D,"Fútbol 11");
 			repositorioCancha.save(cancha4);
 			Reserva reserva1 = new Reserva(LocalDateTime.of(2021,12,7,18,00),LocalDateTime.of(2021,12,7,19,00),false,cliente1,cancha1);
 			repositorioReserva.save(reserva1);

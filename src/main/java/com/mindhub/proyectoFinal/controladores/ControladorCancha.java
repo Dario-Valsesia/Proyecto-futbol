@@ -95,4 +95,12 @@ public class ControladorCancha {
     }
 
 
+    @DeleteMapping("/reservas/{id}")
+    public ResponseEntity<Object> cancelarReserva(@PathVariable Long id){
+
+        Reserva reserva = repositorioReserva.findById(id).orElse(null);
+
+        repositorioReserva.deleteById(reserva.getId());
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

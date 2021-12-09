@@ -10,6 +10,8 @@ public class ReservaDTO {
     private LocalDateTime horaIngreso;
     private LocalDateTime horaSalida;
     private Boolean luces;
+    private String nombreCancha;
+    private Double precio;
 
     public ReservaDTO() {
     }
@@ -19,6 +21,8 @@ public class ReservaDTO {
         this.horaIngreso = reserva.getHoraIngreso();
         this.horaSalida = reserva.getHoraSalida();
         this.luces = reserva.getLuces();
+        this.nombreCancha = reserva.getCancha().getNombre();
+        this.precio = reserva.getCancha().getPrecio();
     }
 
     public long getId() {
@@ -52,4 +56,12 @@ public class ReservaDTO {
     public void setLuces(Boolean luces) {
         this.luces = luces;
     }
+
+    public String getNombreCancha() {return nombreCancha;}
+
+    public void setNombreCancha(String nombreCancha) {this.nombreCancha = nombreCancha;}
+
+    public Double getPrecio() {return precio;}
+
+    public void setPrecio(Double precio) {this.precio = precio;}
 }

@@ -59,11 +59,11 @@ label#sesion{
     }
     .contenedorImgIndex{
         width: 100% !important;
+        
     }
     .contenedorImgIndex img{
-        display: absolute !important;
-        width: 80% !important;
         margin-right: 5rem !important;
+        transform: translateY(14%) !important;
     }
     .container-form{
         position: absolute !important;
@@ -90,6 +90,9 @@ label#sesion{
     div.btnGroup{
         width: 85% !important;
     }
+    .contenedorImgIndex img{
+        transform: translateY(16%) !important;
+    }
 }
 
 @media screen and (max-width: 320px) {
@@ -98,5 +101,8 @@ label#sesion{
     }
     div.btnGroup{
         width: 100% !important;
+    }
+    .contenedorImgIndex img{
+        transform: translateY(19%) !important;
     }
 }
