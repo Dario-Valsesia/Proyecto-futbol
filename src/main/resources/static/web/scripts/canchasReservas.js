@@ -62,23 +62,33 @@ const app = Vue.createApp({
             .catch(e=>console.error(e))
         },
         canchaSeleccionada(e){
-            this.verCalendario=false;
             this.idCancha = parseInt(e.target.value); 
             this.verCalendario=true;
             this.verHorarios = false;
+            this.verConfirmacion = false;
         },
         fechaSeleccionada(e){
-            this.verHorarios=false;
             this.diaSeleccionado = e.target.dataset.id
-            let mesSeleccionado = this.numeroMes + 1 ;
-            this.fechaArray = [parseInt(this.year) ,mesSeleccionado,parseInt(this.diaSeleccionado)];
-            axios.get(`/api/reservas?id=${this.idCancha}&integers=${this.fechaArray}`).then(res=>{
+            let fechaDeHoy = new Date()
+            if((parseInt(this.diaSeleccionado)<this.diaActual&&this.numeroMes<=fechaDeHoy.getMonth()&&this.year<=fechaDeHoy.getFullYear())||this.numeroMes<fechaDeHoy.getMonth()&&this.year<=fechaDeHoy.getFullYear()){
+                 this.verHorarios=false;
+                 swal({
+                    text: "Imposible reservar dias anteriores a la fecha de hoy",
+                    icon: "warning",
+                });
+            }else{
+                this.verHorarios=false;         
+                let mesSeleccionado = this.numeroMes + 1 ;
+                this.fechaArray = [parseInt(this.year) ,mesSeleccionado,parseInt(this.diaSeleccionado)];
+                axios.get(`/api/reservas?id=${this.idCancha}&integers=${this.fechaArray}`).then(res=>{
                 this.reservas=res.data;
                 this.horariosReservados = this.reservas.map(reserva=>{
                     return reserva.horaIngreso.slice(11,13);
                 })
                 this.verHorarios=true;
             }).catch(e=>console.log(e));
+            }
+            
         },
         confirmarReserva(e){
             this.horaSeleccionada = e.target.value;
@@ -97,12 +107,19 @@ const app = Vue.createApp({
                 this.numeroMes++
             }
             this.fechaCompleta = `${this.year}-${this.numeroMes}-${this.diaSeleccionado}T${this.horaSeleccionada}:00:00`
-            axios.post('/api/reservar',`fechaHora=${this.fechaCompleta}&id=${this.idCancha}`).then(res=>{
+            axios.post('/api/reservar',`fechaHora=${this.fechaCompleta}&id=${this.idCancha}`,{responseType: 'blob'}).then(res=>{
+                let disposition = res.headers['content-disposition'];
+                let fileName = decodeURI(disposition);
+                let link = document.createElement('a');
+                link.href = window.URL.createObjectURL(res.data);
+                link.download = fileName;
+                link.click();
+                link.remove();
                 swal({
                     text: "Reserva realizada correctamente",
                     icon: "success",
-                })
-                setTimeout(()=>location.reload(),1300)
+                });
+                setTimeout(()=>location.reload(),1500);           
             }).catch(e=>this.mensajeError=e.response.data);
         },
         cancelarReserva(){

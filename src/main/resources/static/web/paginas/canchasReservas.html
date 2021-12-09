@@ -91,7 +91,7 @@
                 </div>
                     
             </div>
-        <div class="contenedorPrincipalCalendario p-2 d-flex align-items-center">      
+        <div class="contenedorPrincipalCalendario p-2 d-flex">      
             <div v-if="verCalendario" class="contenedorCalendario d-flex flex-column">
                 <div class="contenedorMes d-flex justify-content-around align-items-center my-2">
                     <div @click="mesAnterior" class="btnMes">&#9664;</div>
@@ -108,7 +108,7 @@
                     <div>Domingo</div>
                 </div>
                 <div class="contenedorNumDia">
-                    <div @click="fechaSeleccionada" v-cloak v-for="diaAnterior in escribirDias()" class="diasAnteriores" :data-id="diaAnterior">
+                    <div v-cloak v-for="diaAnterior in escribirDias()" class="diasAnteriores">
                         {{diaAnterior}}
                     </div>  
                     <div @click="fechaSeleccionada" v-cloak v-for="dia in diasTotalMes(numeroMes)" :data-id="dia" :class="{hoy : dia == diaActual && fechaActual.getMonth() == numeroMes}">

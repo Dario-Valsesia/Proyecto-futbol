@@ -302,7 +302,7 @@ input#form-cambiar:hover{
 
 .contenedorPrincipalCalendario{
     width: 80%;
-    min-height: 50vh; 
+    min-height: 25rem; 
     background-image: url(../assets/fondoCalendario.jpg);
     background-size: cover;
     background-position: bottom;
@@ -313,7 +313,8 @@ input#form-cambiar:hover{
 .contenedorCalendario{
     width: 100%;   
     color: #fff;  
-    animation: calendario 1.5s;        
+    animation: calendario 1.5s;   
+
 }
 @keyframes calendario {
     0%{
@@ -360,7 +361,7 @@ input#form-cambiar:hover{
     width: 2rem;
     margin: auto;
     cursor: pointer;
-    background-color: #0007;
+    background-color: #0008;
     padding: .3rem;
     border-radius: 50%;
 }
