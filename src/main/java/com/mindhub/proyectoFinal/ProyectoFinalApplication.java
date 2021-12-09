@@ -42,9 +42,9 @@ public class ProyectoFinalApplication {
 			Reserva reserva4 = new Reserva(LocalDateTime.of(2021,12,7,19,00),LocalDateTime.of(2021,12,7,20,00),false,cliente1,cancha1);
 			repositorioReserva.save(reserva4);
 
-			Producto camiseta1 = new Camiseta("Camiseta","Camiseta de Boca", 2500, 4000, 30, "Kappa", new String[]{"XL","L"},"https://www.oscarbraessasdeportes.com.ar/wp-content/uploads/2020/07/WhatsApp-Image-2020-06-30-at-18.51.57.jpeg","Belgrano");
+			Producto camiseta1 = new Camiseta("Camiseta","Camiseta de Boca", 2500, 4000, 30, "Kappa", new String[]{"XL","L"},"https://www.oscarbraessasdeportes.com.ar/wp-content/uploads/2020/07/WhatsApp-Image-2020-06-30-at-18.51.57.jpeg","Boca");
 			repositorioProducto.save(camiseta1);
-			Producto botin1 = new Botin("Botin","Botin dorado",2100, 4300, 15, "Lotto", new String[]{"40","42","44"},"https://www.oscarbraessasdeportes.com.ar/wp-content/uploads/2020/07/WhatsApp-Image-2020-06-30-at-18.51.57.jpeg", "Futbol 5");
+			Producto botin1 = new Botin("Botin","Botin dorado",2100, 4300, 15, "Lotto", new String[]{"40","42","44"},"https://www.oscarbraessasdeportes.com.ar/wp-content/uploads/2020/07/WhatsApp-Image-2020-06-30-at-18.51.57.jpeg", "Fútbol 5");
 			repositorioProducto.save(botin1);
 			Producto medias1 =  new Medias("Medias","Medias con elastico reforzado",400, 1200, 75, "Nike", new String[]{"38","40","44"},"https://www.oscarbraessasdeportes.com.ar/wp-content/uploads/2020/07/WhatsApp-Image-2020-06-30-at-18.51.57.jpeg");
 			repositorioProducto.save(medias1);

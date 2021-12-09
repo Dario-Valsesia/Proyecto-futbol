@@ -57,6 +57,7 @@ public class ControladorProducto {
 
     @PostMapping("/productos")
     public ResponseEntity<Object> agregarProducto(@RequestBody AplicarProductoDTO aplicarProductoDTO){
+
         String name = aplicarProductoDTO.getName();
         String nombreProducto = aplicarProductoDTO.getNombreProducto();
         double precioCosto = aplicarProductoDTO.getPrecioCosto();
@@ -67,14 +68,10 @@ public class ControladorProducto {
         String equipo = aplicarProductoDTO.getEquipo();
         String tipo = aplicarProductoDTO.getTipo();
         String url = aplicarProductoDTO.getUrl();
-        if(name.isEmpty()||marca.isEmpty()||talles.length==0||url.isEmpty()){
+
+        if(name.isEmpty() || nombreProducto.isEmpty() || precioCosto < 0 || porcentajeGanacia < 0 || stock < 0 ||
+                marca.isEmpty() || talles.length==0 || url.isEmpty()){
             return new ResponseEntity<>("Data vacia", HttpStatus.FORBIDDEN);
-        }
-        if (stock<=0){
-            return new ResponseEntity<>("El stock tiene que ser mayor a 0", HttpStatus.FORBIDDEN);
-        }
-        if (precioCosto<=0){
-            return new ResponseEntity<>("El precio tiene que ser mayor a 0", HttpStatus.FORBIDDEN);
         }
         if (name.equals("Botin")){
             Producto producto = new Botin(name,nombreProducto,precioCosto,precioCosto+((porcentajeGanacia*precioCosto)/100),stock,marca,talles,url,tipo);
@@ -96,12 +93,12 @@ public class ControladorProducto {
             Producto producto = new Short(name,nombreProducto,precioCosto,precioCosto+((porcentajeGanacia*precioCosto)/100),stock,marca,talles,url,equipo);
             repositorioProducto.save(producto);
         }
-        return new ResponseEntity<>("creado", HttpStatus.OK);
-
+        return new ResponseEntity<>("Éxito al registrar producto", HttpStatus.OK);
     }
 
     @PostMapping("/comprar/producto")
     public ResponseEntity<Object> comprarProducto(@RequestParam Long id, @RequestParam String talle , Authentication authentication){
+
         Cliente cliente = repositorioCliente.findByEmail(authentication.getName());
 
         Producto producto = repositorioProducto.findById(id).orElse(null);

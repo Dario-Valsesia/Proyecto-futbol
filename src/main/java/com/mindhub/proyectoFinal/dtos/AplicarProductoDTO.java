@@ -26,7 +26,7 @@ public class AplicarProductoDTO {
         this.stock = stock;
         this.marca = marca;
         this.talle = talle;
-        this.url=url;
+        this.url = url;
         this.equipo = equipo;
         this.tipo = tipo;
     }
