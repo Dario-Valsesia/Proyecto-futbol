@@ -13,23 +13,23 @@
     <div id="app" v-cloak>
 
         <header>
-            <h1 class="text-center my-4">Agregar productos</h1>
+            <h1 class="text-center my-4">Administrar Tienda</h1>
         </header>
 
         <main>
 
             <!-- SELECCIÓN DE ACCIÓN -->
             <section v-if="modificarOAgregarProducto === ''" class="d-flex flex-wrap justify-content-evenly">
-                <h2 class="fs-5 col-12 text-center mb-5">¿Qué desea hacer?</h2>
-                <div class="d-flex align-items-center justify-content-around col-4 gray_background text-center p-3 rounded">
+                <h2 class="fs-5 col-12 text-center mb-5">Elija una opción</h2>
+                <div class="d-flex align-items-center justify-content-between col-10 col-md-5 gray_background p-3 mb-4 rounded">
                     <label for="nuevoProducto" class="pointer">Agregar nuevo producto</label>
                     <input v-model="modificarOAgregarProducto" type="radio" id="nuevoProducto" class="d-none" value="nuevoProducto">
                     <i class="bi bi-plus-circle fs-3"></i>
                 </div>
-                <div class="d-flex align-items-center justify-content-around col-4 gray_background text-center p-3 rounded">
+                <div class="d-flex align-items-center justify-content-between col-10 col-md-5 gray_background p-3 mb-4 rounded">
                     <label for="modificarProducto" class="pointer">Modificar o eliminar producto existente</label>
                     <input v-model="modificarOAgregarProducto" type="radio" id="modificarProducto" class="d-none" value="modificarProducto">
-                    <i class="bi bi-search fs-3"></i>
+                    <i class="bi bi-search fs-3 col-3 text-end"></i>
                 </div>
             </section>
             <!-- ------------------ -->
@@ -37,25 +37,25 @@
             <!-- AGREGAR PRODUCTO -->
 
                 <!-- SELECCIÓN TIPO DE PRODUCTO -->
-            <section v-if="modificarOAgregarProducto === 'nuevoProducto' && nombreProducto === ''" class="d-flex flex-wrap justify-content-around mt-4">
-                <h2 class="fs-5 col-12 text-center mb-5">Seleccione la clase de producto que desea agregar</h2>
-                <div class="d-flex align-items-center justify-content-around col-3 gray_background text-center p-3 rounded m-3">
+            <section v-if="modificarOAgregarProducto === 'nuevoProducto' && nombreProducto === ''" class="d-flex flex-wrap justify-content-around mt-4 mb-3">
+                <h2 class="fs-5 col-12 text-center mb-3 mb-md-4 mb-lg-5">Seleccione la clase de producto que desea agregar</h2>
+                <div class="d-flex align-items-center justify-content-around col-6 col-md-4 col-lg-3 gray_background text-center p-3 rounded m-3">
                     <label for="botin" class="pointer">Botín</label>
                     <input v-model="nombreProducto" type="radio" id="botin" value="Botin" class="d-none">
                 </div>
-                <div class="d-flex align-items-center justify-content-around col-3 gray_background text-center p-3 rounded m-3">
+                <div class="d-flex align-items-center justify-content-around col-6 col-md-4 col-lg-3 gray_background text-center p-3 rounded m-3">
                     <label for="camiseta" class="pointer">Camiseta</label>
                     <input v-model="nombreProducto" type="radio" id="camiseta" value="Camiseta" class="d-none">
                 </div>
-                <div class="d-flex align-items-center justify-content-around col-3 gray_background text-center p-3 rounded m-3">
+                <div class="d-flex align-items-center justify-content-around col-6 col-md-4 col-lg-3 gray_background text-center p-3 rounded m-3">
                     <label for="medias" class="pointer">Medias</label>
                     <input v-model="nombreProducto" type="radio" id="medias" value="Medias" class="d-none">
                 </div>
-                <div class="d-flex align-items-center justify-content-around col-3 gray_background text-center p-3 rounded m-3">
+                <div class="d-flex align-items-center justify-content-around col-6 col-md-4 col-lg-3 gray_background text-center p-3 rounded m-3">
                     <label for="pelota" class="pointer">Pelota</label>
                     <input v-model="nombreProducto" type="radio" id="pelota" value="Pelota" class="d-none">
                 </div>
-                <div class="d-flex align-items-center justify-content-around col-3 gray_background text-center p-3 rounded m-3">
+                <div class="d-flex align-items-center justify-content-around col-6 col-md-4 col-lg-3 gray_background text-center p-3 rounded m-3">
                     <label for="short" class="pointer">Short</label>
                     <input v-model="nombreProducto" type="radio" id="short" value="Short" class="d-none">
                 </div>
@@ -64,30 +64,30 @@
 
                 <!-- FORMULARIO DATOS DEL PRODUCTO -->
             <section v-if="nombreProducto != ''" class="d-flex flex-column align-items-center mb-4">
-                <h2 class="fs-5 mb-5">Complete todos campos para registrar el producto</h2>
-                <form class="d-flex flex-column col-8 gray_background p-3 rounded">
+                <h2 class="fs-5 mb-4 mb-lg-5 text-center">Complete todos campos para registrar el producto</h2>
+                <form class="d-flex flex-column col-8 col-md-7 gray_background p-3 rounded col-11">
 
                     <label for="marca" class="fs-5 mb-1">Marca</label>
-                    <input v-model="marca" class="mb-3" type="text" id="marca" placeholder="Nike">
+                    <input v-model="marca" class="mb-3 px-1" type="text" id="marca" placeholder="Nike">
 
                     <legend class="fs-5">Elija un nombre para el producto</legend>
                     <label for="nombreProducto"></label>
-                    <input v-model="descripcionProducto" class="mb-3" type="text" id="nombreProducto" placeholder="Botín de cuero reforzado">
+                    <input v-model="descripcionProducto" class="mb-3 px-1" type="text" id="nombreProducto" placeholder="Botín de cuero reforzado">
 
                     <legend class="fs-5">¿Cuánto le costó cada unidad de este producto?</legend>
                     <label for="costo"></label>
-                    <input v-model="costo" class="mb-3" type="number" id="costo">
+                    <input v-model="costo" class="mb-3 px-1" type="number" id="costo">
 
                     <legend class="fs-5">¿Cuál será el margen de ganancia?</legend>
                     <label for="porcentajeGanancia"></label>
-                    <input v-model="porcentajeGanancia" type="number" id="porcentajeGanancia" :class="[calcularPrecio === 0 ? 'mb-3' : '']">
+                    <input v-model="porcentajeGanancia" class="px-1" type="number" id="porcentajeGanancia" :class="[calcularPrecio === 0 ? 'mb-3' : '']">
                     <p v-if="calcularPrecio != 0" class="mb-3">El precio final del producto será ${{calcularPrecio}}</p>
 
                     <legend class="fs-5">¿De cuántas unidades del producto dispone?</legend>
                     <label for="stock"></label>
-                    <input v-model="stock" class="mb-3" type="number" id="stock">
+                    <input v-model="stock" class="mb-3 px-1" type="number" id="stock">
 
-                    <fieldset >
+                    <fieldset>
                         <legend class="fs-5 col-12">¿De cuáles talles del producto dispone?</legend>
                         <label v-for="talles in devolverTalles" class="me-3"><input v-model="tallesProducto" type="checkbox" :value="talles" class="me-1">{{talles}}</label>
                     </fieldset>
@@ -95,19 +95,19 @@
                     <fieldset v-if="nombreProducto === 'Camiseta' || nombreProducto === 'Short'">
                         <legend class="fs-5 mt-3 col-12">¿De qué equipo es el producto?</legend>
                         <label for="equipo"></label>
-                        <input v-model="equipoProducto" class="mb-3 col-12" type="text" id="equipo">
+                        <input v-model="equipoProducto" class="mb-3 col-12 px-1" type="text" id="equipo">
                     </fieldset>
                     
                     <fieldset v-if="nombreProducto === 'Botin'">
                         <legend class="fs-5 mt-3 col-12">¿Qué tipo de botín es?</legend>
                         <label for="tipoProducto"></label>
-                        <input v-model="tipoProducto" class="mb-3 col-12" type="text" id="tipoProducto" placeholder="Futbol 5">
+                        <input v-model="tipoProducto" class="mb-3 col-12 px-1" type="text" id="tipoProducto" placeholder="Fútbol 5">
                     </fieldset>
 
-                    <fieldset>
+                    <fieldset :class="nombreProducto === 'Camiseta' || nombreProducto === 'Short' || nombreProducto === 'Botin' ? '' : 'mt-3'">
                         <legend class="fs-5 col-12">Elija una foto del navegador y copie su dirección aquí</legend>
                         <label for="imagenProducto"></label>
-                        <input v-model="imagenProducto" class="mb-3 col-12" type="text" id="imagenProducto" placeholder="https://http2.mlstatic.com/D_NQ_NP_926362.webp">
+                        <input v-model="imagenProducto" class="mb-3 col-12 px-1" type="text" id="imagenProducto" placeholder="https://http2.mlstatic.com/D_NQ_NP_926362.webp">
                     </fieldset>
 
                     <button @click.prevent="guardarProducto" class="mt-4 rounded">Guardar producto</button>
