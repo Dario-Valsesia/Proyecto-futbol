@@ -33,7 +33,7 @@ const app = Vue.createApp({
             axios.post('/api/clientes', "nombre=" + this.nombre + "&apellido=" + this.apellido + "&email=" + this.email + "&contraseña=" + this.contraseña, { headers: { 'content-type': 'application/x-www-form-urlencoded'} })
             .then(confirmation => {
                 swal({
-                title: 'Bienvenido a SuperLeague!!!',
+                title: 'Bienvenido a Ball D`or!!!',
                 text: 'Hola ' + this.nombre + " " + this.apellido + ', su registro fue exitoso.',
                 icon: "success"
                 })

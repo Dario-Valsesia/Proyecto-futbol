@@ -17,6 +17,7 @@ main{
     background-image: url("../assets/background-index.jpg");    
     background-size: cover;
     color:#fff;
+    overflow: hidden;
 }
 .contenedorImgIndex{
     width: 50% !important;
@@ -26,83 +27,59 @@ main{
 }
 h2#title{
     font-family: 'Racing Sans One', cursive;
-    font-size: 8vh !important;
+    font-size: 5rem !important;
 }
-.container-form{
+.contenedorForm{
     width: 50%;
+    padding-top: 5rem;
+    align-items: center !important;
 }
-form#sesion{
+.btnGroup{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.btnGroup button{
+    width: 25rem;
+}
+.contenedorFormIngresar,.contenedorFormRegistro{
+    width: 25rem;
+    overflow: hidden;
+}
+.inicioSesion,#registro{
+    width: 25rem;
+    padding: 1rem;
     background-color: rgb(155, 155, 155, .5);
-    padding: .8rem;
-    border-radius: 15px;
-}
-form#registro{
-    height: 55vh !important;
-    overflow-y: scroll;
-    background-color: rgb(155, 155, 155, .5);
-    padding: .8rem;
-    border-radius: 15px;
-}
-form.registro, form.inicioSesion{
+    border-radius: 1rem;
     margin-top: 1rem;
+    animation: ingresarInput 2s;
 }
-label#sesion{
-    color: #000;
-    font-weight: bold;
-    margin-bottom: .3rem;
+@keyframes ingresarInput {
+    0%{
+        transform: translateY(-100%);
+    }
+    100%{
+        transform: translateY(0);
+    } 
 }
 
-@media screen and (max-width: 425px) {
-    main{
-        display: flex !important;
-        padding: 2rem;
+
+@media screen and (max-width: 769px){
+    .contenedorForm{
+        width: 100%;
     }
-    .contenedorImgIndex{
-        width: 100% !important;
-        
+}
+
+@media screen and (max-width: 426px) {
+    .btnGroup button{
+        width: 20rem;
     }
-    .contenedorImgIndex img{
-        margin-right: 5rem !important;
-        transform: translateY(14%) !important;
-    }
-    .container-form{
-        position: absolute !important;
+    .inicioSesion,#registro,.contenedorFormIngresar,.contenedorFormRegistro{
+        width: 20rem;
     }
     h2#title{
-        font-size: 5vh !important;
-    }
-    div.btnGroup{
-        width: 75% !important;
-    }
-    button#sesion{
-        width: 10rem !important;
-    }
-    form#sesion{
-        width: 80vw !important;
-    }
-    form#registro{
-        height: 55vh !important;
-        width: 80vw !important;
+        font-size: 35px !important;
     }
 }
 
-@media screen and (max-width: 375px) {
-    div.btnGroup{
-        width: 85% !important;
-    }
-    .contenedorImgIndex img{
-        transform: translateY(16%) !important;
-    }
-}
 
-@media screen and (max-width: 320px) {
-    h2#title{
-        font-size: 4vh !important;
-    }
-    div.btnGroup{
-        width: 100% !important;
-    }
-    .contenedorImgIndex img{
-        transform: translateY(19%) !important;
-    }
-}
