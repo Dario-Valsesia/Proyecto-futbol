@@ -138,9 +138,9 @@ public class ProyectoFinalApplication {
 			repositorioProducto.save(short5);
 			Producto short6 = new Short("Short","Short Barcelona Azul",3000,4000,10,"Nike",new String[]{"M","L","XL"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638899745/th_7_b21zii.jpg","Barcelona");
 			repositorioProducto.save(short6);
-			Producto short7 = new Short("Short","Short Celtics",1200,2400,10,"New Balance",new String[]{"M","L","XL"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638899746/th_4_cybiwt.jpg","Celtics");
+			Producto short7 = new Short("Short","Short Celtics",1200,2400,10,"New Balance",new String[]{"M","L","XL"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638899746/th_5_fg8ei0.jpg","Celtics");
 			repositorioProducto.save(short7);
-			Producto short8 = new Short("Short","Short Chealse",3000,4000,10,"Nike",new String[]{"M","L","XL"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638899745/th_3_zmewye.jpg","Chelsea");
+			Producto short8 = new Short("Short","Short Chealse",3000,4000,10,"Nike",new String[]{"M","L","XL"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638899746/th_4_cybiwt.jpg","Chelsea");
 			repositorioProducto.save(short8);
 			Producto short9 = new Short("Short","Short Gris Puma",2000,3000,10,"Puma",new String[]{"M","L","XL"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1639135824/th_23_dx8vjr.jpg","Puma");
 			repositorioProducto.save(short9);
