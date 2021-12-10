@@ -146,10 +146,10 @@ public class ProyectoFinalApplication {
 			repositorioProducto.save(short8);
 			Producto short9 = new Short("Short","Short Gris Puma",2000,3000,10,"Puma",new String[]{"M","L","XL"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1639135824/th_23_dx8vjr.jpg","Puma");
 			repositorioProducto.save(short9);
-			Producto short8 = new Short("Short","Short Adidas",2500,3500,10,"Adidas",new String[]{"M","L","XL"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1639135824/th_25_as9s9d.jpg","Adidas");
-			repositorioProducto.save(short8);
-			Producto short8 = new Short("Short","Short Chealse",1500,2500,10,"Macron",new String[]{"M","L","XL"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1639135824/th_24_wfhszw.jpg","Macron");
-			repositorioProducto.save(short8);
+			Producto short10 = new Short("Short","Short Adidas",2500,3500,10,"Adidas",new String[]{"M","L","XL"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1639135824/th_25_as9s9d.jpg","Adidas");
+			repositorioProducto.save(short10);
+			Producto short11 = new Short("Short","Short Chealse",1500,2500,10,"Macron",new String[]{"M","L","XL"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1639135824/th_24_wfhszw.jpg","Macron");
+			repositorioProducto.save(short11);
 
 
 
