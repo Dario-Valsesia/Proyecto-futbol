@@ -42,8 +42,7 @@ public class ProyectoFinalApplication {
 			Reserva reserva4 = new Reserva(LocalDateTime.of(2021,12,7,19,00),LocalDateTime.of(2021,12,7,20,00),false,cliente1,cancha1);
 			repositorioReserva.save(reserva4);
 
-			Producto camiseta0 = new Camiseta("Camiseta","Camiseta de Boca", 2500, 4000, 30, "Kappa", new String[]{"XL","L"},"https://www.oscarbraessasdeportes.com.ar/wp-content/uploads/2020/07/WhatsApp-Image-2020-06-30-at-18.51.57.jpeg","Boca");
-			repositorioProducto.save(camiseta0);
+
 			Producto camiseta1 = new Camiseta("camiseta liverpool", "Camiseta Liverpool", 1500, 3000, 10, "Nike", new String[]{"S","M","L","XL"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638898137/pngwing.com_21_d8f911.png", "Liverpool");
 			repositorioProducto.save(camiseta1);
 			Producto camiseta2 = new Camiseta("camiseta Seleccion Argentina", "Camiseta Seleccion Argentina", 1800, 3500, 20, "Adidas", new String[]{"S","M","L","XL","XXL"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638898138/pngwing.com_23_bi4t9w.png", "Adidas");
@@ -65,9 +64,6 @@ public class ProyectoFinalApplication {
 			Producto camiseta10 = new Camiseta("camiseta Real Madrid", "Camiseta Real Madrid", 1700, 3400, 5, "Adidas", new String[]{"S","M","L","XL","XXL"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638898139/pngwing.com_20_jw3sb1.png", "Adidas");
 			repositorioProducto.save(camiseta10);
 
-
-			Producto botin0 = new Botin("Botin","Botin dorado",2100, 4300, 15, "Lotto", new String[]{"40","42","44"},"https://www.oscarbraessasdeportes.com.ar/wp-content/uploads/2020/07/WhatsApp-Image-2020-06-30-at-18.51.57.jpeg", "Fútbol 5");
-			repositorioProducto.save(botin0);
 			Producto botin1 = new Botin("Botin","Botin Azul",2500, 5000, 10, "Adidas", new String[]{"38","40","42","44"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638897293/pngwing.com_16_rlhinn.png", "Futbol 11");
 			repositorioProducto.save(botin1);
 			Producto botin2 = new Botin("Botin","Botin Mercurial",3000, 6000, 8, "Nike", new String[]{"38","40","42","44", "46"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638897294/pngwing.com_15_tbmr6p.png", "Futbol 11");
@@ -91,12 +87,73 @@ public class ProyectoFinalApplication {
 			Producto botin11 = new Botin("Botin","Botin Negro",1800, 3600, 10, "Puma", new String[]{"40","42","44","46"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1639060191/descarga_4_xuh9us.jpg", "Futbol 5");
 			repositorioProducto.save(botin11);
 
-			Producto medias1 =  new Medias("Medias","Medias con elastico reforzado",400, 1200, 75, "Nike", new String[]{"38","40","44"},"https://www.oscarbraessasdeportes.com.ar/wp-content/uploads/2020/07/WhatsApp-Image-2020-06-30-at-18.51.57.jpeg");
+			Producto medias1 =  new Medias("Medias","Medias Blancas, franjas Azules",750, 1500, 100, "Nike", new String[]{"38","40","44"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638898983/th_10_zbqpbr.jpg");
 			repositorioProducto.save(medias1);
-			Producto pelota1 = new Pelota("Pelota","Pelota con cuero reforzado",1500,2000,14,"Nike",new String[]{"1","2","3"},"https://redsport.vteximg.com.br/arquivos/ids/939668-2000-2000/GA025330771.jpg?v=636967276871130000");
+			Producto medias2 =  new Medias("Medias","Medias Blancas lisa",600, 1200, 120, "Topper", new String[]{"38","40","44"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638898983/th_9_b0moiv.jpg");
+			repositorioProducto.save(medias2);
+			Producto medias3 =  new Medias("Medias","Medias Azul lisa",600, 1200, 120, "Adidas", new String[]{"38","40","44"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638898984/medias-futbol-adidas-milano-azul_hy8ydl.jpg");
+			repositorioProducto.save(medias3);
+			Producto medias4 =  new Medias("Medias","Medias de Compresion",800, 1600, 120, "Nike", new String[]{"38","40","44"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638898984/122601_lvzaz0.webp");
+			repositorioProducto.save(medias4);
+			Producto medias5 =  new Medias("Medias","Medias Reversibles",1000, 2000, 120, "Adidas", new String[]{"38","40","44"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638898984/D_NQ_NP_676648-MLV32984547625_112019-O_vvlnc7.webp");
+			repositorioProducto.save(medias5);
+			Producto medias6 =  new Medias("Medias","Medias Bordo Lisa",600, 1200, 120, "Adidas", new String[]{"38","40","44"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638898984/medias-adidas-milano-16-rojas-1-1560946685_bfcd3r.jpg");
+			repositorioProducto.save(medias6);
+			Producto medias7 =  new Medias("Medias","Medias Verde Lisa",500, 1000, 120, "Umbro", new String[]{"38","40","44"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638898984/descarga_jyu11d.jpg");
+			repositorioProducto.save(medias7);
+			Producto medias8 =  new Medias("Medias","Medias Naranja Lisa",600, 1200, 120, "Adidas", new String[]{"38","40","44"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638898984/medias-de-futbol-para-nino-naranjas_kbe6r2.jpg");
+			repositorioProducto.save(medias8);
+			Producto medias9 =  new Medias("Medias","Medias Azul lisa con lineas",650, 1300, 120, "Pumas", new String[]{"38","40","44"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638899043/th_11_prwjid.jpg");
+			repositorioProducto.save(medias9);
+			Producto medias10 =  new Medias("Medias","Medias Rosadas lisa ",650, 1300, 120, "Women", new String[]{"38","40","44"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638899043/th_12_lkkgbi.jpg");
+			repositorioProducto.save(medias10);
+
+			Producto pelota1 = new Pelota("Pelota","Pelota Seleccion Argentina",1500,2000,14,"Adidas",new String[]{"3","4","5"},"https://redsport.vteximg.com.br/arquivos/ids/939668-2000-2000/GA025330771.jpg?v=636967276871130000");
 			repositorioProducto.save(pelota1);
-			Producto short1 = new Short("Short","Short deportivo",2000,2500,8,"Adidas",new String[]{"M","L","XL"},"https://static.dafiti.com.ar/p/adidas-5138-198794-1-product.jpg","Boca");
+			Producto pelota2 = new Pelota("Pelota","Pelota Copa Mundia 2018",1800,3200,14,"Adidas",new String[]{"3","4","5"},"https://redsport.vteximg.com.br/arquivos/ids/939668-2000-2000/GA025330771.jpg?v=636967276871130000");
+			repositorioProducto.save(pelota2);
+			Producto pelota3 = new Pelota("Pelota","Pelota Champions League",1800,3200,14,"Adidas",new String[]{"3","4","5"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638896201/pngwing.com_1_qnqjx7.png");
+			repositorioProducto.save(pelota3);
+			Producto pelota4 = new Pelota("Pelota","Pelota 2017",1500,3000,20,"Nike",new String[]{"3","4","5"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638896201/pngwing.com_fhkaen.png");
+			repositorioProducto.save(pelota4);
+			Producto pelota5 = new Pelota("Pelota","Pelota Paris Saint German",1800,3600,20,"Nike",new String[]{"3","4","5"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638896202/pngwing.com_5_newitg.png");
+			repositorioProducto.save(pelota5);
+			Producto pelota6 = new Pelota("Pelota","Pelota Futsal",1200,2400,20,"Futsal",new String[]{"1","2","3"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638896202/pngwing.com_7_mlj2cm.png");
+			repositorioProducto.save(pelota6);
+			Producto pelota7 = new Pelota("Pelota","Pelota Naranja",1200,2400,20,"Nike",new String[]{"1","2","3"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638896203/pngwing.com_4_pnr3vr.png");
+			repositorioProducto.save(pelota7);
+			Producto pelota8 = new Pelota("Pelota","Pelota Blanca",1200,2400,20,"Adidas",new String[]{"1","2","3"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638896203/pngwing.com_8_s3yf4q.png");
+			repositorioProducto.save(pelota8);
+			Producto pelota9 = new Pelota("Pelota","Pelota Barcelona",2000,4000,20,"Nike",new String[]{"3","4","5"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638896203/pngwing.com_6_a8aynj.png");
+			repositorioProducto.save(pelota9);
+
+
+			Producto short1 = new Short("Short","Short Verde",2000,2500,8,"New Balance",new String[]{"M","L","XL"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638899745/th_3_zmewye.jpg","Palmeiras");
 			repositorioProducto.save(short1);
+			Producto short2 = new Short("Short","Short Real Madrid Negro",3000,4000,10,"Adidas",new String[]{"M","L","XL"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638899745/th_3_zmewye.jpg","Real Madrid");
+			repositorioProducto.save(short2);
+			Producto short3 = new Short("Short","Short Barcelona Rojo",3000,4000,10,"Nike",new String[]{"M","L","XL"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638899745/th_3_zmewye.jpg","Barcelona");
+			repositorioProducto.save(short3);
+			Producto short4 = new Short("Short","Short Negro",1500,3000,10,"Futsal",new String[]{"M","L","XL"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638899745/th_3_zmewye.jpg","Futsal");
+			repositorioProducto.save(short4);
+			Producto short5 = new Short("Short","Short Valencia",2000,3000,10,"Hummel",new String[]{"M","L","XL"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638899745/th_3_zmewye.jpg","Valencia");
+			repositorioProducto.save(short5);
+			Producto short6 = new Short("Short","Short Barcelona Azul",3000,4000,10,"Nike",new String[]{"M","L","XL"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638899745/th_3_zmewye.jpg","Barcelona");
+			repositorioProducto.save(short6);
+			Producto short7 = new Short("Short","Short Celtics",1200,2400,10,"New Balance",new String[]{"M","L","XL"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638899745/th_3_zmewye.jpg","Celtics");
+			repositorioProducto.save(short7);
+			Producto short8 = new Short("Short","Short Chealse",3000,4000,10,"Nike",new String[]{"M","L","XL"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638899745/th_3_zmewye.jpg","Chelsea");
+			repositorioProducto.save(short8);
+			Producto short9 = new Short("Short","Short Gris Puma",2000,3000,10,"Puma",new String[]{"M","L","XL"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1639135824/th_23_dx8vjr.jpg","Puma");
+			repositorioProducto.save(short9);
+			Producto short8 = new Short("Short","Short Adidas",2500,3500,10,"Adidas",new String[]{"M","L","XL"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1639135824/th_25_as9s9d.jpg","Adidas");
+			repositorioProducto.save(short8);
+			Producto short8 = new Short("Short","Short Chealse",1500,2500,10,"Macron",new String[]{"M","L","XL"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1639135824/th_24_wfhszw.jpg","Macron");
+			repositorioProducto.save(short8);
+
+
+
+
 			ProductoCliente productoCliente = new ProductoCliente(LocalDateTime.now(),"42",cliente1,botin1);
 			repositorioProductoCliente.save(productoCliente);
 		};
