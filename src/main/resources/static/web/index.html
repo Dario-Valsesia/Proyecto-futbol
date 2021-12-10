@@ -14,61 +14,61 @@
 </head>
 <body >
     <main class="d-flex justify-content-around"  id="app" v-cloak>
-        <div class="contenedorImgIndex d-flex align-items-end justify-content-center">        
+        <div class="contenedorImgIndex d-none d-lg-flex align-items-end justify-content-center">        
             <img src="./assets/imagen-inicio.png" alt="Jugador de futbol en juego">
         </div>
-        <div class="d-flex flex-column align-items-center justify-content-center container-form">
-            <h2 id="title">Soccer League</h2>
-            <div class="btnGroup d-grid gap-2 col-6 mx-auto">
-                <button type="button" @click="inicioSesionA" class="btn btn-success btn-lg" id="sesion">Iniciar sesión</button>
-                <button type="button" @click="registroA" class="btn btn-warning btn-lg" id="sesion">Registrarse</button>
-            </div>            
-            <form class="inicioSesion" v-show="inicioSesion" @submit.prevent="login" id="sesion">
-                <div class="mb-3">
-                    <label for="email" class="form-label" id="sesion">Correo electrónico</label>
-                    <input type="email" v-model="email" class="form-control" id="email" placeholder="email@ejemplo.com" required>
-                </div>
-                <label for="contraseña" class="form-label" id="sesion">Contraseña</label>
-                <div class="input-group mb-3">
-                    <input :type="type" v-model="contraseña" maxlength="12" class="form-control" id="contraseña" placeholder="Contraseña" required>
-                    <button v-if="hidden" class="btn btn-outline-secondary" type="button" id="button-addon2" @click="showPassword" style="background-color: white;"><img src="./assets/hidden.png" alt=""></button>
-                    <button v-if="show" class="btn btn-outline-secondary" type="button" id="button-addon2" @click="showPassword" style="background-color: white;"><img src="./assets/show.png" alt=""></button>
-                </div>
-                <div class="form-floating" style="text-align: center;">
-                    <input class="btn btn-success" type="submit" value="Ingresar" style="margin-right: .5rem;">
-                    <input class="btn btn-success" type="reset" value="Limpiar">
-                </div>
-            </form>
-            <form class="registro" v-show="registro" @submit.prevent="registroCliente" id="registro">
-                <div class="mb-3">
-                    <label for="nombre" class="form-label" id="sesion">Nombre(s)</label>
-                    <input type="text" v-model="nombre" class="form-control" id="nombre" placeholder="Nombre(s)" required>
-                </div>
-                <div class="mb-3">
-                    <label for="apellido" class="form-label" id="sesion">Apellido(s)</label>
-                    <input type="text" v-model="apellido" class="form-control" id="apellido" placeholder="Apellido(s)" required>
-                </div>
-                <div class="mb-3">
-                    <label for="email" class="form-label" id="sesion">Correo electrónico</label>
-                    <input type="email" v-model="email" class="form-control" id="email" placeholder="email@ejemplo.com" required>
-                </div>
-                <label for="contraseña" class="form-label" id="sesion">Contraseña</label>
-                <div class="input-group mb-3">
-                    <input :type="type" v-model="contraseña" maxlength="12" class="form-control" id="contraseña" placeholder="Contraseña" required>
-                    <button v-if="hidden" class="btn btn-outline-secondary" type="button" id="button-addon2" @click="showPassword" style="background-color: white;"><img src="./assets/hidden.png" alt=""></button>
-                    <button v-if="show" class="btn btn-outline-secondary" type="button" id="button-addon2" @click="showPassword" style="background-color: white;"><img src="./assets/show.png" alt=""></button>
-                </div>
-                <label for="contraseña" class="form-label" id="sesion">Repita su contraseña</label>
-                <div class="input-group mb-3">
-                    <input :type="type2" v-model="contraseña2" maxlength="12" class="form-control" id="contraseña" placeholder="Contraseña" required>
-                    <button v-if="hidden2" class="btn btn-outline-secondary" type="button" id="button-addon2" @click="showPassword2" style="background-color: white;"><img src="./assets/hidden.png" alt=""></button>
-                    <button v-if="show2" class="btn btn-outline-secondary" type="button" id="button-addon2" @click="showPassword2" style="background-color: white;"><img src="./assets/show.png" alt=""></button>
-                </div>
-                <div class="form-floating" style="text-align: center;">
-                    <input class="btn btn-success" type="submit" value="Ingresar" style="margin-right: .5rem;">
-                    <input class="btn btn-success" type="reset" value="Limpiar">
-                </div>
+        <div class="d-flex flex-column contenedorForm">
+            <h2 id="title">Ball D`or</h2>
+            <div class="btnGroup">
+                <button type="button" @click="inicioSesionA" class="btn btn-success my-2">Iniciar sesión</button>
+                <button type="button" @click="registroA" class="btn btn-warning my-2">Registrarse</button>
             </div>
+            <div class="contenedorFormIngresar">
+                <form class="inicioSesion" v-if="inicioSesion" @submit.prevent="login">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Correo electrónico</label>
+                        <input type="email" v-model="email" class="form-control" id="email" placeholder="Email@ejemplo.com" required>
+                    </div>
+                    <label for="contraseña" class="form-label">Contraseña</label>
+                    <div class="input-group mb-3">
+                        <input :type="type" v-model="contraseña" maxlength="12" class="form-control" id="contraseña" placeholder="Contraseña" required>
+                        <button v-if="hidden" class="btn btn-outline-secondary" type="button" @click="showPassword" style="background-color: white;"><img src="./assets/hidden.png" alt=""></button>
+                        <button v-if="show" class="btn btn-outline-secondary" type="button" @click="showPassword" style="background-color: white;"><img src="./assets/show.png" alt=""></button>
+                    </div>
+                    <div class="form-floating" style="text-align: center;">
+                        <input class="btn btn-success" type="submit" value="Ingresar" style="margin-right: .5rem;">
+                        <input class="btn btn-success" type="reset" value="Limpiar">
+                    </div>
+                </form>
+            </div>            
+            <div class="contenedorFormRegistro">
+                <form class="registro" v-if="registro" @submit.prevent="registroCliente" id="registro">
+                    <div class="mb-3">
+                        <input type="text" v-model="nombre" class="form-control" placeholder="Nombre" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" v-model="apellido" class="form-control" placeholder="Apellido" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="email" v-model="email" class="form-control"  placeholder="Email@ejemplo.com" required>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input :type="type" v-model="contraseña" maxlength="12" class="form-control" placeholder="Contraseña" required>
+                        <button v-if="hidden" class="btn btn-outline-secondary" type="button" id="button-addon2" @click="showPassword" style="background-color: white;"><img src="./assets/hidden.png" alt=""></button>
+                        <button v-if="show" class="btn btn-outline-secondary" type="button" id="button-addon2" @click="showPassword" style="background-color: white;"><img src="./assets/show.png" alt=""></button>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input :type="type2" v-model="contraseña2" maxlength="12" class="form-control" placeholder="Repetir contraseña" required>
+                        <button v-if="hidden2" class="btn btn-outline-secondary" type="button" id="button-addon2" @click="showPassword2" style="background-color: white;"><img src="./assets/hidden.png" alt=""></button>
+                        <button v-if="show2" class="btn btn-outline-secondary" type="button" id="button-addon2" @click="showPassword2" style="background-color: white;"><img src="./assets/show.png" alt=""></button>
+                    </div>
+                    <div class="form-floating" style="text-align: center;">
+                        <input class="btn btn-success" type="submit" value="Registrar" style="margin-right: .5rem;">
+                        <input class="btn btn-success" type="reset" value="Limpiar">
+                    </div>
+                </form> 
+            </div>
+               
         </div>   
     </main> 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
