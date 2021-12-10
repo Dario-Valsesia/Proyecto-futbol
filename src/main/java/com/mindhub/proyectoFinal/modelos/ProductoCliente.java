@@ -13,6 +13,7 @@ public class ProductoCliente {
     private long id;
     private LocalDateTime fechaCompra;
     private String talle;
+    private Integer cantidad;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="cliente_id")
     Cliente clienteCompra;
@@ -24,11 +25,20 @@ public class ProductoCliente {
     public ProductoCliente() {
     }
 
-    public ProductoCliente( LocalDateTime fechaCompra,String talle, Cliente clienteCompra, Producto producto) {
+    public ProductoCliente( LocalDateTime fechaCompra,String talle,Integer cantidad, Cliente clienteCompra, Producto producto) {
         this.fechaCompra = fechaCompra;
         this.clienteCompra = clienteCompra;
+        this.cantidad = cantidad;
         this.producto = producto;
         this.talle = talle;
+    }
+
+    public Integer getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(Integer cantidad) {
+        this.cantidad = cantidad;
     }
 
     public String getTalle() {

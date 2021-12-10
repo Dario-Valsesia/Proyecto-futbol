@@ -154,8 +154,6 @@ public class ProyectoFinalApplication {
 
 
 
-			ProductoCliente productoCliente = new ProductoCliente(LocalDateTime.now(),"42",cliente1,botin1);
-			repositorioProductoCliente.save(productoCliente);
 		};
 	}
 

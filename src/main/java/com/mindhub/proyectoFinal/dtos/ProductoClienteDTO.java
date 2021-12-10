@@ -10,6 +10,7 @@ public class ProductoClienteDTO {
     private String nameProducto;
     private String talle;
     private String marca;
+    private Integer cantidad;
 
     public ProductoClienteDTO() {
     }
@@ -20,6 +21,15 @@ public class ProductoClienteDTO {
         this.nameProducto = productoCliente.getProducto().getNombreProducto();
         this.talle = productoCliente.getTalle();
         this.marca = productoCliente.getProducto().getMarca();
+        this.cantidad= productoCliente.getCantidad();
+    }
+
+    public Integer getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(Integer cantidad) {
+        this.cantidad = cantidad;
     }
 
     public String getMarca() {

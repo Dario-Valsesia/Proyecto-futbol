@@ -97,14 +97,14 @@ public class ControladorProducto {
     }
 
     @PostMapping("/comprar/producto")
-    public ResponseEntity<Object> comprarProducto(@RequestParam Long id, @RequestParam String talle , Authentication authentication){
+    public ResponseEntity<Object> comprarProducto(@RequestParam Long id, @RequestParam String talle ,@RequestParam Integer cantidad, Authentication authentication){
 
         Cliente cliente = repositorioCliente.findByEmail(authentication.getName());
 
         Producto producto = repositorioProducto.findById(id).orElse(null);
 
 
-        ProductoCliente productoCliente = new ProductoCliente(LocalDateTime.now(),talle,cliente,producto);
+        ProductoCliente productoCliente = new ProductoCliente(LocalDateTime.now(),talle,cantidad,cliente,producto);
         repositorioProductoCliente.save(productoCliente);
 
         return new ResponseEntity<>("Compra realizada con exitos", HttpStatus.CREATED);
