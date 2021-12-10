@@ -2,10 +2,21 @@ const app = Vue.createApp({
     data(){
         return{
             datosCliente: [],
+            /* busqueda */
             busqueda:"",
             existeProd: false,
+
             productos:[],
-            carrito: []
+
+            /* carrito */
+            carrito: [],
+
+            /* pago carrito */
+            numeroDeTarjeta:"",
+            titularTarjeta:"",
+            vencimiento:"",
+            cvc:""
+
         }
     },
     created(){
@@ -51,7 +62,11 @@ const app = Vue.createApp({
                     this.carrito[posicion]["cantidad"]++;
                     this.carrito[posicion]["stock"]--;
                 }else if (this.carrito[posicion].stock == 0) {
-                    /* swal para avisar que no hay stock */
+                    swal({
+                        text: "Agregaste la última unidad de este producto.",
+                        icon:"warning",
+                        buttons: "ok"
+                    })
                 }
             } else {
                 let productoAComprar = {
@@ -95,6 +110,9 @@ const app = Vue.createApp({
         },
         subtotal(producto) {
             return producto.precio * producto.cantidad
+        },
+        talles(){
+            
         }
 
     },

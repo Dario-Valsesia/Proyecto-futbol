@@ -22,16 +22,16 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="home.html" id="navegation">Inicio</a>
+                            <a class="btn btn-primary" role="button" href="home.html" id="navegation" style="margin-right: .3rem;">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="tienda.html" id="navegation">Tienda</a>
+                            <a class="btn btn-primary" role="button" href="tienda.html" id="navegation" style="margin-right: .3rem;">Tienda</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="canchasReservas.html" id="navegation">Reservas</a>
+                            <a class="btn btn-primary" role="button" href="canchasReservas.html" id="navegation" style="margin-right: .3rem;">Reservas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contacto.html" id="navegation">Contacto</a>
+                            <a class="btn btn-primary" role="button" href="contacto.html" id="navegation">Contacto</a>
                         </li>
                     </ul>
                 </div>
@@ -118,8 +118,8 @@
                                 <div class="talle">
                                     <select class="form-select form-select-lg mb-1" aria-label=".form-select-lg example">
                                         <option selected>Seleccione su talle</option>
-                                        <option value="producto.talle">{{producto.talle}}</option>                                        
-                                      </select>                                      
+                                        <option v-for="talle in producto.talle" value="talle">{{talle}}</option>                                        
+                                    </select>                                      
                                 </div>
                                 <div class="d-column justify-content-around align-items-center pb-4">
                                     <span class="d-flex justify-content-around align-items-center">
@@ -189,19 +189,19 @@
                             <h4>Datos de la tarjeta</h4>
                             <div class="pt-2">
                                 <label class="pe-2" for="tarjeta">Número de tarjeta: </label>
-                                <input type="number" name="tarjeta" id="tarjeta">
+                                <input type="number" name="tarjeta" id="tarjeta" v-model="numeroDeTarjeta">
                             </div>
                             <div class="pt-2">
                                 <label class="pe-2" for="Titular">Titular: </label>
-                                <input type="text" name="Titular" id="Titular">
+                                <input type="text" name="Titular" id="Titular" v-model="titularTarjeta">
                             </div>
                             <div class="pt-2">
                                 <label class="pe-2" for="vencimiento">Vencimiento: </label>
-                                <input type="date" name="vencimiento" id="vencimiento">
+                                <input type="date" name="vencimiento" id="vencimiento" v-model="vencimiento">
                             </div>
                             <div class="pt-2">
                                 <label class="pe-2" for="CVC">Código de Seguridad: </label>
-                                <input type="number" name="CVC" id="CVC">
+                                <input type="number" name="CVC" id="CVC" v-model="cvc">
                             </div>
                         </form>
                     </div>
@@ -280,6 +280,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
     crossorigin="anonymous"></script>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <script src="https://kit.fontawesome.com/58d99c8dac.js" crossorigin="anonymous"></script>
 
