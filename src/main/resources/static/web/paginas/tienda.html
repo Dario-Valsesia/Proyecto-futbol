@@ -186,20 +186,22 @@
                     </div>
                     <div class="modal-body">
                         <form action="">
-                            <h4>Datos de la tarjeta</h4>
-                            <div class="pt-2">
-                                <label class="pe-2" for="tarjeta">Número de tarjeta: </label>
-                                <input type="number" name="tarjeta" id="tarjeta" v-model="numeroDeTarjeta">
+                            <div class="d-flex justify-content-center">
+                                <h4>Datos de la tarjeta</h4>
                             </div>
-                            <div class="pt-2">
+                            <div class="pt-2 d-flex justify-content-between ps-3 pe-5">
+                                <label class="pe-2" for="tarjeta">Número de tarjeta: </label>
+                                <input type="text" name="tarjeta" id="tarjeta" v-model="numeroDeTarjeta">
+                            </div>
+                            <div class="pt-2 d-flex justify-content-between ps-3 pe-5">
                                 <label class="pe-2" for="Titular">Titular: </label>
                                 <input type="text" name="Titular" id="Titular" v-model="titularTarjeta">
                             </div>
-                            <div class="pt-2">
+                            <div class="pt-2 d-flex justify-content-between ps-3 pe-5">
                                 <label class="pe-2" for="vencimiento">Vencimiento: </label>
-                                <input type="date" name="vencimiento" id="vencimiento" v-model="vencimiento">
+                                <input type="text" name="vencimiento" id="vencimiento" v-model="vencimiento">
                             </div>
-                            <div class="pt-2">
+                            <div class="pt-2 d-flex justify-content-between ps-3 pe-5">
                                 <label class="pe-2" for="CVC">Código de Seguridad: </label>
                                 <input type="number" name="CVC" id="CVC" v-model="cvc">
                             </div>
