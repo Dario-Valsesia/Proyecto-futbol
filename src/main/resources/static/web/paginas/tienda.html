@@ -115,9 +115,15 @@
                                     <h6 v-cloak>{{producto.nombreProducto}}</h6>
                                     <p class="card-text" v-cloak>{{}}</p>
                                 </div>
+                                <div class="talle">
+                                    <select class="form-select form-select-lg mb-1" aria-label=".form-select-lg example">
+                                        <option selected>Seleccione su talle</option>
+                                        <option value="producto.talle">{{producto.talle}}</option>                                        
+                                      </select>                                      
+                                </div>
                                 <div class="d-column justify-content-around align-items-center pb-4">
                                     <span class="d-flex justify-content-around align-items-center">
-                                        <p> Cantidad: </p>
+                                        <p> Stock: {{producto.stock}}</p>
                                         <p> Precio Unitario: ${{producto.precio}}</p>
                                     </span>
                                     <div class="d-flex justify-content-around align-items-center">

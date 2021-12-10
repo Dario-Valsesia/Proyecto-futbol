@@ -568,14 +568,18 @@ input#form-cambiar:hover{
  
 }
 .card{
-    height: 60vh;
+    height: 70vh;
            
 }
 .card img{
-    height:35vh;
-    width: 20vw;
+    height:300px;
+    object-fit: contain;    
     margin:5px;    
 }
+.card.talle select{
+    width: 20px
+}
+
 
 @media screen and (max-width: 1024px) {
     /* HEADER */
