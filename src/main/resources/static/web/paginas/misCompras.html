@@ -28,11 +28,14 @@
                             <a class="nav-link" href="tienda.html" id="navegation">Tienda</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="misCompras.html" id="navegation">Mis Compras</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="canchasReservas.html" id="navegation">Reservas</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="contacto.html" id="navegation">Contacto</a>
-                        </li>
+                        </li>                        
                     </ul>
                 </div>
             </nav>
@@ -51,60 +54,60 @@
             </div>
         </header>
         <!-- Barra de navegación -->
-        <nav class="navbar navbar-expand-lg" id="navbar-1">
-            <div class="container-fluid d-flex flex-row-reverse">
-                <button class="btn btn-primary navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" id="menu"><span class="menu">&equiv;</span></button>
-            </div>
-        </nav>
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" style="width: 280px;">
-            <div class="offcanvas-body position-relative" id="body-menu-canvas1">
-                <div class="flex-shrink-0 p-3 position-absolute top-0 end-0" style="width: 280px;">
-                    <p class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
-                    <svg class="bi me-5" width="30" height="24"></svg>
-                    <span class="fs-5 fw-semibold">MENU</span></p>
-                    <ul class="list-unstyled ps-0">
-                        <li class="mb-1">
-                            <a class="nav-link link-dark rounded others" href="home.html">Inicio <img src="../assets/home.png" alt="Home"></a>
-                        </li>
-                        <li class="mb-1">
-                            <a class="nav-link link-dark rounded others" href="tienda.html">Tienda <img src="../assets/store.png" alt="Store"></a>
-                        </li>
-                        <li class="mb-1">
-                            <a class="nav-link link-dark rounded others" href="canchasReservas.html">Reservas <img src="../assets/reservation.png" alt="Reservation"></a>
-                        </li>
-                        <li class="mb-1">
-                            <a class="nav-link link-dark rounded others" href="contacto.html">Contacto <img src="../assets/contact.png" alt="Contact"></a>
-                        </li>
-                        <li class="border-top my-3"></li>
-                        <li class="mb-1">
-                            <a class="nav-link link-dark rounded others" href="" @click.prevent="signOut">Cerrar sesión <img src="../assets/logout.png" alt="Sign out"></a>
-                        </li>
-                    </ul>
+            <nav class="navbar navbar-expand-lg" id="navbar-1">
+                <div class="container-fluid d-flex flex-row-reverse">
+                    <button class="btn btn-primary navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" id="menu"><span class="menu">&equiv;</span></button>
+                </div>
+            </nav>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" style="width: 280px;">
+                <div class="offcanvas-body position-relative" id="body-menu-canvas1">
+                    <div class="flex-shrink-0 p-3 position-absolute top-0 end-0" style="width: 280px;">
+                        <p class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+                        <svg class="bi me-5" width="30" height="24"></svg>
+                        <span class="fs-5 fw-semibold">MENU</span></p>
+                        <ul class="list-unstyled ps-0">
+                            <li class="mb-1">
+                                <a class="nav-link link-dark rounded others" href="home.html">Inicio <img src="../assets/home.png" alt="Home"></a>
+                            </li>
+                            <li class="mb-1">
+                                <a class="nav-link link-dark rounded others" href="tienda.html">Tienda <img src="../assets/store.png" alt="Store"></a>
+                            </li>
+                            <li class="mb-1">
+                                <a class="nav-link link-dark rounded others" href="canchasReservas.html">Reservas <img src="../assets/reservation.png" alt="Reservation"></a>
+                            </li>
+                            <li class="mb-1">
+                                <a class="nav-link link-dark rounded others" href="contacto.html">Contacto <img src="../assets/contact.png" alt="Contact"></a>
+                            </li>
+                            <li class="border-top my-3"></li>
+                            <li class="mb-1">
+                                <a class="nav-link link-dark rounded others" href="" @click.prevent="signOut">Cerrar sesión <img src="../assets/logout.png" alt="Sign out"></a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!-- Cuerpo de página -->
-                <div class="misCompras">                    
+            <!-- Cuerpo de página -->               
+                <div class="misCompras">
                     <div class="accordion" id="accordionExample" v-for="producto in carrito">
                         <div class="accordion-item">
-                          <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                <img v-bind:src="producto.urlImg" alt="imagen de producto" class="img-producto">
-                                <h6 v-cloak>{{producto.nombreProducto}}</h6>
-                            </button>
-                          </h2>
-                          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <p>{{producto.nombreProducto}}</p>
-                                <p> Talle: {{producto.talle}}</p>
-                                <p>Subtotal: ${{producto.precio}}</p>
-                                <p>Unidades: {{producto.cantidad}}</p>                                                                    
-                                <p>Total:${{producto.precio * producto.cantidad}}</p>                                                                
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <img v-bind:src="producto.urlImg" alt="imagen de producto" class="img-producto">
+                                    <h6 v-cloak>{{producto.nombreProducto}}</h6>
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <p>{{producto.nombreProducto}}</p>
+                                    <p> Talle: {{producto.talle}}</p>
+                                    <p>Subtotal: ${{producto.precio}}</p>
+                                    <p>Unidades: {{producto.cantidad}}</p>                                                                    
+                                    <p>Total:${{producto.precio * producto.cantidad}}</p>   
+                                </div>
                             </div>
-                          </div>
-                        </div>
+                        </div>                        
                     </div>
-                </div>    
+                </div>
             <!-- carrito de compras -->
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRightCompra" aria-labelledby="offcanvasRightLabel">
                 <div class="offcanvas-header">
