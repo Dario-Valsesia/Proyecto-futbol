@@ -134,7 +134,7 @@ public class ControladorProducto {
         producto.setStock(producto.getStock()-cantidad);
         repositorioProducto.save(producto);
 
-        return new ResponseEntity<>("Compra realizada con exitos", HttpStatus.CREATED);
+        return new ResponseEntity<>("Compra realizada con éxito", HttpStatus.CREATED);
     }
 
 }

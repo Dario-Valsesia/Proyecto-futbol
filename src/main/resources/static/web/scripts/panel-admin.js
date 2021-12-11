@@ -1,7 +1,9 @@
 const app = Vue.createApp({
     data() {
         return {
+
             tablaProductos: [],
+            panelPrincipal: true,
             modificarOAgregarProducto: "",
             productoModificado: 0,
             productoEliminado: "",
@@ -17,9 +19,11 @@ const app = Vue.createApp({
             equipoProducto: "",
             tipoProducto: "",
             imagenProducto: ""
+
         }
     },
     created() {
+
         axios.get("/api/productos")
         .then(response => {
             this.tablaProductos = response.data
@@ -27,8 +31,10 @@ const app = Vue.createApp({
         .catch(error => {
             console.log(error.response.data)
         })
+
     },
     methods: {
+
         guardarProducto() {
             if (this.marca === "") {
                 swal({
@@ -110,9 +116,11 @@ const app = Vue.createApp({
                 })
             }
         },
+
         elegirProducto(value){
             this.productoModificado = value
         },
+
         productoElegidoParaEliminar(value){
             this.productoEliminado = value
             this.idProducto = value
@@ -130,6 +138,7 @@ const app = Vue.createApp({
                 }
             })
         },
+
         confirmarModificacion(){
             swal({
                 text: "¿Desea efectivizar los cambios? No se podrán revertir luego de modificarlos",
@@ -143,6 +152,7 @@ const app = Vue.createApp({
                 }
             })
         },
+
         guardarModificacion(){
             axios.put('http://localhost:8080/api/productos/modificar',`id=${this.idProducto}&nombreProducto=${this.descripcionProducto}&
             costoProducto=${this.costo}&porcentajeGanancia=${this.porcentajeGanancia}&stockProducto=${this.stock}&
@@ -155,6 +165,7 @@ const app = Vue.createApp({
                 console.log(error.response.data)
             })
         },
+
         eliminarProducto(){
             axios.put('http://localhost:8080/api/productos/eliminar',`id=${this.idProducto}`,
             {headers:{'content-type':'application/x-www-form-urlencoded'}})
@@ -164,9 +175,40 @@ const app = Vue.createApp({
             .catch(error => {
                 console.log(error.response.data)
             })
+        },
+
+        volverAOpcionAnterior(){
+            if(this.buscarProductoModificar.length > 0){
+                this.productoModificado = ""
+                this.idProducto = 0
+                this.descripcionProducto = ""
+                this.costo = 0
+                this.tallesProducto = []
+                this.imagenProducto = ""
+            }
+            else if(this.modificarOAgregarProducto === "modificarProducto" || this.modificarOAgregarProducto === "eliminarProducto"){
+                this.modificarOAgregarProducto = ""
+            }
+            else if(this.nombreProducto != "" && this.modificarOAgregarProducto === "nuevoProducto"){
+                this.nombreProducto = ""
+            }
+            else if(this.modificarOAgregarProducto === "nuevoProducto" && this.nombreProducto === ""){
+                this.modificarOAgregarProducto = ""
+            }else if(this.panelPrincipal === true){
+                this.panelPrincipal = false
+            }else {
+                this.panelPrincipal = true
+            }
+        },
+        desloguearse(){
+            axios.post("/api/logout")
+            .then(response=>{
+                window.location.replace("../manager.html")
+            })
         }
     },
     computed: {
+
         calcularPrecio() {
             let precioFinal = 0
             if (this.costo != 0 && this.porcentajeGanancia != 0) {
@@ -175,6 +217,7 @@ const app = Vue.createApp({
             }
             return precioFinal
         },
+
         devolverTalles() {
             let tallesElegidos = []
             if (this.nombreProducto === "Botin" || this.nombreProducto === "Medias") {
@@ -186,6 +229,7 @@ const app = Vue.createApp({
             }
             return tallesElegidos
         },
+
         buscarProductoModificar(){
             let tablaProductoModificar = []
             if(this.productoModificado != ""){
@@ -198,6 +242,7 @@ const app = Vue.createApp({
             }
             return tablaProductoModificar
         },
+
         confirmarEliminacion(){
             if(this.productoEliminado != ""){
                 swal({

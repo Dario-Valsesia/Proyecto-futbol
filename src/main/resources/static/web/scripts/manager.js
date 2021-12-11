@@ -12,7 +12,7 @@ const app = Vue.createApp({
         verificarAdmin(){
             axios.post('/api/login',`email=${this.email}&password=${this.contraseña}`,
             {headers:{'content-type':'application/x-www-form-urlencoded'}})
-            .then(response => window.location.href = "http://localhost:8080/web/paginas/panel-administracion.html")
+            .then(response => window.location.href = "http://localhost:8080/web/paginas/panel-admin.html")
             .catch(() => swal('Usuario y/o contraseña incorrectos'))
         }
     }
