@@ -490,73 +490,78 @@ input#form-cambiar:hover{
 }
 
 /* CARRITO DE COMPRAS */
-.shopping-bag {
-    font-size: 2rem;
+#offcanvasRightCarrito{
+    width: 40rem;
 }
-
-.offcanvas-header {
-    height: 12vh!important;
+#offcanvasRightLabel{
+    font-size: 30px;
+}
+.imgCarrito{
+    width: 60%;
+    margin: auto;
+    opacity: .5;
+}
+.contenedorProductoCarrito{
+    width: 100%;
+    height: 7rem;
+    padding: .5rem;
+    border-bottom: 1px solid #1E5128;
+}
+.contenedorImgProductoCarrito{
+    width: 6rem;
+    height: 100%;
+    border: 1px solid #1E5128;
+    padding: .5rem;
+}
+.contenedorImgProductoCarrito img{
+    width: 100%;
+}
+.contenedorInfoProductoCarrito{
+    width: 13rem;
+    height: 6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 1rem;
+}
+.contenedorInfoProductoCarrito>div{
+    width: 100%;
+}
+.contenedorBtnEliminar{
+    width: 13rem;
+    align-items: center;
+    justify-content: space-between;
+}
+.contenedorBtnEliminar button{
+    width: 9rem !important;
+    height: 2.5rem !important;
+    padding: 0 !important;
+}
+.headerCarrito{
     background-color: #D8E9A8;
 }
-
-.contenedor {
-    display: grid;
-    grid-template-columns: 1.5fr .5fr .5fr .5fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    border-bottom: 2px solid rgb(202, 200, 200);
-    padding-bottom: 1rem;
+.contenedorTotalCarrito h5{
+    background-color: #0003;
+    padding: .5rem;
+    border-radius: .5rem;
+}
+.contenedorComprarCarrito button{
+    width: 7rem;
+    transition: 1s;
+}
+.contenedorComprarCarrito button:hover{
+    transform: scale(1.2);
+}
+.btnComprar{
+    background-color: #1E5128;
+}
+.btnComprar:hover{
+    background-color: #4E9F3D !important;
 }
 
-.carrito-miniatura {
-    margin-top: 5rem!important;
-    min-width: 1vw;
-    opacity: 55%;
-}
 
-.btn-miniatura {
-    padding: .2rem .1rem!important;
-    line-height: .5!important;
-}
-
-.item-1 {
-    grid-column: 1/4;
-    grid-row: 1;
-    text-align: left;
-    align-self: center;
-    font-style: italic;
-    font-weight: 600;
-}
-
-.item-2 {
-    grid-column: 1;
-    grid-row: 2/3;
-    text-align: center;
-    align-self: start;
-    font-size: 1rem;
-    font-weight: 500
-}
-
-.item-3 {
-    grid-column: 1;
-    text-align: right;
-    margin-right: .3rem;
-    align-self: start;
-}
-
-.item-4 {
-    grid-column: 2/5;
-    grid-row: 2/3;
-    text-align: center;
-    align-self: start;
-    font-size: 1rem;
-}
-
-.item-5 {
-    grid-column: 2/5;
-    grid-row: 3/4;
-    text-align: center;
-    align-self: start;
-}
+/*FIN CARRITO*/
 
 /* TIENDA */
 .contenedorTiendaHeader{
@@ -577,19 +582,144 @@ input#form-cambiar:hover{
 .parraffoTienda{
     box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
-
+.fa-shopping-bag::before{
+    font-size: 32px;
+}
+/*TARJETAS*/
+.album{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container{
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.tamano-card{
+    width: 20rem;
+    margin: 1rem;
+}
 .card:not(div#card-reserva){
-    height: 70vh;
-           
+    height: 25rem;
+    width: 20rem;
+    border: 1px solid #1E5128; 
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-between;      
 }
 .card img{
-    height:300px;
-    object-fit: contain;    
-    margin:5px;    
+    height:10rem;
+    object-fit: contain; 
+    margin: .5rem;       
 }
-.card.talle select{
-    width: 20px
+.card h6{
+    font-size: 30px;
 }
+.selectTalle{
+    width: 100%;
+    padding: .5rem 0;
+    background-color: #1E512855;
+}
+.buscarProducto{
+    width: 100%;
+    height: 4rem;
+    margin: auto;
+    margin-top: 2rem;
+    padding: 0 7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center !important;
+    position: sticky;
+    top: 0;
+    z-index: 30;
+}
+.divInputBuscar{
+    height: 3rem;
+}
+.buscarProducto input{
+    width: 30rem;
+    height: 100%;
+    border: 1px solid #1E5128;
+}
+.buscarProducto input::placeholder{
+    color: #1E5128;
+    font-size: 18px;
+}
+.buscarProducto button{
+    border: 1px solid #1E5128;
+}
+
+/*MODAL CREADO*/
+.contenedorPrincipalModal{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #0008;
+    animation: modalAnimacion 1.5s;
+    z-index: 40;
+}
+.contenedorModalAnimacion{
+    width: 30rem;
+    height: 22rem;
+    border-radius: 1rem;
+    border: 1px solid #1E5128;
+    background-color: #1E5128;
+    padding: 1.5rem;
+    position: absolute;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%,-50%) !important;
+    color: #fff;
+    
+}
+@keyframes modalAnimacion {
+    0%{
+        transform: scale(0);
+    }
+    100%{
+        transform: scale(1);
+
+    }
+}
+.contenedorModalAnimacion input{
+    padding: .3rem;
+    border-radius: .5rem;
+    border: none;
+    width: 15rem;
+}
+.contenedorModalAnimacion button{
+    background-color: #D8E9A8 !important;
+    border: 1px solid #1E5128;
+    color: #000;
+}
+.contenedorModalAnimacion button:hover{
+    border: none !important;
+    color: #000;
+}
+.contenedorModalAnimacion label{
+    cursor: pointer;
+}
+/*mis compras*/
+.misCompras{   
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2vh;
+}
+.accordion{
+    width: 50vw;
+    margin: 2vh;
+}
+.accordion-button img{
+    height:100px;
+}
+
 
 
 @media screen and (max-width: 1024px) {
@@ -654,8 +784,11 @@ input#form-cambiar:hover{
     }
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 426px) {
     /* HEADER */
+    body{
+        width: 100% !important;
+    }
     main#pages{
         margin: 0 !important;
         width: 100%;
@@ -713,38 +846,39 @@ input#form-cambiar:hover{
     .contenedorPrincipalReserva{
         width: 100%;
     }
-}
-
-@media screen and (max-width: 375px) {
-    /* HEADER */
-
-    a#name-profile{
+    .contenedorTiendaHeader{
+        width: 100%;
+    }
+    .buscarProducto{
+        padding: 0;
+    }
+    .buscarProducto input{
+        width: 16rem;
+        margin-top: .7rem;
+    }
+    .tamano-card,.container{
+        width: 20rem;
+        padding: 0 ;
+    }
+    .selectTalle{
+        width: 20rem !important;
+    }
+    .contenedorImgProductoCarrito{
         display: none !important;
     }
-
-    /* CONTACTO */
-
-    div#iconos{
-        margin-right: 1.5rem !important;
+    .contenedorProductoCarrito{
+        padding: 0 !important;
     }
-    img#icon-contact{
-        width: 30px !important;
+    .bodyCarrito{
+        padding: 0;
+        padding-top: 1.5rem;
     }
-}
-
-@media screen and (max-width: 320px) {
-    /* CONTACTO */
-
-    div#iconos{
-        margin-right: 1rem !important;
-    }
-
-    /* HOME */
-
-    p#card-body-name{
-        font-size: larger !important;
-    }
-    p#card-body{
-        font-size: smaller;
+    .contenedorBtnEliminar button {
+        margin-bottom: .5rem;
+        width: 8rem;
+        height: 2rem;
     }
 }
+
+
+
