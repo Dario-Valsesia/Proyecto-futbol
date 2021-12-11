@@ -13,14 +13,21 @@ const app = Vue.createApp({
 
             productos:[],
 
+
             /* carrito */
             carrito: [],
+            talleSeleccionado:'',
+
 
             /* pago carrito */
+            verDatosTarjeta:false,
             numeroDeTarjeta:"",
             titularTarjeta:"",
             vencimiento:"",
-            cvc:""
+            cvc:0,
+            //MENSAJES
+            errorMensaje:'',
+            mensajeCorrecto:''
 
         }
     },
@@ -74,72 +81,139 @@ const app = Vue.createApp({
         loadData(){
             axios.get('/api/productos')
             .then(res => {
-                this.productos= res.data   
+                this.productos = localStorage.getItem("productosModificados") ? JSON.parse(localStorage.getItem("productosModificados")) : res.data;
+                this.carrito = localStorage.getItem("carrito") ? JSON.parse(localStorage.getItem("carrito")) : [];
             })
         },
-        guardarCarrito() {
-            const parsed = JSON.stringify(this.carrito);
-            localStorage.setItem('carrito', parsed);
+        cancelarCompra(){
+            this.verDatosTarjeta=false;
         },
-        agregarAlCarrito(producto){
-            let posicion = this.carrito.findIndex(prod => prod.id == producto.id);
-            if (this.carrito.some(prod => prod.id == producto.id)) {
-                if (this.carrito[posicion]["stock"] > 0) {
-                    this.carrito[posicion]["cantidad"]++;
-                    this.carrito[posicion]["stock"]--;
-                }else if (this.carrito[posicion].stock == 0) {
-                    swal({
-                        text: "Agregaste la última unidad de este producto.",
-                        icon:"warning",
-                        buttons: "ok"
+        mostrarDatosTarjeta(){
+            let botonCerrar = this.$refs.cerrar;
+            botonCerrar.click();
+            scrollTo(0,0);
+            this.verDatosTarjeta=true;
+        },
+        comprarProductos(){
+            axios.post('https://mbbhomebanking.herokuapp.com/api/pagar',`numCard=${this.numeroDeTarjeta}&cvv=${this.cvc}&name=${this.titularTarjeta}&thruDate=${this.vencimiento}&total=${this.precioTotal}`).then(res=>{
+                this.carrito.forEach(producto=>{
+                    axios.post('/api/comprar/producto',`id=${producto.id}&talle=${producto.talleSeleccionado}&cantidad=${producto.cantidad}`).then(res=>{
+                        this.mensajeCorrecto = 'Compra realizada con exito';
+                    }).catch(e=>console.log(e));
+                })
+                this.vaciarCarrito(); 
+            }).catch(e=>{
+                this.errorMensaje=e.response.data
+            })
+            
+            
+        },
+        guardarCarrito() {
+            localStorage.setItem("productosModificados", JSON.stringify(this.productos));
+            localStorage.setItem("carrito", JSON.stringify(this.carrito));         
+        },
+        agregarCarrito(e){
+            if(this.talleSeleccionado !='' && this.talleSeleccionado != "Seleccione su talle"){
+                let idProducto = e.target.value;
+                this.productos.forEach(producto => {
+                    if(producto.id == idProducto && producto.stock>0){
+                        producto.stock--
+                        if(producto.stock === 0){
+                            swal({
+                                text: "Agregaste la última unidad de este producto.",
+                                icon:"warning",
+                                buttons: "ok"
+                            })
+                        }
+                        let productoSeleccionado = {
+                            id:producto.id,
+                            nombreProducto:producto.nombreProducto,
+                            talleSeleccionado: this.talleSeleccionado,
+                            cantidad:1,
+                            precio:producto.precio, 
+                            url:producto.urlImg,                          
+                        }
+                        if(this.carrito.length==0){
+                            swal({
+                                text: "El producto se agrego correctamente al carrito",
+                                icon:"success",
+                                buttons: "Ok"
+                            })
+                            this.carrito.push(productoSeleccionado);
+                            this.guardarCarrito();
+                        }else{                           
+                            this.carrito.forEach(prodCarrito=>{
+                                if(prodCarrito.id == productoSeleccionado.id && prodCarrito.talleSeleccionado == this.talleSeleccionado){
+                                   prodCarrito.cantidad++;
+                                }else if(prodCarrito.id == productoSeleccionado.id && prodCarrito.talleSeleccionado !=this.talleSeleccionado){
+                                   this.carrito.push(productoSeleccionado);
+                                }
+                            })
+                            let prueba = this.carrito.filter(prod=>prod.id==productoSeleccionado.id)
+                            if(prueba.length==0){
+                                this.carrito.push(productoSeleccionado);
+                            }                                              
+                            swal({
+                                text: "El producto se agrego correctamente al carrito",
+                                icon:"success",
+                                buttons: "Ok"
+                            })
+                            this.guardarCarrito();
+                        }
+                        
+                        
+                    }
+                });
+                
+            }else{
+                swal({
+                    text: "Seleccione talle",
+                    icon:"warning",
+                    buttons: "Ok"
+                })
+            }          
+        },
+        quitarCarrito(e){
+            console.log(e.target.value);
+            let idProducto = e.target.value;
+            let talle = e.target.dataset.id
+            this.carrito.forEach(prodCarrito=>{
+                if(prodCarrito.id == idProducto && prodCarrito.talleSeleccionado == talle){                 
+                    if(prodCarrito.cantidad>1){
+                        prodCarrito.cantidad--;                      
+                    }
+                    else{
+                        prodCarrito.cantidad--
+                        this.carrito = this.carrito.filter(a=>a.cantidad>0);
+                    }
+                    this.productos.forEach(prod=>{
+                        if(prod.id==idProducto){
+                            prod.stock++
+                        }
                     })
                 }
-            } else {
-                let productoAComprar = {
-                    "id": producto.id,
-                    "name": producto.name,
-                    "nombreProducto": producto.nombreProducto,
-                    "costo": producto.costo,
-                    "precio": producto.precio,
-                    "stock": producto.stock - 1,
-                    "marca": producto.marca,
-                    "talle": producto.talle,
-                    "urlImg": producto.urlImg,
-                    "cantidad": 1
+                this.guardarCarrito();
+                if(this.carrito.length==0){
+                    localStorage.removeItem("productosModificados");
+                    localStorage.removeItem("carrito");
                 }
-                this.carrito.push(productoAComprar);
-            }
-            this.guardarCarrito()
+            })
+            
         },
-        quitarUnidadDelCarrito(producto){
-            if (this.carrito.some(prod => prod.id == producto.id)) {
-                let posicion = this.carrito.findIndex(prod => prod.id == producto.id);
-                if (this.carrito[posicion]["cantidad"] == 1) {
-                    this.carrito[posicion]["stock"]++;
-                    this.carrito.splice(posicion, 1)
-                    this.guardarCarrito()
-                   
-                } else if(this.carrito[posicion]["cantidad"] > 1){
-                    this.carrito[posicion]["cantidad"] = this.carrito[posicion]["cantidad"] - 1;
-                    this.carrito[posicion]["stock"]++;
-                    this.guardarCarrito()
-
-                }else if (this.carrito[posicion]["cantidad"] == 0) {
-                   
-                    this.guardarCarrito()
-                }
-            }
-        },
+        obtenerTalle(e){
+            this.talleSeleccionado = e.target.value;
+        }, 
+       
         vaciarCarrito() {
-            this.carrito.splice(0, this.carrito.length)
-            this.guardarCarrito();
+            this.carrito = [];
+            localStorage.removeItem("productosModificados");
+            localStorage.removeItem("carrito");
         },
         subtotal(producto) {
             return producto.precio * producto.cantidad
         },
-        talles(){
-            
-        }
+        
+       
 
     },
     computed:{
@@ -152,6 +226,10 @@ const app = Vue.createApp({
                 return productosFiltrados
             }
         },
+        pintarCarrito(){
+            let carrito = this.productos.filter(producto=>producto.cantidad>0);
+            return carrito;
+        },
         precioTotal() {
             return this.carrito.reduce((acum, producto) => {
                 return acum += (producto.precio * producto.cantidad)
@@ -163,16 +241,7 @@ const app = Vue.createApp({
             }, 0)
             return suma;
         }
-    },
-    mounted() {
-        if (localStorage.getItem('carrito')) {
-            try {
-                this.carrito = JSON.parse(localStorage.getItem('carrito'));
-            } catch (e) {
-                localStorage.removeItem('carrito');
-            }
-        }
-    }
+    },  
 });
 
 let mount = app.mount("#app");

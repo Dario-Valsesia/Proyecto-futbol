@@ -73,7 +73,7 @@ public class ControladorCancha {
 
         respuesta.setContentType("application/pdf");
         String headerKey = "Content-Disposition";
-        String headerValue="attachment; filename=prueba.pdf";
+        String headerValue="attachment; filename=Comprobante Ball D`or.pdf";
         respuesta.setHeader(headerKey,headerValue);
         String nombre = cliente.getFirstName()+" "+cliente.getLastName();
         String nombreCancha= cancha.getNombre();
