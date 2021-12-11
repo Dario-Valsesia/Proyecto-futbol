@@ -133,7 +133,7 @@ const app = Vue.createApp({
             this.fechaCompleta = `${this.year}-${this.numeroMes}-${this.diaSeleccionado}T${this.horaSeleccionada}:00:00`
             axios.post('/api/reservar',`fechaHora=${this.fechaCompleta}&id=${this.idCancha}`,{responseType: 'blob'}).then(res=>{
                 let disposition = res.headers['content-disposition'];
-                let fileName = decodeURI(disposition);
+                let fileName = decodeURI(disposition.substring(21));
                 let link = document.createElement('a');
                 link.href = window.URL.createObjectURL(res.data);
                 link.download = fileName;

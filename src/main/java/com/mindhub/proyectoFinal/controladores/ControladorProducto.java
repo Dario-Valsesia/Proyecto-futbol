@@ -131,6 +131,8 @@ public class ControladorProducto {
 
         ProductoCliente productoCliente = new ProductoCliente(LocalDateTime.now(),talle,cantidad,cliente,producto);
         repositorioProductoCliente.save(productoCliente);
+        producto.setStock(producto.getStock()-cantidad);
+        repositorioProducto.save(producto);
 
         return new ResponseEntity<>("Compra realizada con exitos", HttpStatus.CREATED);
     }
