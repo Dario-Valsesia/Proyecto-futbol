@@ -7,7 +7,7 @@
     <title>Contacto</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <link rel="shortcut icon" href="..favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../estilos/style.css">
 </head>
 <body>
@@ -82,15 +82,14 @@
     </div>
 <!-- Cuerpo de página -->
     <main id="pages">
-        <h2 class="title-page">Nuestros sponsors</h2>
-        <div class="container-fluid">
+        <div class="container-fluid" style="margin-top: 2rem;">
             <div id="carouselejemploSlidesOnly" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner" id="sponsors">
                     <div class="carousel-item active">
-                        <img src="../assets/sponsor1.jpg" class="d-block w-100" alt="...">
+                        <img src="../assets/sponsor1.jpg" class="d-block w-100" alt="Banner 1">
                     </div>
                     <div class="carousel-item">
-                        <img src="../assets/sponsor2.jpg" class="d-block w-100" alt="...">
+                        <img src="../assets/sponsor2.jpg" class="d-block w-100" alt="Banner 2">
                     </div>
                 </div>
             </div>
@@ -111,7 +110,7 @@
                         <div class="col-1" id="iconos"><img src="../assets/phone.png" alt="Phone" id="icon-contact"></div>
                         <div class="col-10">
                             <p class="contacto">Teléfono de contacto:</p>
-                            <p>0800 - BALLdor-0</p>
+                            <p>0800 - BallDor-0</p>
                         </div>
                     </div>
                     <div class="row">
@@ -124,24 +123,24 @@
                 </div>
                 <div class="col-md-5">
                     <h2 class="subtitle">Consultas:</h2>
-                    <form class="position-relative" action="" id="form-data">
+                    <form class="position-relative" id="form-data" @submit.prevent="consultas">
                         <div class="row">
-                            <div class="col-6 mb-3">
-                                <label for="name" class="label-form" id="formulary-conf">Nombre(s):</label>
-                                <input type="tex" class="form-control" id="name">
-                            </div>
-                            <div class="col-6 mb-3">
-                                <label for="apellido" class="label-form" id="formulary-conf">Apellido(s):</label>
-                                <input type="text" class="form-control" id="apellido">
+                            <div class="mb-3">
+                                <label for="name" class="label-form" id="formulary-conf">Nombre(s) y Apellido(s):</label>
+                                <input v-model="consulta.nombre" type="text" class="form-control" id="name" required>
                             </div>
                         </div>
                         <div class="mb-3">
                             <label for="email" class="label-form" id="formulary-conf">Correo electrónico:</label>
-                            <input type="email" class="form-control" id="email" placeholder="email@ejemplo.com">
+                            <input v-model="consulta.email" type="email" class="form-control" id="email" placeholder="email@ejemplo.com" required>
                         </div>
                         <div class="mb-3">
-                            <label for="floatingTextarea" id="formulary-conf">Mensaje:</label>
-                            <textarea v-model="description" maxlength="1200" class="form-control" id="validationDefault05" rows="3" required></textarea>
+                            <label for="asunto" class="label-form" id="formulary-conf">Asunto:</label>
+                            <input v-model="consulta.asunto" type="text" class="form-control" id="asunto" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="mensaje" id="formulary-conf">Mensaje:</label>
+                            <textarea v-model="consulta.mensaje" maxlength="1200" class="form-control" id="mensaje" rows="3" required></textarea>
                             <p id="counter">{{counter}}/1200</p>
                         </div>
                         <div class="position-relative" id="send-consults">
@@ -166,13 +165,13 @@
                 <p class="familia">Forma parte de nuestro equipo.</p>
                 <p style="font-size: small">Suscribite para recibir todas nuestras ofertas y novedades</p>
             </div>
-            <form class="col-md-7">
+            <form class="col-md-7" @submit.prevent="subscripcion">
                 <div class="row g-0">
                     <div class="col" style=" margin-right: 1rem;">
-                        <input type="text" class="form-control" id="name" placeholder="Nombre">
+                        <input v-model="data.nombre" type="text" class="form-control" id="name" placeholder="Nombre">
                     </div>
                     <div class="col" style="margin-bottom: 1rem; margin-right: .5rem;">
-                        <input type="email" class="form-control" id="email" placeholder="E-mail">
+                        <input v-model="data.email" type="email" class="form-control" id="email" placeholder="Correo electrónico">
                     </div>
                     <div class="col-md-2 form-floating" id="enviar_footer">
                         <input class="btn btn-primary" type="submit" value="Enviar" id="footer_enviar">
@@ -206,6 +205,9 @@
                         <ul class="list-unstyled ps-0">
                             <li class="mb-1">
                                 <a class="nav-link" id="footer" href="sobre-nosotros.html">Sobre nosotros</a>
+                            </li>
+                            <li class="mb-1">
+                                <a class="nav-link" id="footer" href="" @click.prevent="signOut">Cerrar sesión <img src="../assets/logout.png" alt="Sign Out"></a>
                             </li>
                         </ul>
                     </div>

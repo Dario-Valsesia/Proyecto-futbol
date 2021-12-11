@@ -52,8 +52,8 @@ div#avatar{
 a#name-profile{
     color: #D8E9A8;
     float: right;
-    font-size: larger !important;
-    margin-top: 2vh !important;
+    font-size: x-large !important;
+    margin-top: .8vh !important;
 }
 ul.shadow{
     background-color: #D8E9A8;
@@ -174,12 +174,27 @@ p#footer-page{
 h2.subtitle{
     margin-bottom: 1rem;
 }
+h2.titulo-oferta{
+    background-image: url("../assets/player.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+    color: #D8E9A8;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    padding: 1rem;
+}
+img#etiqueta{
+    z-index: 2;
+    transform: translateX(3rem);
+}
 img#product{
     border-radius: 50%;
     width: 120px;
     height: 120px;
+    z-index: 1;
 }
-h3.title-product{
+h4.title-product{
     text-align: center;
     margin: .3 0 .3rem 0;
 }
@@ -202,7 +217,7 @@ th.reservas{
     font-size: larger;
     background-color: #4E9F3D;
 }
-th.header-tabla, td.body-tabla{
+th.header-tabla, td.body-tabla, td.body-tabla-cancelar{
     text-align: center;
 }
 a#cancelar, a#cancelar-card{
@@ -329,7 +344,6 @@ input#form-cambiar{
 input#form-cambiar:hover{
     font-weight: bold;
 }
-
 
 /*CANCHAS*/
 
@@ -564,7 +578,7 @@ input#form-cambiar:hover{
     box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
 
-.card{
+.card:not(div#card-reserva){
     height: 70vh;
            
 }

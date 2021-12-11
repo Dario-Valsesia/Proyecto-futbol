@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis compras</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="shortcut icon" href="..favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../estilos/style.css">
+</head>
+<body>
+    <!-- Encabezado de página -->
+    <div id="app" v-cloak>
+        <header class="row g-0" id="webPages">
+            <nav class="navbar navbar-expand-lg col-4">
+                <a href="home.html"><img src="../assets/logo.png" alt="Logo" id="logo"></a>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="home.html" id="navegation">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="tienda.html" id="navegation">Tienda</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="canchasReservas.html" id="navegation">Reservas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contacto.html" id="navegation">Contacto</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="col-5 align-self-center">
+                <h1 id="name-title">BALL d'or</h1>
+            </div>
+            <div class="col-3 align-self-center header">
+                <a href="" class="d-block link-light text-decoration-none" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false" style="float: right; margin-left: .5rem;"><div id="avatar"></div></a>
+                <a class="d-block text-decoration-none" id="name-profile">{{datosCliente.firstName}} {{datosCliente.lastName}}</a>
+                <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+                    <li><a class="dropdown-item" id="go-to" href="">Perfil</a></li>
+                    <li><a class="dropdown-item" id="go-to" :href="'configuracion.html?id=' + datosCliente.id">Configuración</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" id="go-to" href="" @click.prevent="signOut">Cerrar sesión <img src="../assets/logout.png" alt="Sign out"></a></li>
+                </ul>
+            </div>
+        </header>
+        <!-- Barra de navegación -->
+        <nav class="navbar navbar-expand-lg" id="navbar-1">
+            <div class="container-fluid d-flex flex-row-reverse">
+                <button class="btn btn-primary navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" id="menu"><span class="menu">&equiv;</span></button>
+            </div>
+        </nav>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" style="width: 280px;">
+            <div class="offcanvas-body position-relative" id="body-menu-canvas1">
+                <div class="flex-shrink-0 p-3 position-absolute top-0 end-0" style="width: 280px;">
+                    <p class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+                    <svg class="bi me-5" width="30" height="24"></svg>
+                    <span class="fs-5 fw-semibold">MENU</span></p>
+                    <ul class="list-unstyled ps-0">
+                        <li class="mb-1">
+                            <a class="nav-link link-dark rounded others" href="home.html">Inicio <img src="../assets/home.png" alt="Home"></a>
+                        </li>
+                        <li class="mb-1">
+                            <a class="nav-link link-dark rounded others" href="tienda.html">Tienda <img src="../assets/store.png" alt="Store"></a>
+                        </li>
+                        <li class="mb-1">
+                            <a class="nav-link link-dark rounded others" href="canchasReservas.html">Reservas <img src="../assets/reservation.png" alt="Reservation"></a>
+                        </li>
+                        <li class="mb-1">
+                            <a class="nav-link link-dark rounded others" href="contacto.html">Contacto <img src="../assets/contact.png" alt="Contact"></a>
+                        </li>
+                        <li class="border-top my-3"></li>
+                        <li class="mb-1">
+                            <a class="nav-link link-dark rounded others" href="" @click.prevent="signOut">Cerrar sesión <img src="../assets/logout.png" alt="Sign out"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Cuerpo de página -->
+                <div class="misCompras">                    
+                    <div class="accordion" id="accordionExample" v-for="producto in carrito">
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <img v-bind:src="producto.urlImg" alt="imagen de producto" class="img-producto">
+                                <h6 v-cloak>{{producto.nombreProducto}}</h6>
+                            </button>
+                          </h2>
+                          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <p>{{producto.nombreProducto}}</p>
+                                <p> Talle: {{producto.talle}}</p>
+                                <p>Subtotal: ${{producto.precio}}</p>
+                                <p>Unidades: {{producto.cantidad}}</p>                                                                    
+                                <p>Total:${{producto.precio * producto.cantidad}}</p>                                                                
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>    
+            <!-- carrito de compras -->
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRightCompra" aria-labelledby="offcanvasRightLabel">
+                <div class="offcanvas-header">
+                    <h4 id="offcanvasRightLabel" v-if="carrito.length==0" class="col-12 text-center">Tu carrito está vacío</h4>
+                    <h4 id="offcanvasRightLabel" v-else class="col-12 text-center">Tu carrito</h4>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <div id="offcanvasRightLabel" v-if="carrito.length==0" class="col-12 row justify-content-center">
+                        <img src="../assets/carrito-triste.png" alt="icono carrito triste"
+                            class="carrito-miniatura col-8">
+                    </div>
+                    <div v-if="!carrito.length==0">
+                        <div class="contenedor" v-for="producto in carrito">
+                            <div class="item-1 align-middle text-wrap">{{producto.nombreProducto}} Talle: {{producto.talle}}</div>
+                            <div class="item-2">Unidades: {{producto.cantidad}}</div>
+                            <div class="item-3"><button class="btn btn-dark btn-block btn-miniatura" @click="quitarUnidadDelCarrito(producto)">Eliminar Unidad</button></div>
+                            <div class="item-4 align-middle">Subtotal</div>
+                            <div class="item-5 align-middle">${{subtotal(producto)}}</div>
+                        </div>
+                        <div class="row justify-content-between">
+                            <p class="col-6 text-right">Total productos: {{totalProductosCarrito}}</p>
+                            <p class="col-6 text-right">Precio total: ${{precioTotal}}</p>
+                        </div>
+                        <div class="d-flex justify-content-around">
+                            <button class="btn btn-danger" @click="vaciarCarrito">Vaciar</button>
+                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h3 class="modal-title" id="staticBackdropLabel">Medio de Pago</h3>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="">
+                            <h4>Datos de la tarjeta</h4>
+                            <div class="pt-2">
+                                <label class="pe-2" for="tarjeta">Número de tarjeta: </label>
+                                <input type="number" name="tarjeta" id="tarjeta">
+                            </div>
+                            <div class="pt-2">
+                                <label class="pe-2" for="Titular">Titular: </label>
+                                <input type="text" name="Titular" id="Titular">
+                            </div>
+                            <div class="pt-2">
+                                <label class="pe-2" for="vencimiento">Vencimiento: </label>
+                                <input type="date" name="vencimiento" id="vencimiento">
+                            </div>
+                            <div class="pt-2">
+                                <label class="pe-2" for="CVC">Código de Seguridad: </label>
+                                <input type="number" name="CVC" id="CVC">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-success">Pagar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </main>
+        <!-- Pie de página -->
+        <footer>
+            <section id="footer-social">
+                <a href="https://www.facebook.com" id="social"><img src="../assets/facebook.png" alt="Facebook"></a>
+                <a href="https://www.instagram.com" id="social"><img src="../assets/instagram.png" alt="instagram"></a>
+                <a href="https://www.twitter.com" id="social"><img src="../assets/twitter.png" alt="Twitter"></a>
+                <a href=""><img src="../assets/whatsapp.png" alt="Whatsapp"></a>
+            </section>
+            <section class="row g-0 align-items-center" id="footer_suscribete">
+                <div class="col">
+                    <p class="familia">Forma parte de nuestra familia.</p>
+                    <p style="font-size: small">Suscribite para recibir todas nuestras ofertas y novedades</p>
+                </div>
+                <form class="col-md-7">
+                    <div class="row g-0">
+                        <div class="col" style=" margin-right: 1rem;">
+                            <input type="text" class="form-control" id="name" placeholder="Nombre">
+                        </div>
+                        <div class="col" style="margin-bottom: 1rem; margin-right: .5rem;">
+                            <input type="email" class="form-control" id="email" placeholder="E-mail">
+                        </div>
+                        <div class="col-md-2 form-floating" id="enviar_footer">
+                            <input class="btn btn-primary" type="submit" value="Enviar" id="footer_enviar">
+                        </div>
+                    </div>
+                </form>
+            </section>
+            <section class="row g-0" id="footer_nav">
+                <div class="col-md-6">
+                    <h2 class="tittle-footer">Nos encontramos</h2>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1708.2923166644136!2d-64.5028028738467!3d-31.093478997046123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd4aee8909d7ac72c!2zMzHCsDA1JzM2LjUiUyA2NMKwMzAnMDYuOSJX!5e0!3m2!1ses-419!2sar!4v1638541288134!5m2!1ses-419!2sar" width="100%" height="75%" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+                <nav class="navbar navbar-expand-lg col-md-3 align-self-start">
+                    <div class="container-fluid position-relative">
+                        <div class="flex-shrink-0 position-relative top-0 start-50 translate-middle-x" id="navbar-2">
+                            <p class="fs-5 fw-semibold" style="text-align: center;">MENÚ PRINCIPAL</p>
+                            <ul class="list-unstyled ps-0">
+                                <li class="mb-1">
+                                    <a class="nav-link" id="footer" href="">Tienda</a>
+                                    <a class="nav-link" id="footer" href="canchasReservas.html">Reservas</a>
+                                    <a class="nav-link" id="footer" href="contacto.html">Contacto</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <nav class="navbar navbar-expand-lg col-md-3 align-self-start">
+                    <div class="container-fluid position-relative">
+                        <div class="flex-shrink-0 position-relative top-0 start-50 translate-middle-x" id="navbar-2">
+                            <p class="fs-5 fw-semibold" style="text-align: center;">OTROS LINKS</p>
+                            <ul class="list-unstyled ps-0">
+                                <li class="mb-1">
+                                    <a class="nav-link" id="footer" href="sobre-nosotros.html">Sobre nosotros</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </section>
+            <section class="row g-0" id="footer_copy_tyc">
+                <p id="footer-page">&copy; TODOS LOS DERECHOS RESERVADOS.</p>
+            </section>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+    crossorigin="anonymous"></script>
+
+    <script src="https://kit.fontawesome.com/58d99c8dac.js" crossorigin="anonymous"></script>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script src="https://unpkg.com/vue@next"></script>
+
+    <script src="../scripts/tienda.js"></script>
+</body>
+</html>
