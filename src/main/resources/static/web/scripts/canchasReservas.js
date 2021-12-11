@@ -1,8 +1,11 @@
-
 const app = Vue.createApp({
     data(){
         return{
             datosCliente: [],
+            data:{
+                nombre: "",
+                email: ""
+            },
             /////////////
             meses:['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre','Octubre', 'Noviembre', 'Diciembre'],
             fechaActual:"",
@@ -37,6 +40,27 @@ const app = Vue.createApp({
             axios.get("/api/cliente/actual")
             .then(response => {
                 this.datosCliente = response.data
+            })
+        },
+        subscripcion(){
+            swal({
+                title: "¡Atención!",
+                text: "¿Estás seguro que quieres subscribirte a nuestro newsletter?",
+                icon: "warning",
+                buttons: [true, "Continuar"]
+            })
+            .then(confrimation => {
+                axios.post("/api/mail",`destino=${this.data.email}&nombreUsuario=${this.data.nombre}`,{headers:{'content-type':'application/x-www-form-urlencoded'}})
+                .then(response => {
+                    swal({
+                        title: "¡Genial!",
+                        text: "Gracias por subscribirte a nuestro newsletter.",
+                        icon: "success"
+                    })
+                    .then(confirmation => {
+                        window.location.reload()
+                    })
+                })
             })
         },
         signOut(){

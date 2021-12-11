@@ -10,6 +10,10 @@ const app = Vue.createApp({
                 password: "",
                 password2: ""
             },
+            mail:{
+                nombre: "",
+                email: ""
+            },
             type1: "password", hidden1: true, show1: false,
             type2: "password", hidden2: true, show2: false
         }
@@ -23,6 +27,27 @@ const app = Vue.createApp({
             axios.get("/api/cliente/actual")
             .then(response => {
                 this.datosCliente = response.data
+            })
+        },
+        subscripcion(){
+            swal({
+                title: "¡Atención!",
+                text: "¿Estás seguro que quieres subscribirte a nuestro newsletter?",
+                icon: "warning",
+                buttons: [true, "Continuar"]
+            })
+            .then(confrimation => {
+                axios.post("/api/mail",`destino=${this.mail.email}&nombreUsuario=${this.mail.nombre}`,{headers:{'content-type':'application/x-www-form-urlencoded'}})
+                .then(response => {
+                    swal({
+                        title: "¡Genial!",
+                        text: "Gracias por subscribirte a nuestro newsletter.",
+                        icon: "success"
+                    })
+                    .then(confirmation => {
+                        window.location.reload()
+                    })
+                })
             })
         },
         signOut(){

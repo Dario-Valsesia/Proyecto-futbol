@@ -18,5 +18,4 @@ public class MailServicio {
 
         mailSender.send(email);
     }
-
 }

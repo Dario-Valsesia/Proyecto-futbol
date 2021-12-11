@@ -45,7 +45,7 @@ public class ProyectoFinalApplication {
 
 			Producto camiseta1 = new Camiseta("camiseta liverpool", "Camiseta Liverpool", 1500, 3000, 10, "Nike", new String[]{"S","M","L","XL"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638898137/pngwing.com_21_d8f911.png", "Liverpool");
 			repositorioProducto.save(camiseta1);
-			Producto camiseta2 = new Camiseta("camiseta Seleccion Argentina", "Camiseta Seleccion Argentina", 1800, 3500, 20, "Adidas", new String[]{"S","M","L","XL","XXL"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638898138/pngwing.com_23_bi4t9w.png", "Adidas");
+			Producto camiseta2 = new Camiseta("camiseta Argentina", "Camiseta Argentina", 1800, 3500, 20, "Adidas", new String[]{"S","M","L","XL","XXL"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638898138/pngwing.com_23_bi4t9w.png", "Adidas");
 			repositorioProducto.save(camiseta2);
 			Producto camiseta3 = new Camiseta("camiseta Chelsea", "Camiseta Chelsea", 1400, 2800, 5, "Adidas", new String[]{"M","L","XL"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638898138/pngwing.com_22_ixjszy.png", "Adidas");
 			repositorioProducto.save(camiseta3);
@@ -108,7 +108,7 @@ public class ProyectoFinalApplication {
 
 			Producto pelota1 = new Pelota("Pelota","Pelota Seleccion Argentina",1500,2000,14,"Adidas",new String[]{"3","4","5"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638896200/pngwing.com_9_hvttt1.png");
 			repositorioProducto.save(pelota1);
-			Producto pelota2 = new Pelota("Pelota","Pelota Copa Mundia 2018",1800,3200,14,"Adidas",new String[]{"3","4","5"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638896201/pngwing.com_2_x6igxs.png");
+			Producto pelota2 = new Pelota("Pelota","Pelota Mundial 2018",1800,3200,14,"Adidas",new String[]{"3","4","5"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638896201/pngwing.com_2_x6igxs.png");
 			repositorioProducto.save(pelota2);
 			Producto pelota3 = new Pelota("Pelota","Pelota Champions League",1800,3200,14,"Adidas",new String[]{"3","4","5"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638896201/pngwing.com_1_qnqjx7.png");
 			repositorioProducto.save(pelota3);
