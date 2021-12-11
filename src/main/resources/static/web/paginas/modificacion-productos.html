@@ -24,12 +24,17 @@
                 <div class="d-flex align-items-center justify-content-between col-10 col-md-5 gray_background p-3 mb-4 rounded">
                     <label for="nuevoProducto" class="pointer">Agregar nuevo producto</label>
                     <input v-model="modificarOAgregarProducto" type="radio" id="nuevoProducto" class="d-none" value="nuevoProducto">
-                    <i class="bi bi-plus-circle fs-3"></i>
+                    <i class="bi bi-plus-circle fs-3 text-success"></i>
                 </div>
                 <div class="d-flex align-items-center justify-content-between col-10 col-md-5 gray_background p-3 mb-4 rounded">
-                    <label for="modificarProducto" class="pointer">Modificar o eliminar producto existente</label>
+                    <label for="modificarProducto" class="pointer">Modificar características de producto existente</label>
                     <input v-model="modificarOAgregarProducto" type="radio" id="modificarProducto" class="d-none" value="modificarProducto">
-                    <i class="bi bi-search fs-3 col-3 text-end"></i>
+                    <i class="bi bi-search fs-3 col-3 text-end text-primary"></i>
+                </div>
+                <div class="d-flex align-items-center justify-content-between col-10 col-md-5 gray_background p-3 mb-4 rounded">
+                    <label for="eliminarProducto" class="pointer">Eliminar producto de la tienda</label>
+                    <input v-model="modificarOAgregarProducto" type="radio" id="eliminarProducto" class="d-none" value="eliminarProducto">
+                    <i class="bi bi-x-circle fs-3 col-3 text-end text-danger"></i>
                 </div>
             </section>
             <!-- ------------------ -->
@@ -63,8 +68,8 @@
                 <!-- --------------------------- -->
 
                 <!-- FORMULARIO DATOS DEL PRODUCTO -->
-            <section v-if="nombreProducto != ''" class="d-flex flex-column align-items-center mb-4">
-                <h2 class="fs-5 mb-4 mb-lg-5 text-center">Complete todos campos para registrar el producto</h2>
+            <section v-if="nombreProducto != '' && modificarOAgregarProducto === 'nuevoProducto'" class="d-flex flex-column align-items-center mb-4">
+                <h2 class="fs-5 mb-4 mb-lg-5 text-center">Complete todos los campos para registrar el producto</h2>
                 <form class="d-flex flex-column col-8 col-md-7 gray_background p-3 rounded col-11">
 
                     <label for="marca" class="fs-5 mb-1">Marca</label>
@@ -118,11 +123,85 @@
 
             <!-- ------------------------------- -->
 
-            <!-- MODIFICAR O ELIMINAR PRODUCTO -->
-            <section v-if="modificarOAgregarProducto === 'modificarProducto'">
-                <h2 class="fs-5">Seleccione el producto que desea modificar</h2>
+            <!-- MODIFICAR PRODUCTO -->
+
+                <!-- TABLA MODIFICACION PRODUCTO -->
+            <section v-if="(modificarOAgregarProducto === 'modificarProducto' || modificarOAgregarProducto === 'eliminarProducto') && 1 > buscarProductoModificar.length" class="d-flex flex-column align-items-center">
+                {{imagenProducto}}
+                <h2 v-if="modificarOAgregarProducto === 'modificarProducto'" class="mb-5">Elegir producto a modificar</h2>
+                <h2 v-if="modificarOAgregarProducto === 'eliminarProducto'" class="mb-5">Elegir producto a eliminar</h2>
+                <!-- <label for="searcher">Buscador</label>
+                <input type="search" id="searcher" class="col-4"> -->
+                <table class="text-white text-center col-12 col-md-11 col-lg-9">
+                    <tr class="border border-top-0 border-start-0 border-end-0">
+                        <th class="pb-2 col-3 col-md-2">Producto</th>
+                        <th class="pb-2">Marca</th>
+                        <th class="d-none d-md-table-cell pb-2">Costo</th>
+                        <th class="d-none d-md-table-cell pb-2 col-1">Precio</th>
+                        <th class="d-none d-md-table-cell pb-2">Talle</th>
+                        <th class="d-none d-md-table-cell pb-2">Tipo</th>
+                        <th class="d-none d-md-table-cell pb-2">Equipo</th>
+                        <th class="pb-2 col-lg-1">Stock</th>
+                        <th v-if="modificarOAgregarProducto === 'modificarProducto'" class="pb-2 col-3 col-md-1">Editar</th>
+                        <th v-if="modificarOAgregarProducto === 'eliminarProducto'" class="pb-2 col-3 col-md-2 col-lg-1">Eliminar</th>
+                    </tr>
+                    <tr v-for="producto in tablaProductos" class="border border-top-0 border-start-0 border-end-0">
+                        <td class="text-start py-2 ps-1">{{producto.nombreProducto}}</td>
+                        <td>{{producto.marca}}</td>
+                        <td class="d-none d-md-table-cell">${{producto.costo}}</td>
+                        <td class="d-none d-md-table-cell">${{producto.precio}}</td>
+                        <td class="d-none d-md-table-cell">{{(producto.talle.toString())}}</td>
+                        <td class="d-none d-md-table-cell" :class="[producto.tipo === null ? 'text-danger' : '']">{{producto.tipo === null ? "X" : producto.tipo}}</td>
+                        <td class="d-none d-md-table-cell" :class="[producto.equipo === null ? 'text-danger' : '']">{{producto.equipo === null ? "X" : producto.equipo}}</td>
+                        <td>{{producto.stock}}</td>
+                        <td v-if="modificarOAgregarProducto === 'modificarProducto'"><button @click="elegirProducto(producto.id)" class="gray_background text-white rounded"><i class="bi bi-card-list px-2"></i></button></td>
+                        <td v-if="modificarOAgregarProducto === 'eliminarProducto'"><button @click="productoElegidoParaEliminar(producto.id)" class="gray_background text-white rounded"><i class="bi bi-card-list px-2"></i></button></td>
+                    </tr>
+                </table>
             </section>
-            <!-- ----------------------------- -->
+                <!-- -------------------------------------------- -->
+
+                <!-- FORMULARIO MODIFICACION PRODUCTO -->
+            <section v-if="buscarProductoModificar.length > 0" class="d-flex flex-column align-items-center mb-4">
+                <h2 class="fs-5 mb-4 mb-lg-5 text-center">Haga cambios <span class="text-warning">SOLO</span> en los campos que desee modificar</h2>
+                <form class="d-flex flex-column col-8 col-md-7 gray_background p-3 rounded col-11">
+
+                    <legend class="fs-5">¿Desea cambiar el nombre del producto en la tienda?</legend>
+                    <label for="nombreProducto"></label>
+                    <input v-model="descripcionProducto" class="mb-3 px-1" type="text" id="nombreProducto" placeholder="Botín de cuero reforzado">
+
+                    <legend class="fs-5">¿Cambió el costo del producto?</legend>
+                    <label for="costo"></label>
+                    <input v-model="costo" class="mb-3 px-1" type="number" id="costo">
+
+                    <legend class="fs-5">¿Desea modificar el porcentaje de ganancia?</legend>
+                    <label for="porcentajeGanancia"></label>
+                    <input v-model="porcentajeGanancia" class="px-1" type="number" id="porcentajeGanancia">
+                    <p class="mb-3 text-warning">*El precio actual del producto es ${{buscarProductoModificar[0].precio}}. <span v-if="porcentajeGanancia != 0">El nuevo precio sería ${{calcularPrecio}}</span></p>
+
+                    <legend class="fs-5">¿Cuántas unidades ingresaron?</legend>
+                    <label for="stock"></label>
+                    <input v-model="stock" class="px-1" type="number" id="stock">
+                    <p class="mb-3 text-warning">*Actualmente hay {{buscarProductoModificar[0].stock}} unidades. <span v-if="stock != 0">Con el nuevo ingreso serían {{buscarProductoModificar[0].stock + stock}} unidades</span></p>
+
+                    <fieldset>
+                        <legend class="fs-5 col-12">Indique el cambio en los talles. Recuerde separarlos con ","(coma)</legend>
+                        <label for="modificarTalles"></label>
+                        <input v-model="tallesProducto" class="col-12 px-1" type="text" id="modificarTalles">
+                    </fieldset>
+
+                    <fieldset :class="nombreProducto === 'Camiseta' || nombreProducto === 'Short' || nombreProducto === 'Botin' ? '' : 'mt-3'">
+                        <legend class="fs-5 col-12">¿Desea cambiar la foto del producto en la tienda?</legend>
+                        <label for="imagenProducto"></label>
+                        <input v-model="imagenProducto" class="mb-3 col-12 px-1" type="text" id="imagenProducto" placeholder="https://http2.mlstatic.com/D_NQ_NP_926362.webp">
+                    </fieldset>
+
+                    <button @click.prevent="confirmarModificacion" class="mt-4 rounded">Guardar cambios</button>
+                </form>
+            </section>
+                <!-- ------------------------------------ -->
+
+            <!-- ------------------------------ -->
         </main>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

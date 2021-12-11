@@ -93,7 +93,32 @@ public class ControladorProducto {
             Producto producto = new Short(name,nombreProducto,precioCosto,precioCosto+((porcentajeGanacia*precioCosto)/100),stock,marca,talles,url,equipo);
             repositorioProducto.save(producto);
         }
-        return new ResponseEntity<>("Éxito al registrar producto", HttpStatus.OK);
+        return new ResponseEntity<>("Éxito al registrar producto", HttpStatus.CREATED);
+    }
+
+    @PutMapping("/productos/modificar")
+    public ResponseEntity<Object> modificarProducto(@RequestParam Long id ,@RequestParam String nombreProducto, @RequestParam double costoProducto,
+                                                    @RequestParam Integer porcentajeGanancia, @RequestParam int stockProducto,
+                                                    @RequestParam String[] tallesProducto, @RequestParam String imagenProducto){
+
+        repositorioProducto.findById(id).get().setNombreProducto(nombreProducto);
+        repositorioProducto.findById(id).get().setCosto(costoProducto);
+        repositorioProducto.findById(id).get().setPrecio(costoProducto + ((costoProducto / 100) * porcentajeGanancia));
+        repositorioProducto.findById(id).get().setStock(repositorioProducto.findById(id).get().getStock() + stockProducto);
+        repositorioProducto.findById(id).get().setTalle(tallesProducto);
+        repositorioProducto.findById(id).get().setUrlImg(imagenProducto);
+
+        repositorioProducto.save(repositorioProducto.findById(id).get());
+
+        return new ResponseEntity<>("Producto modificado", HttpStatus.OK);
+    }
+
+    @PutMapping("/productos/eliminar")
+    public ResponseEntity<Object> modificarProducto(@RequestParam Long id){
+
+        repositorioProducto.deleteById(id);
+
+        return new ResponseEntity<>("Producto eliminado", HttpStatus.OK);
     }
 
     @PostMapping("/comprar/producto")

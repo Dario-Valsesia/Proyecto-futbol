@@ -1,7 +1,12 @@
 const app = Vue.createApp({
     data() {
         return {
+            tablaProductos: [],
             modificarOAgregarProducto: "",
+            productoModificado: 0,
+            productoEliminado: "",
+            // PARAMETROS DEL REQUEST
+            idProducto: 0,
             nombreProducto: "",
             descripcionProducto: "",
             marca: "",
@@ -12,14 +17,16 @@ const app = Vue.createApp({
             equipoProducto: "",
             tipoProducto: "",
             imagenProducto: ""
-            
         }
     },
     created() {
         axios.get("/api/productos")
-            .then(response => {
-                this.tablaProductos = response.data
-            })
+        .then(response => {
+            this.tablaProductos = response.data
+        })
+        .catch(error => {
+            console.log(error.response.data)
+        })
     },
     methods: {
         guardarProducto() {
@@ -80,7 +87,7 @@ const app = Vue.createApp({
                     "stock": this.stock,
                     "marca": this.marca,
                     "talle": this.tallesProducto,
-                    "url": this.imagenProducto,
+                    "urlImg": this.imagenProducto,
                     "equipo": this.equipoProducto,
                     "tipo": this.tipoProducto
                 })
@@ -95,9 +102,68 @@ const app = Vue.createApp({
                     }, 2500)
                 })
                 .catch(error => {
-                    console.log(error.response.data)
+                    swal({
+                        text: (error.response.data),
+                        timer: 3000,
+                        icon: "error"
+                    })
                 })
             }
+        },
+        elegirProducto(value){
+            this.productoModificado = value
+        },
+        productoElegidoParaEliminar(value){
+            this.productoEliminado = value
+            this.idProducto = value
+            swal({
+                text: "¿Desea eliminar el producto? No se podrá recuperar luego",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true
+            })
+            .then(response => {
+                if(response){
+                    this.eliminarProducto()
+                } else {
+                    this.idProducto = 0
+                }
+            })
+        },
+        confirmarModificacion(){
+            swal({
+                text: "¿Desea efectivizar los cambios? No se podrán revertir luego de modificarlos",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true
+            })
+            .then(response => {
+                if(response){
+                    this.guardarModificacion()
+                }
+            })
+        },
+        guardarModificacion(){
+            axios.put('http://localhost:8080/api/productos/modificar',`id=${this.idProducto}&nombreProducto=${this.descripcionProducto}&
+            costoProducto=${this.costo}&porcentajeGanancia=${this.porcentajeGanancia}&stockProducto=${this.stock}&
+            tallesProducto=${this.tallesProducto}&imagenProducto=${this.imagenProducto}`,
+            {headers:{'content-type':'application/x-www-form-urlencoded'}})
+            .then(response => {
+                console.log(response.data)
+            })
+            .catch(error => {
+                console.log(error.response.data)
+            })
+        },
+        eliminarProducto(){
+            axios.put('http://localhost:8080/api/productos/eliminar',`id=${this.idProducto}`,
+            {headers:{'content-type':'application/x-www-form-urlencoded'}})
+            .then(response => {
+                console.log(response.data)
+            })
+            .catch(error => {
+                console.log(error.response.data)
+            })
         }
     },
     computed: {
@@ -112,13 +178,42 @@ const app = Vue.createApp({
         devolverTalles() {
             let tallesElegidos = []
             if (this.nombreProducto === "Botin" || this.nombreProducto === "Medias") {
-                tallesElegidos = ["35", "36", "37", "38", "39", "40", "41", "42", "43", "44"]
+                tallesElegidos = ["32","33","34","35", "36", "37", "38", "39", "40", "41", "42", "43", "44"]
             } else if (this.nombreProducto === "Camiseta" || this.nombreProducto === "Short") {
                 tallesElegidos = ["XS", "S", "M", "L", "XL", "XXL"]
             } else if (this.nombreProducto === "Pelota") {
                 tallesElegidos = ["2", "3", "4", "5"]
             }
             return tallesElegidos
+        },
+        buscarProductoModificar(){
+            let tablaProductoModificar = []
+            if(this.productoModificado != ""){
+                tablaProductoModificar = this.tablaProductos.filter(producto => producto.id === this.productoModificado)
+                this.idProducto = tablaProductoModificar[0].id
+                this.descripcionProducto = tablaProductoModificar[0].nombreProducto
+                this.costo = tablaProductoModificar[0].costo
+                this.tallesProducto = tablaProductoModificar[0].talle
+                this.imagenProducto = tablaProductoModificar[0].urlImg
+            }
+            return tablaProductoModificar
+        },
+        confirmarEliminacion(){
+            if(this.productoEliminado != ""){
+                swal({
+                    text: "¿Desea eliminar el producto? No se podrá recuperar luego",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true
+                })
+                .then(response => {
+                    if(response){
+                        this.eliminarProducto()
+                    } else {
+                        this.idProducto = 0
+                    }
+                })
+            }
         }
     }
 })
