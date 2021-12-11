@@ -705,6 +705,7 @@ input#form-cambiar:hover{
 .contenedorModalAnimacion label{
     cursor: pointer;
 }
+/*mis compras*/
 .misCompras{   
     display:flex;
     flex-direction: column;
