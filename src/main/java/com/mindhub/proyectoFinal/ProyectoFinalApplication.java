@@ -24,6 +24,8 @@ public class ProyectoFinalApplication {
 		return (args) -> {
 			Cliente cliente1 = new Cliente("Dario","Valsesia","dariovalsesia14@gmail.com", passwordEncoder.encode("123"));
 			repositorioCliente.save(cliente1);
+			Cliente cliente2 = new Cliente("Matias","Gomez","asdasd@gmail.com", passwordEncoder.encode("123"));
+			repositorioCliente.save(cliente2);
 
 			Cancha cancha1 = new Cancha(10,2000D,"Fútbol 5");
 			repositorioCancha.save(cancha1);
@@ -35,12 +37,14 @@ public class ProyectoFinalApplication {
 			repositorioCancha.save(cancha4);
 			Reserva reserva1 = new Reserva(LocalDateTime.of(2021,12,7,18,00),LocalDateTime.of(2021,12,7,19,00),false,cliente1,cancha1);
 			repositorioReserva.save(reserva1);
-			Reserva reserva2 = new Reserva(LocalDateTime.of(2021,12,7,19,00),LocalDateTime.of(2021,12,7,20,00),false,cliente1,cancha2);
+			Reserva reserva2 = new Reserva(LocalDateTime.of(2021,12,7,22,00),LocalDateTime.of(2021,12,7,23,00),false,cliente1,cancha2);
 			repositorioReserva.save(reserva2);
-			Reserva reserva3 = new Reserva(LocalDateTime.of(2021,12,8,16,00),LocalDateTime.of(2021,12,8,17,00),false,cliente1,cancha1);
+			Reserva reserva3 = new Reserva(LocalDateTime.of(2021,12,8,17,00),LocalDateTime.of(2021,12,8,17,00),false,cliente1,cancha1);
 			repositorioReserva.save(reserva3);
-			Reserva reserva4 = new Reserva(LocalDateTime.of(2021,12,7,19,00),LocalDateTime.of(2021,12,7,20,00),false,cliente1,cancha1);
+			Reserva reserva4 = new Reserva(LocalDateTime.of(2021,12,14,18,00),LocalDateTime.of(2021,12,14,19,00),false,cliente2,cancha1);
 			repositorioReserva.save(reserva4);
+			Reserva reserva5 = new Reserva(LocalDateTime.of(2021,12,14,22,00),LocalDateTime.of(2021,12,14,23,00),false,cliente2,cancha1);
+			repositorioReserva.save(reserva5);
 
 
 			Producto camiseta1 = new Camiseta("Camiseta", "Camiseta Liverpool", 1500, 3000, 10, "Nike", new String[]{"S","M","L","XL"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638898137/pngwing.com_21_d8f911.png", "Liverpool");
