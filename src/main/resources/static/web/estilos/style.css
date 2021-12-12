@@ -29,8 +29,14 @@ header#webPages{
     background-position-y: 60%;
 }
 img#logo{
-    width: 80px !important;
-    padding: .3rem 1.5rem 0 0 !important;
+    width: 70% !important;
+    padding: 0 !important;
+    object-fit: contain;
+    transition: 1s;
+
+}
+img#logo:hover{
+    transform: scale(1.2);
 }
 h1#name-title{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -122,6 +128,10 @@ a.others:hover{
 
 main#pages{
     margin: 1rem 2rem 1rem  2rem;
+    min-height: 60vh;
+}
+#compras{
+    min-height: 50vh;
 }
 
 /* FOOTER */
@@ -760,18 +770,21 @@ input#form-cambiar:hover{
     cursor: pointer;
 }
 /*mis compras*/
-.misCompras{   
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 2vh;
+.accordion{
+    width: 60%;
+    margin: auto;
+    margin-top: 1rem;
 }
-.accordion:not(div.home-accordion){
-    width: 50vw;
-    margin: 2vh;
+.animacionAcordion{
+    transition: all 1s !important;
+    border: 1px solid #1E5128 !important;
 }
-.accordion-button img{
-    height:100px;
+.animacionAcordion p{
+    font-weight: 900;
+
+}
+.accordion-button{
+    font-size: 22px;
 }
 
 
@@ -781,7 +794,7 @@ input#form-cambiar:hover{
 
     img#logo{
         width: 70px !important;
-        padding: .3rem 1rem 0 0 !important;
+        padding: 0 !important;
     }
     div#navbarSupportedContent{
         display: none !important;

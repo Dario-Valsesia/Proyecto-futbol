@@ -19,13 +19,17 @@
         <header class="row g-0" id="webPages">
             <nav class="navbar navbar-expand-lg col-4">
                 <a href="home.html"><img src="../assets/logo.png" alt="Logo" id="logo"></a>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse navbar-3" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <a class="btn btn-primary" role="button" href="home.html" id="navegation" style="margin-right: .3rem;">Inicio</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="btn btn-primary" role="button" href="tienda.html" id="navegation" style="margin-right: .3rem;">Tienda</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="" id="navegation" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="margin-right: .3rem;">Tienda</a>
+                            <ul class="dropdown-menu shadow" aria-labelledby="navegation">
+                                <li><a class="dropdown-item" href="tienda.html" id="go-to">Marketplace</a></li>
+                                <li><a class="dropdown-item" href="misCompras.html" id="go-to">Mis compras</a></li>
+                            </ul>
                         </li>
                         <li class="nav-item">
                             <a class="btn btn-primary" role="button" href="canchasReservas.html" id="navegation" style="margin-right: .3rem;">Reservas</a>
@@ -85,11 +89,11 @@
         </div>
         <!-- Cuerpo de página -->
         <main>
+            
             <div class="d-flex justify-content-center">
                 <div class="contenedorTiendaHeader col-12 mx-2 pt-5 text-center align-items-center text-white">
                     <h1 class="tituloTienda display-4 fw-normal my-5 pb-2 pt-5">¡Nuestra Tienda!</h1>
-                    <p class="parraffoTienda col-12 text-justify">En nuestro catálogo encontraras los articulos que estas buscando parapara realizar el deporte que más te gusta.
-                    </p>
+                    <p class="parraffoTienda col-12 text-justify">En nuestro catálogo encontraras los articulos que estas buscando parapara realizar el deporte que más te gusta.</p>
                 </div>
             </div>
             <form class="d-flex align-items-center  bg-white buscarProducto">
@@ -113,6 +117,8 @@
                     <i class="fas fa-shopping-bag shopping-bag"></i>
                 </button>
             </form>
+
+            <!-- FILTROS Y PRODUCTOS -->
 
             <div class="contenedorTarjetasYFiltro d-flex">
                 <div class="contenedorFiltros d-flex flex-column justify-content-between align-items-center pt-5">
@@ -161,15 +167,11 @@
                                 </div>
                             </div>
                             <h5 v-if="noExiste" class="text-danger">No tenemos {{busqueda}}</h5>
-                    </div>
-                    
-
+                    </div>    
                 </div>
             </div>
-            
-
-            
-            <!-- carrito de compras -->
+              
+            <!-- CARRITO DE COMPRAS -->
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRightCarrito" aria-labelledby="offcanvasRightLabel">
                 <div class="offcanvas-header headerCarrito">
                   <h5 v-if="carrito.length>0" id="offcanvasRightLabel">Tu carrito</h5>
@@ -206,6 +208,8 @@
                     </div>
                 </div>
             </div>
+
+            <!-- MODAL DATOS TARJETA -->
             <div v-if="verDatosTarjeta" class="contenedorPrincipalModal"> 
                 <div  class="contenedorModalAnimacion">
                     <div class="contenedorDatosTarjeta">
@@ -226,7 +230,7 @@
                             <label for="cvv">Codigo Seguridad</label>
                             <input v-model="cvc" type="number" id="cvv" placeholder="123">
                         </div>
-                        <div class="contenedorInputDatos d-flex justify-content-between align-items-center my-2">
+                        <div class="contenedorInputDatos d-flex justify-content-center align-items-center my-2 w-100">
                             <p v-if="mensajeCorrecto.length>0" class="m-0 text-center">{{mensajeCorrecto}}</p>
                             <p v-if="errorMensaje.length>0" class="m-0 text-danger text-center">{{errorMensaje}}</p>
                         </div>

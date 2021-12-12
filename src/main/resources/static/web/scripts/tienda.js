@@ -96,10 +96,12 @@ const app = Vue.createApp({
             axios.post('https://mbbhomebanking.herokuapp.com/api/pagar',`numCard=${this.numeroDeTarjeta}&cvv=${this.cvc}&name=${this.titularTarjeta}&thruDate=${this.vencimiento}&total=${this.precioTotal}`).then(res=>{
                 this.carrito.forEach(producto=>{
                     axios.post('/api/comprar/producto',`id=${producto.id}&talle=${producto.talleSeleccionado}&cantidad=${producto.cantidad}`).then(res=>{
+                        this.errorMensaje='';
                         this.mensajeCorrecto = 'Compra realizada con exito';
                     }).catch(e=>console.log(e));
                 })
                 this.vaciarCarrito(); 
+                setTimeout(()=>location.reload(),1500);
             }).catch(e=>{
                 this.errorMensaje=e.response.data
             })
