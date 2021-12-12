@@ -220,14 +220,17 @@ const app = Vue.createApp({
        
         FiltroDeProductos(){
             if(this.filtroProductos.length==0 && this.busqueda =='' && this.filtroPrecio ==''){
+                this.noExiste = false;
                 return this.productos
             }
             if(this.busqueda != ''){
                 let filtroBusqueda = this.productos.filter(prod=>prod.nombreProducto.toLowerCase().includes(this.busqueda.toLowerCase()))
+                this.noExiste=false;
                 if(filtroBusqueda.length==0){
                     return this.noExiste = true;
                 }
                 if(this.filtroPrecio==''){ 
+                    
                     return filtroBusqueda;
                 }else if(this.filtroPrecio=="menor"){
                     return filtroBusqueda.sort((a,b)=>{
@@ -253,6 +256,7 @@ const app = Vue.createApp({
                 
             }         
             if(this.filtroProductos.length>0 && this.filtroPrecio != ''){
+                this.noExiste=false;
                 let filtro = this.productos.filter(prod=>{
                     return this.filtroProductos.includes(prod.name);
                 })
@@ -282,13 +286,16 @@ const app = Vue.createApp({
                
             }   
             if(this.filtroProductos.length>0){
+                
                 let filtro = this.productos.filter(prod=>{
                     return this.filtroProductos.includes(prod.name);
                 })
+                this.noExiste=false;
                 return filtro;
             }
             
             if(this.filtroPrecio!=''){
+                this.noExiste=false;
                 if(this.filtroPrecio=='menor'){
                     this.productos.sort((a,b)=>{
                         if(a.precio<b.precio){
