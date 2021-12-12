@@ -35,6 +35,13 @@
                         <button v-if="hidden" class="btn btn-outline-secondary" type="button" @click="showPassword" style="background-color: white;"><img src="./assets/hidden.png" alt=""></button>
                         <button v-if="show" class="btn btn-outline-secondary" type="button" @click="showPassword" style="background-color: white;"><img src="./assets/show.png" alt=""></button>
                     </div>
+                    <div class="mb-3">
+                        <ul class="list-unstyled ps-0">
+                            <li class="mb-1">
+                                <a class="nav-link rounded others" id="form-sign" data-bs-toggle="offcanvas" aria-controls="offcanvasRight01" href="#offcanvasRight01" aria-controls="offcanvasRight01" style="color: #fff;">Olvidé mi contraseña</a>
+                            </li>
+                        </ul>
+                    </div>
                     <div class="form-floating" style="text-align: center;">
                         <input class="btn btn-success" type="submit" value="Ingresar" style="margin-right: .5rem;">
                         <input class="btn btn-success" type="reset" value="Limpiar">
@@ -68,7 +75,27 @@
                     </div>
                 </form> 
             </div>
-               
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight01" aria-labelledby="offcanvasExampleRight01" style="width: 20rem;">
+                <div class="offcanvas-body" >
+                    <div class="flex-shrink-0 p-3">
+                        <button type="button" class="btn-close text-reset position-absolute top-0 end-0" data-bs-dismiss="offcanvas" aria-label="Close" id="close-nav"></button>
+                        <p class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+                            <svg class="bi me-5" width="30" height="24"></svg>
+                            <span class="fs-5 fw-semibold">Recuperar contraseña</span>
+                        </p>
+                        <form id="form-signin" @submit.prevent="enviarSolicitud">
+                            <div class="mb-3">
+                                <label for="validationDefault03" class="form-label" style="color: #000;">Correo electrónico:</label>
+                                <input v-model="data.email" type="email" class="form-control" id="validationDefault03" placeholder="email@ejemplo.com" required>
+                            </div>
+                            <div class="form-floating" style="text-align: center;">
+                                <input class="btn btn-primary contraseña" type="submit" value="Enviar" style="margin-right: .5rem;">
+                                <input class="btn btn-primary contraseña" type="reset" value="Limpiar">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>   
     </main> 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

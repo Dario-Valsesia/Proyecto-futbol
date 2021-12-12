@@ -62,7 +62,32 @@ h2#title{
         transform: translateY(0);
     } 
 }
-
+div.offcanvas-body{
+    background-color: #D8E9A8;
+}
+button#close-nav{
+    margin-right: 1rem;
+    transform: translateY(1.2rem);
+}
+form#form-signin{
+    padding: 1rem;
+    background-color: #4E9F3D;
+    border-radius: 20px;
+}
+input.contraseña{
+    background-color: #D8E9A8;
+    border: none;
+    color: #000;
+}
+input.contraseña:hover{
+    background-color: #D8E9A8;
+    color: #000;
+    font-weight: bold;
+}
+a#cambio-contraseña{
+    color: #fff;
+    text-decoration: none;
+}
 
 @media screen and (max-width: 769px){
     .contenedorForm{

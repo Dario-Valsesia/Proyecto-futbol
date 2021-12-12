@@ -51,6 +51,26 @@ public class ControladorCliente {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
+    @PutMapping("/clientes/olvido-contraseña")
+    public ResponseEntity<Object> cambioContraseña(@RequestParam String email,
+                                                   @RequestParam String contraseña){
+
+        Cliente cliente = repositorioCliente.findByEmail(email);
+
+        if(cliente == null){
+            return new ResponseEntity<>("Usuario no encontrado.", HttpStatus.FORBIDDEN);
+        }
+
+        if(contraseña.length() < 8 || contraseña.length() > 12){
+            return new ResponseEntity<>("La contraseña debe contener entre 8 y 12 caracteres", HttpStatus.FORBIDDEN);
+        }
+
+        cliente.setPassword(passwordEncoder.encode(contraseña));
+
+        repositorioCliente.save(cliente);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
     @GetMapping("/cliente/actual/{id}")
     public ClienteDTO getCliente(@PathVariable Long id){
         return repositorioCliente.findById(id).map(cliente -> new ClienteDTO(cliente)).orElse(null);

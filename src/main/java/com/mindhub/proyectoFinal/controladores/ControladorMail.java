@@ -1,5 +1,7 @@
 package com.mindhub.proyectoFinal.controladores;
 
+import com.mindhub.proyectoFinal.modelos.Cliente;
+import com.mindhub.proyectoFinal.repositorios.RepositorioCliente;
 import com.mindhub.proyectoFinal.servicio.MailServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,6 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class ControladorMail {
     @Autowired
     MailServicio mailServicio;
+
+    @Autowired
+    RepositorioCliente repositorioCliente;
 
     @PostMapping("/mail")
     public ResponseEntity<Object> generarMail(@RequestParam String destino,
@@ -48,5 +53,26 @@ public class ControladorMail {
 
         return new ResponseEntity<>(HttpStatus.OK);
 
+    }
+
+    @PostMapping("/enviar-contraseña")
+    public ResponseEntity<Object> cambioContraseña(@RequestParam String email){
+
+        Cliente cliente = repositorioCliente.findByEmail(email);
+
+        if(cliente == null){
+            return new ResponseEntity<>("Cliente no registrado.", HttpStatus.FORBIDDEN);
+        }
+
+        String asunto1 = "Solicitud de cambio de contraseña";
+
+        String parrafo1 = "Hola, hemos recibido tu solicitud de cambio de contraseña. Sigue el siguiente link para continuar con tu cambio:\n\n";
+        String parrafo2 = "https://localhost:8080/web/recuperar-contraseña.html\n\n";
+        String redesSociales = "Facebook: https://www.facebook.com\n"+"Instragram: https://www.instagram.com\n"+"Whatsapp: 3514526354";
+
+        String cuerpoEmail = parrafo1 + parrafo2 + redesSociales;
+        mailServicio.enviarMail(email, asunto1, cuerpoEmail);
+
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
