@@ -21,11 +21,12 @@
                     <li class="nav-item">
                         <a class="btn btn-primary" role="button" href="home.html" id="navegation" style="margin-right: .3rem;">Inicio</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="btn btn-primary" role="button" href="tienda.html" id="navegation" style="margin-right: .3rem;">Tienda</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-primary" role="button" href="misCompras.html" id="navegation" style="margin-right: .3rem;">Mis Compras</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="" id="navegation" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="margin-right: .3rem;">Tienda</a>
+                        <ul class="dropdown-menu shadow" aria-labelledby="navegation">
+                            <li><a class="dropdown-item" href="tienda.html" id="go-to">Marketplace</a></li>
+                            <li><a class="dropdown-item" href="misCompras.html" id="go-to">Mis compras</a></li>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a class="btn btn-primary" role="button" href="canchasReservas.html" id="navegation" style="margin-right: .3rem;">Reservas</a>
@@ -59,15 +60,22 @@
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" style="width: 280px;">
         <div class="offcanvas-body position-relative" id="body-menu-canvas1">
             <div class="flex-shrink-0 p-3 position-absolute top-0 end-0" style="width: 280px;">
+                <button type="button" class="btn-close text-reset position-absolute top-0 end-0" data-bs-dismiss="offcanvas" aria-label="Close" id="close-nav"></button>
                 <p class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
-                <svg class="bi me-5" width="30" height="24"></svg>
-                <span class="fs-5 fw-semibold">MENU</span></p>
+                    <svg class="bi me-5" width="30" height="24"></svg>
+                    <span class="fs-5 fw-semibold">MENU</span></p>
                 <ul class="list-unstyled ps-0">
                     <li class="mb-1">
                         <a class="nav-link link-dark rounded others" href="home.html">Inicio <img src="../assets/home.png" alt="Home"></a>
                     </li>
                     <li class="mb-1">
-                        <a class="nav-link link-dark rounded others" href="tienda.html">Tienda <img src="../assets/store.png" alt="Store"></a>
+                        <button class="accordion-button align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#payments-collapse" aria-expanded="false" id="button-nav-accordion">Tienda</button>
+                        <div class="collapse" id="payments-collapse">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                <li class="navsider-link"><a href="tienda.html" class="nav-link link-dark rounded others">Marketplace</a></li>
+                                <li class="navsider-link"><a href="misCompras.html" class="nav-link link-dark rounded others">Mis compras</a></li>
+                            </ul>
+                        </div>
                     </li>
                     <li class="mb-1">
                         <a class="nav-link link-dark rounded others" href="canchasReservas.html">Reservas <img src="../assets/reservation.png" alt="Reservation"></a>
@@ -86,7 +94,7 @@
 <!-- Cuerpo de página -->
     <main id="home">
         <h2 class="titulo-oferta">¡Nuestras ofertas del mes!</h1>
-        <div class="container">
+        <div class="container" id="home">
             <div class="row justify-content-center" style="margin: 1.5rem 0 1rem 0;">
                 <div class="col-md-3 position-relative" v-for="producto in filtrarCamiseta">
                     <img src="../assets/hot-price.png" alt="Oferta" id="etiqueta" class="position-absolute top-0 start-50">
@@ -222,7 +230,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="col-md-6 accordion accordion-flush" id="accordionFlushExample" v-if="listaReservas.length > 0">
+                <div class="col-md-6 accordion accordion-flush home-accordion" id="accordionFlushExample" v-if="listaReservas.length > 0">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-headingOne">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">RESERVAS PENDIENTES</button>
@@ -345,7 +353,8 @@
                         <p class="fs-5 fw-semibold" style="text-align: center;">MENÚ PRINCIPAL</p>
                         <ul class="list-unstyled ps-0">
                             <li class="mb-1">
-                                <a class="nav-link" id="footer" href="tienda.html">Tienda</a>
+                                <a class="nav-link" id="footer" href="tienda.html">Marketplace</a>
+                                <a class="nav-link" id="footer" href="misCompras.html">Mis compras</a>
                                 <a class="nav-link" id="footer" href="canchasReservas.html">Reservas</a>
                                 <a class="nav-link" id="footer" href="contacto.html">Contacto</a>
                             </li>

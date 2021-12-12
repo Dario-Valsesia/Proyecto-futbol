@@ -32,7 +32,7 @@ const app = Vue.createApp({
         subscripcion(){
             swal({
                 title: "¡Atención!",
-                text: "¿Estás seguro que quieres subscribirte a nuestro newsletter?",
+                text: "¿Estás seguro/a que quieres subscribirte a nuestro newsletter?",
                 icon: "warning",
                 buttons: [true, "Continuar"]
             })
@@ -52,7 +52,7 @@ const app = Vue.createApp({
         },
         signOut(){
             swal({
-                text: "¿Estás seguro que quieres cerrar su sesión?",
+                text: "¿Estás seguro/a que quieres cerrar su sesión?",
                 icon:"warning",
                 buttons: true
             })

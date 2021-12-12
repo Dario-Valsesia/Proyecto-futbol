@@ -86,6 +86,8 @@ a#navegation{
     background-color: rgb(78, 159, 61, .8);
     width: 6.4rem;
     color: #000;
+    padding: .5rem;
+    text-align: center;
     font-weight: bold;
     font-size: large;
 }
@@ -96,6 +98,16 @@ a#navegation:hover{
 }
 div#body-menu-canvas1{
     background-color: #D8E9A8;
+}
+button#close-nav{
+    margin-right: 1rem;
+    transform: translateY(1.2rem);
+}
+button#button-nav-accordion{
+    background-color: #D8E9A8;
+}
+button#button-nav-accordion:not(.collapsed){
+    background-color: #4E9F3D;
 }
 a.others{
     color: #191A19;
@@ -170,7 +182,7 @@ p#footer-page{
 }
 
 /* HOME */
-
+container
 h2.subtitle{
     margin-bottom: 1rem;
 }
@@ -592,7 +604,7 @@ input#form-cambiar:hover{
     justify-content: center;
     align-items: center;
 }
-.container{
+.container:not(div#home){
     width: 100%;
     padding: 0;
     margin: 0;
@@ -712,7 +724,7 @@ input#form-cambiar:hover{
     align-items: center;
     margin: 2vh;
 }
-.accordion{
+.accordion:not(div.home-accordion){
     width: 50vw;
     margin: 2vh;
 }
