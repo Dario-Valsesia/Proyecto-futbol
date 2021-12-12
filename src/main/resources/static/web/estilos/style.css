@@ -685,7 +685,8 @@ input#form-cambiar:hover{
     height: 4rem;
     margin: auto;
     margin-top: 2rem;
-    padding: 0 7rem;
+    padding: 0;
+    padding-left: 10rem;
     display: flex;
     justify-content: center;
     align-items: center !important;
@@ -696,11 +697,14 @@ input#form-cambiar:hover{
 .divInputBuscar{
     width: 30rem;
     height: 3rem;
+    margin:0 1rem ;
 }
 .buscarProducto input{
     width: 100%;
     height: 100%;
     border: 1px solid #1E5128;
+    margin: 0;
+    padding-left: .5rem;
 }
 .buscarProducto input::placeholder{
     color: #1E5128;
@@ -918,9 +922,20 @@ input#form-cambiar:hover{
     }
     .buscarProducto{
         padding: 0;
+        flex-direction: column;
+        align-items: center;
+        height: 12rem !important;
+        justify-content: space-between;
     }
-    .buscarProducto input{
-        width: 16rem;
+    .divInputBuscar{
+        width: 100% !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+    #busqueda{
+        width: 100%;
+        margin: 0 !important;
+        margin: .2rem 0;
     }
     .contenedorTarjetasYFiltro{
         flex-direction: column;
