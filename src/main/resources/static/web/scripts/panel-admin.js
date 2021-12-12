@@ -154,7 +154,7 @@ const app = Vue.createApp({
         },
 
         guardarModificacion(){
-            axios.put('http://localhost:8080/api/productos/modificar',`id=${this.idProducto}&nombreProducto=${this.descripcionProducto}&
+            axios.put('/api/productos/modificar',`id=${this.idProducto}&nombreProducto=${this.descripcionProducto}&
             costoProducto=${this.costo}&porcentajeGanancia=${this.porcentajeGanancia}&stockProducto=${this.stock}&
             tallesProducto=${this.tallesProducto}&imagenProducto=${this.imagenProducto}`,
             {headers:{'content-type':'application/x-www-form-urlencoded'}})
@@ -167,7 +167,7 @@ const app = Vue.createApp({
         },
 
         eliminarProducto(){
-            axios.put('http://localhost:8080/api/productos/eliminar',`id=${this.idProducto}`,
+            axios.put('/api/productos/eliminar',`id=${this.idProducto}`,
             {headers:{'content-type':'application/x-www-form-urlencoded'}})
             .then(response => {
                 console.log(response.data)
