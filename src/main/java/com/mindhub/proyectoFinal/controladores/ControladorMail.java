@@ -25,8 +25,8 @@ public class ControladorMail {
                                               @RequestParam String nombreUsuario){
         String asunto = "Subscripción a Ball D`or";
         String primerParrafo = "¡Hola, "+nombreUsuario+"!, gracias por unirte a nuestro equipo.\n\n";
-        String segundoParrafo = "Ball d`or es una empresa deportiva dedicada a la organización de torneos de fútbol y a la venta de artículos deportivos en general. En nuestras newsletters recibirás información actualizada respecto a ofertas y promociones de nuestro Marketplace y de nuestros servicios.\n\n";
-        String tercerParrafo = "En Ball d`or nos interesa conocerte más y que nos des una opinión sobre nuestros productos y servicios, es por eso que dejamos nuestras redes sociales para que interactues con nosotros y satisfacer cada una de las necesidades de quienes forman parte de este gran equipo.\n\n";
+        String segundoParrafo = "Ball D`or es una empresa deportiva dedicada a la organización de torneos de fútbol y a la venta de artículos deportivos en general. En nuestras newsletters recibirás información actualizada respecto a ofertas y promociones de nuestro Marketplace y de nuestros servicios.\n\n";
+        String tercerParrafo = "En Ball D`or nos interesa conocerte más y que nos des una opinión sobre nuestros productos y servicios, es por eso que dejamos nuestras redes sociales para que interactues con nosotros y satisfacer cada una de las necesidades de quienes forman parte de este gran equipo.\n\n";
         String redesSociales = "Facebook: https://www.facebook.com\n"+"Instragram: https://www.instagram.com\n"+"Whatsapp: 3514526354";
         String text = primerParrafo+segundoParrafo+tercerParrafo+redesSociales;
         mailServicio.enviarMail(destino,asunto,text);

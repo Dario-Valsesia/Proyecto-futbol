@@ -96,7 +96,12 @@ public class ControladorCancha {
 
 
     @DeleteMapping("/reservas/{id}")
-    public ResponseEntity<Object> cancelarReserva(@PathVariable Long id){
+    public ResponseEntity<Object> cancelarReserva(@PathVariable Long id, Authentication authentication){
+
+        if(repositorioReserva.findById(id).orElse(null).getCliente().getEmail() != authentication.getName()){
+
+            return new ResponseEntity<>("Esta reserva no le pertenece al cliente actual", HttpStatus.FORBIDDEN);
+        }
 
         Reserva reserva = repositorioReserva.findById(id).orElse(null);
 

@@ -69,7 +69,7 @@ const app = Vue.createApp({
             const urlParams = new URLSearchParams(window.location.search);
             this.clienteID = urlParams.get("id");
 
-            axios.get(`/api/cliente/actual/${this.clienteID}`)
+            axios.get("/api/cliente/actual")
             .then(response => {
                 this.data.firstName = response.data.firstName
                 this.data.lastName = response.data.lastName

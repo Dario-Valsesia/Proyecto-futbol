@@ -28,21 +28,21 @@
             <!-- SELECCIÓN DE ACCIÓN -->
             <section v-if="modificarOAgregarProducto === '' && panelPrincipal === false" class="d-flex flex-row flex-wrap justify-content-evenly">
                 <h2 class="fs-5 col-12 text-center mb-5">Elija una opción</h2>
-                <div class="d-flex align-items-center justify-content-between col-10 col-md-5 gray_background p-3 mb-4 rounded">
-                    <label for="nuevoProducto" class="pointer">Agregar nuevo producto</label>
+
+                    <label for="nuevoProducto" class="d-flex align-items-center justify-content-between col-10 col-md-5 gray_background border borde_celeste p-3 mb-4 rounded pointer">
+                        <span>Agregar nuevo producto</span><span><i class="bi bi-plus-circle fs-3 text-success"></i></span>
+                    </label>
                     <input v-model="modificarOAgregarProducto" type="radio" id="nuevoProducto" class="d-none" value="nuevoProducto">
-                    <i class="bi bi-plus-circle fs-3 text-success"></i>
-                </div>
-                <div class="d-flex align-items-center justify-content-between col-10 col-md-5 gray_background p-3 mb-4 rounded">
-                    <label for="modificarProducto" class="pointer">Modificar características de producto existente</label>
+
+                    <label for="modificarProducto" class="d-flex align-items-center justify-content-between col-10 col-md-5 gray_background border borde_celeste p-3 mb-4 rounded pointer">
+                        <span>Modificar características de producto existente</span><span><i class="bi bi-search fs-3 col-3 text-end text-primary"></i></span>
+                    </label>
                     <input v-model="modificarOAgregarProducto" type="radio" id="modificarProducto" class="d-none" value="modificarProducto">
-                    <i class="bi bi-search fs-3 col-3 text-end text-primary"></i>
-                </div>
-                <div class="d-flex align-items-center justify-content-between col-10 col-md-5 gray_background p-3 mb-4 rounded">
-                    <label for="eliminarProducto" class="pointer">Eliminar producto de la tienda</label>
+
+                    <label for="eliminarProducto" class="d-flex align-items-center justify-content-between col-10 col-md-5 gray_background border borde_celeste p-3 mb-4 rounded pointer">
+                        <span>Eliminar producto de la tienda</span><span><i class="bi bi-x-circle fs-3 col-3 text-end text-danger"></i></span>
+                    </label>
                     <input v-model="modificarOAgregarProducto" type="radio" id="eliminarProducto" class="d-none" value="eliminarProducto">
-                    <i class="bi bi-x-circle fs-3 col-3 text-end text-danger"></i>
-                </div>
             </section>
             <!-- ------------------ -->
 
@@ -51,33 +51,30 @@
                 <!-- SELECCIÓN TIPO DE PRODUCTO -->
             <section v-if="modificarOAgregarProducto === 'nuevoProducto' && nombreProducto === ''" class="d-flex flex-wrap justify-content-around mt-4 mb-3">
                 <h2 class="fs-5 col-12 text-center mb-3 mb-md-4 mb-lg-5">Seleccione la clase de producto que desea agregar</h2>
-                <div class="d-flex align-items-center justify-content-around col-6 col-md-4 col-lg-3 gray_background text-center p-3 rounded m-3">
-                    <label for="botin" class="pointer">Botín</label>
+
+                    <label for="botin" class="d-flex align-items-center justify-content-around col-6 col-md-4 col-lg-3 gray_background border borde_celeste text-center p-3 rounded m-3 pointer">Botín</label>
                     <input v-model="nombreProducto" type="radio" id="botin" value="Botin" class="d-none">
-                </div>
-                <div class="d-flex align-items-center justify-content-around col-6 col-md-4 col-lg-3 gray_background text-center p-3 rounded m-3">
-                    <label for="camiseta" class="pointer">Camiseta</label>
+
+                    <label for="camiseta" class="d-flex align-items-center justify-content-around col-6 col-md-4 col-lg-3 gray_background border borde_celeste text-center p-3 rounded m-3 pointer">Camiseta</label>
                     <input v-model="nombreProducto" type="radio" id="camiseta" value="Camiseta" class="d-none">
-                </div>
-                <div class="d-flex align-items-center justify-content-around col-6 col-md-4 col-lg-3 gray_background text-center p-3 rounded m-3">
-                    <label for="medias" class="pointer">Medias</label>
+
+
+                    <label for="medias" class="d-flex align-items-center justify-content-around col-6 col-md-4 col-lg-3 gray_background border borde_celeste text-center p-3 rounded m-3 pointer">Medias</label>
                     <input v-model="nombreProducto" type="radio" id="medias" value="Medias" class="d-none">
-                </div>
-                <div class="d-flex align-items-center justify-content-around col-6 col-md-4 col-lg-3 gray_background text-center p-3 rounded m-3">
-                    <label for="pelota" class="pointer">Pelota</label>
+
+                    <label for="pelota" class="d-flex align-items-center justify-content-around col-6 col-md-4 col-lg-3 gray_background border borde_celeste text-center p-3 rounded m-3 pointer">Pelota</label>
                     <input v-model="nombreProducto" type="radio" id="pelota" value="Pelota" class="d-none">
-                </div>
-                <div class="d-flex align-items-center justify-content-around col-6 col-md-4 col-lg-3 gray_background text-center p-3 rounded m-3">
-                    <label for="short" class="pointer">Short</label>
+
+                    <label for="short" class="d-flex align-items-center justify-content-around col-6 col-md-4 col-lg-3 gray_background border borde_celeste text-center p-3 rounded m-3 pointer">Short</label>
                     <input v-model="nombreProducto" type="radio" id="short" value="Short" class="d-none">
-                </div>
+
             </section>
                 <!-- --------------------------- -->
 
                 <!-- FORMULARIO DATOS DEL PRODUCTO -->
             <section v-if="nombreProducto != '' && modificarOAgregarProducto === 'nuevoProducto'" class="d-flex flex-column align-items-center mb-4">
                 <h2 class="fs-5 mb-4 mb-lg-5 text-center">Complete todos los campos para registrar el producto</h2>
-                <form class="d-flex flex-column col-8 col-md-7 gray_background p-3 rounded col-11">
+                <form class="d-flex flex-column col-8 col-md-7 gray_background border borde_celeste p-3 rounded col-11">
 
                     <label for="marca" class="fs-5 mb-1">Marca</label>
                     <input v-model="marca" class="mb-3 px-1" type="text" id="marca" placeholder="Nike">
@@ -107,7 +104,7 @@
                     <fieldset v-if="nombreProducto === 'Camiseta' || nombreProducto === 'Short'">
                         <legend class="fs-5 mt-3 col-12">¿De qué equipo es el producto?</legend>
                         <label for="equipo"></label>
-                        <input v-model="equipoProducto" class="mb-3 col-12 px-1" type="text" id="equipo">
+                        <input v-model="equipoProducto" class="mb-3 col-12 px-1" type="text" id="equipo" placeholder="Chacarita">
                     </fieldset>
                     
                     <fieldset v-if="nombreProducto === 'Botin'">
@@ -138,21 +135,21 @@
                 <h2 v-if="modificarOAgregarProducto === 'eliminarProducto'" class="mb-5">Elegir producto a eliminar</h2>
                 <!-- <label for="searcher">Buscador</label>
                 <input type="search" id="searcher" class="col-4"> -->
-                <table class="text-white text-center col-11">
+                <table class="text-white text-center col-11 gray_background rounded border borde_celeste mb-4">
                     <tr class="border border-top-0 border-start-0 border-end-0">
                         <th class="pb-2 col-3 col-md-2">Producto</th>
                         <th class="pb-2">Marca</th>
-                        <th class="d-none d-md-table-cell pb-2">Costo</th>
-                        <th class="d-none d-md-table-cell pb-2 col-1">Precio</th>
-                        <th class="d-none d-md-table-cell pb-2">Talle</th>
-                        <th class="d-none d-md-table-cell pb-2">Tipo</th>
-                        <th class="d-none d-md-table-cell pb-2">Equipo</th>
-                        <th class="pb-2 col-lg-1">Stock</th>
-                        <th v-if="modificarOAgregarProducto === 'modificarProducto'" class="pb-2">Editar</th>
-                        <th v-if="modificarOAgregarProducto === 'eliminarProducto'" class="pb-2">Eliminar</th>
+                        <th class="d-none d-md-table-cell py-2">Costo</th>
+                        <th class="d-none d-md-table-cell py-2 col-1">Precio</th>
+                        <th class="d-none d-md-table-cell py-2">Talle</th>
+                        <th class="d-none d-md-table-cell py-2">Tipo</th>
+                        <th class="d-none d-md-table-cell py-2">Equipo</th>
+                        <th class="pb-y col-lg-1">Stock</th>
+                        <th v-if="modificarOAgregarProducto === 'modificarProducto'" class="py-2">Editar</th>
+                        <th v-if="modificarOAgregarProducto === 'eliminarProducto'" class="py-2">Eliminar</th>
                     </tr>
                     <tr v-for="producto in tablaProductos" class="border border-top-0 border-start-0 border-end-0">
-                        <td class="text-start py-2 ps-1">{{producto.nombreProducto}}</td>
+                        <td class="text-start py-2 ps-2">{{producto.nombreProducto}}</td>
                         <td>{{producto.marca}}</td>
                         <td class="d-none d-md-table-cell">${{producto.costo}}</td>
                         <td class="d-none d-md-table-cell">${{producto.precio}}</td>
@@ -170,7 +167,7 @@
                 <!-- FORMULARIO MODIFICACION PRODUCTO -->
             <section v-if="buscarProductoModificar.length > 0" class="d-flex flex-column align-items-center mb-4">
                 <h2 class="fs-5 mb-4 mb-lg-5 text-center">Haga cambios <span class="text-warning">SOLO</span> en los campos que desee modificar</h2>
-                <form class="d-flex flex-column col-8 col-md-7 gray_background p-3 rounded col-11">
+                <form class="d-flex flex-column col-8 col-md-7 gray_background border borde_celeste p-3 rounded col-11">
 
                     <legend class="fs-5">¿Desea cambiar el nombre del producto en la tienda?</legend>
                     <label for="nombreProducto"></label>

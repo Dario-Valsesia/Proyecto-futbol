@@ -93,13 +93,13 @@ const app = Vue.createApp({
                     "stock": this.stock,
                     "marca": this.marca,
                     "talle": this.tallesProducto,
-                    "urlImg": this.imagenProducto,
+                    "url": this.imagenProducto,
                     "equipo": this.equipoProducto,
                     "tipo": this.tipoProducto
                 })
                 .then(response => {
                     swal({
-                        text: "Producto agregado a la tienda",
+                        text: response.data,
                         icon: "success",
                         button: false,
                     })
@@ -109,7 +109,7 @@ const app = Vue.createApp({
                 })
                 .catch(error => {
                     swal({
-                        text: (error.response.data),
+                        text: error.response.data,
                         timer: 3000,
                         icon: "error"
                     })
@@ -159,10 +159,21 @@ const app = Vue.createApp({
             tallesProducto=${this.tallesProducto}&imagenProducto=${this.imagenProducto}`,
             {headers:{'content-type':'application/x-www-form-urlencoded'}})
             .then(response => {
-                console.log(response.data)
+                swal({
+                    text: "Producto modificado con éxito",
+                    icon: "success",
+                    button: false,
+                })
+                setTimeout(function () {
+                    location.reload()
+                }, 2500)
             })
             .catch(error => {
-                console.log(error.response.data)
+                swal({
+                    text: error.response.data,
+                    icon: "error",
+                    button: false,
+                })
             })
         },
 
@@ -170,10 +181,21 @@ const app = Vue.createApp({
             axios.put('/api/productos/eliminar',`id=${this.idProducto}`,
             {headers:{'content-type':'application/x-www-form-urlencoded'}})
             .then(response => {
-                console.log(response.data)
+                swal({
+                    text: "Producto eliminado de la tienda",
+                    icon: "success",
+                    button: false,
+                })
+                setTimeout(function () {
+                    location.reload()
+                }, 2500)
             })
             .catch(error => {
-                console.log(error.response.data)
+                swal({
+                    text: error.response.data,
+                    icon: "error",
+                    button: false,
+                })
             })
         },
 

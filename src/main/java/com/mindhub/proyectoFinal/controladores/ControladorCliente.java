@@ -11,6 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @RestController
@@ -71,10 +72,10 @@ public class ControladorCliente {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping("/cliente/actual/{id}")
+    /*@GetMapping("/cliente/actual/{id}")
     public ClienteDTO getCliente(@PathVariable Long id){
         return repositorioCliente.findById(id).map(cliente -> new ClienteDTO(cliente)).orElse(null);
-    }
+    }*/
 
     @PutMapping("/cliente/actual/personal")
     public ResponseEntity<Object> cambioDatos(

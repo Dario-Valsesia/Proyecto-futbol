@@ -12,7 +12,10 @@
     min-height: 100vh;
 }
 .gray_background{
-    background-color: #262626;
+    background-color: #122234;
+}
+.borde_celeste{
+    border-color: #409eff !important;
 }
 .pointer{
     cursor: pointer;

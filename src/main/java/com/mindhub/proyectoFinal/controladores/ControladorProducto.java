@@ -81,7 +81,7 @@ public class ControladorProducto {
             Producto producto = new Camiseta(name,nombreProducto,precioCosto,precioCosto+((porcentajeGanacia*precioCosto)/100),stock,marca,talles,url,equipo);
             repositorioProducto.save(producto);
         }
-        if (name.equals("Media")){
+        if (name.equals("Medias")){
             Producto producto = new Medias(name,nombreProducto,precioCosto,precioCosto+((porcentajeGanacia*precioCosto)/100),stock,marca,talles,url);
             repositorioProducto.save(producto);
         }
