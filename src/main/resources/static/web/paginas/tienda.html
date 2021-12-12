@@ -4,223 +4,241 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marketplace</title>
+    <title>Tienda</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="..favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../estilos/style.css">
 </head>
 <body>
-<!-- Encabezado de página -->
-<div id="app" v-cloak>
-    <header class="row g-0" id="webPages">
-        <nav class="navbar navbar-expand-lg col-4">
-            <a href="home.html"><img src="../assets/logo.png" alt="Logo" id="logo"></a>
-            <div class="collapse navbar-collapse navbar-3" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="btn btn-primary" role="button" href="home.html" id="navegation" style="margin-right: .3rem;">Inicio</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="" id="navegation" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="margin-right: .3rem;">Tienda</a>
-                        <ul class="dropdown-menu shadow" aria-labelledby="navegation">
-                            <li><a class="dropdown-item" href="tienda.html" id="go-to">Marketplace</a></li>
-                            <li><a class="dropdown-item" href="misCompras.html" id="go-to">Mis compras</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-primary" role="button" href="canchasReservas.html" id="navegation" style="margin-right: .3rem;">Reservas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-primary" role="button" href="contacto.html" id="navegation">Contacto</a>
-                    </li>
+    <!-- Encabezado de página -->
+    <div id="app" v-cloak>
+        <header class="row g-0" id="webPages">
+            <nav class="navbar navbar-expand-lg col-4">
+                <a href="home.html"><img src="../assets/logo.png" alt="Logo" id="logo"></a>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="btn btn-primary" role="button" href="home.html" id="navegation" style="margin-right: .3rem;">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-primary" role="button" href="tienda.html" id="navegation" style="margin-right: .3rem;">Tienda</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-primary" role="button" href="canchasReservas.html" id="navegation" style="margin-right: .3rem;">Reservas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-primary" role="button" href="contacto.html" id="navegation">Contacto</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="col-5 align-self-center">
+                <h1 id="name-title">BALL d'or</h1>
+            </div>
+            <div class="col-3 align-self-center header">
+                <a href="" class="d-block link-light text-decoration-none" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false" style="float: right; margin-left: .5rem;"><div id="avatar"></div></a>
+                <a class="d-block text-decoration-none" id="name-profile">{{datosCliente.firstName}} {{datosCliente.lastName}}</a>
+                <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+                    <li><a class="dropdown-item" id="go-to" href="">Perfil</a></li>
+                    <li><a class="dropdown-item" id="go-to" :href="'configuracion.html?id=' + datosCliente.id">Configuración</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" id="go-to" href="" @click.prevent="signOut">Cerrar sesión <img src="../assets/logout.png" alt="Sign out"></a></li>
                 </ul>
+            </div>
+        </header>
+        <!-- Barra de navegación -->
+        <nav class="navbar navbar-expand-lg" id="navbar-1">
+            <div class="container-fluid d-flex flex-row-reverse">
+                <button class="btn btn-primary navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" id="menu"><span class="menu">&equiv;</span></button>
             </div>
         </nav>
-        <div class="col-5 align-self-center">
-            <h1 id="name-title">Ball D'or</h1>
-        </div>
-        <div class="col-3 align-self-center header">
-            <a href="" class="d-block link-light text-decoration-none" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false" style="float: right; margin-left: .5rem;"><div id="avatar"></div></a>
-            <a class="d-block text-decoration-none" id="name-profile">{{datosCliente.firstName}} {{datosCliente.lastName}}</a>
-            <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-                <li><a class="dropdown-item" id="go-to" href="">Perfil</a></li>
-                <li><a class="dropdown-item" id="go-to" :href="'configuracion.html?id=' + datosCliente.id">Configuración</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" id="go-to" href="" @click.prevent="signOut">Cerrar sesión <img src="../assets/logout.png" alt="Sign out"></a></li>
-            </ul>
-        </div>
-    </header>
-<!-- Barra de navegación -->
-    <nav class="navbar navbar-expand-lg" id="navbar-1">
-        <div class="container-fluid d-flex flex-row-reverse">
-            <button class="btn btn-primary navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" id="menu"><span class="menu">&equiv;</span></button>
-        </div>
-    </nav>
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" style="width: 280px;">
-        <div class="offcanvas-body position-relative" id="body-menu-canvas1">
-            <div class="flex-shrink-0 p-3 position-absolute top-0 end-0" style="width: 280px;">
-                <button type="button" class="btn-close text-reset position-absolute top-0 end-0" data-bs-dismiss="offcanvas" aria-label="Close" id="close-nav"></button>
-                <p class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" style="width: 280px;">
+            <div class="offcanvas-body position-relative" id="body-menu-canvas1">
+                <div class="flex-shrink-0 p-3 position-absolute top-0 end-0" style="width: 280px;">
+                    <p class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
                     <svg class="bi me-5" width="30" height="24"></svg>
                     <span class="fs-5 fw-semibold">MENU</span></p>
-                <ul class="list-unstyled ps-0">
-                    <li class="mb-1">
-                        <a class="nav-link link-dark rounded others" href="home.html">Inicio <img src="../assets/home.png" alt="Home"></a>
-                    </li>
-                    <li class="mb-1">
-                        <button class="accordion-button align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#payments-collapse" aria-expanded="false" id="button-nav-accordion">Tienda</button>
-                        <div class="collapse" id="payments-collapse">
-                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li class="navsider-link"><a href="tienda.html" class="nav-link link-dark rounded others">Marketplace</a></li>
-                                <li class="navsider-link"><a href="misCompras.html" class="nav-link link-dark rounded others">Mis compras</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="mb-1">
-                        <a class="nav-link link-dark rounded others" href="canchasReservas.html">Reservas <img src="../assets/reservation.png" alt="Reservation"></a>
-                    </li>
-                    <li class="mb-1">
-                        <a class="nav-link link-dark rounded others" href="contacto.html">Contacto <img src="../assets/contact.png" alt="Contact"></a>
-                    </li>
-                    <li class="border-top my-3"></li>
-                    <li class="mb-1">
-                        <a class="nav-link link-dark rounded others" href="" @click.prevent="signOut">Cerrar sesión <img src="../assets/logout.png" alt="Sign out"></a>
-                    </li>
-                </ul>
+                    <ul class="list-unstyled ps-0">
+                        <li class="mb-1">
+                            <a class="nav-link link-dark rounded others" href="home.html">Inicio <img src="../assets/home.png" alt="Home"></a>
+                        </li>
+                        <li class="mb-1">
+                            <a class="nav-link link-dark rounded others" href="tienda.html">Tienda <img src="../assets/store.png" alt="Store"></a>
+                        </li>
+                        <li class="mb-1">
+                            <a class="nav-link link-dark rounded others" href="canchasReservas.html">Reservas <img src="../assets/reservation.png" alt="Reservation"></a>
+                        </li>
+                        <li class="mb-1">
+                            <a class="nav-link link-dark rounded others" href="contacto.html">Contacto <img src="../assets/contact.png" alt="Contact"></a>
+                        </li>
+                        <li class="border-top my-3"></li>
+                        <li class="mb-1">
+                            <a class="nav-link link-dark rounded others" href="" @click.prevent="signOut">Cerrar sesión <img src="../assets/logout.png" alt="Sign out"></a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-<!-- Cuerpo de página -->
-        <main id="pages">
+        <!-- Cuerpo de página -->
+        <main>
             <div class="d-flex justify-content-center">
                 <div class="contenedorTiendaHeader col-12 mx-2 pt-5 text-center align-items-center text-white">
                     <h1 class="tituloTienda display-4 fw-normal my-5 pb-2 pt-5">¡Nuestra Tienda!</h1>
-                    <p class="parraffoTienda col-12 text-justify">En nuestro catálogo encontraras los articulos que estas buscando para
-                        para realizar el deporte que más te gusta.
+                    <p class="parraffoTienda col-12 text-justify">En nuestro catálogo encontraras los articulos que estas buscando parapara realizar el deporte que más te gusta.
                     </p>
                 </div>
             </div>
-            <form class="row justify-content-between pt-3 sticky-top bg-white">
-                <div class="col-md-6 align-self-start" id="search">
+            <form class="d-flex align-items-center  bg-white buscarProducto">
+                <div class="contenedorFiltroPrecio d-flex justify-content-center">
+                    <div class="contenedorInputPrecio text-center">
+                        <input v-model="filtroPrecio" class="d-none" type="radio" id="menorPrecio" name="precio" value="menor">
+                        <label for="menorPrecio">Menor precio</label>
+                    </div>
+                    <div class="contenedorInputPrecio text-center">
+                        <input v-model="filtroPrecio" class="d-none" type="radio" id="mayorPrecio"  name="precio" value="mayor">
+                        <label for="mayorPrecio">Mayor precio</label>
+                    </div>
+
+                </div>
+                <div id="search" class="divInputBuscar mx-5">
                     <label for="busqueda" class="visually-hidden"></label>
                     <input type="text" class="form-control" id="busqueda" placeholder="Buscar producto" v-model="busqueda">
                 </div>
-                <button class="btn col-md-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRightCompra"
+                <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRightCarrito"
                     aria-controls="offcanvasRight">
                     <i class="fas fa-shopping-bag shopping-bag"></i>
                 </button>
             </form>
 
-            <div class="album py-5 bg-light">
-                <div class="container">
-                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                        <div class="col" v-for="producto in busquedaProductos" class="tamano-card">
-                            <div class="card shadow-sm">
-                                <img v-bind:src="producto.urlImg" alt="imagen de producto" class="img-producto">
-                                
-                                <div class="card-body">
-                                    <h6 v-cloak>{{producto.nombreProducto}}</h6>
-                                    <p class="card-text" v-cloak>{{}}</p>
-                                </div>
-                                <div class="talle">
-                                    <select class="form-select form-select-lg mb-1" aria-label=".form-select-lg example">
-                                        <option selected>Seleccione su talle</option>
-                                        <option v-for="talle in producto.talle" value="talle">{{talle}}</option>                                        
-                                    </select>                                      
-                                </div>
-                                <div class="d-column justify-content-around align-items-center pb-4">
-                                    <span class="d-flex justify-content-around align-items-center">
-                                        <p> Stock: {{producto.stock}}</p>
-                                        <p> Precio Unitario: ${{producto.precio}}</p>
-                                    </span>
-                                    <div class="d-flex justify-content-around align-items-center">
-                                        <button type="button" class="btn btn-dark" @click="agregarAlCarrito(producto)">Agregar</button>
-
-                                        <button type="button" class="btn btn-dark">Quitar</button>
+            <div class="contenedorTarjetasYFiltro d-flex">
+                <div class="contenedorFiltros d-flex flex-column justify-content-between align-items-center pt-5">
+                    <div class="contenedorCheckbox mt-4">
+                        <input class="d-none" v-model="filtroProductos" value="Botin" type="checkbox" id="botines">
+                        <label for="botines">Botines</label>
+                    </div>
+                    <div class="contenedorCheckbox">
+                        <input class="d-none" v-model="filtroProductos" value="Camiseta" type="checkbox" id="camisetas">
+                        <label for="camisetas">Camisetas</label>
+                    </div>
+                    <div class="contenedorCheckbox">
+                        <input class="d-none" v-model="filtroProductos" value="Pelota" type="checkbox" id="pelotas">
+                        <label for="pelotas">Pelotas</label>
+                    </div>
+                    <div class="contenedorCheckbox">
+                        <input class="d-none" v-model="filtroProductos" value="Short" type="checkbox" id="short">
+                        <label for="short">Short</label>
+                    </div>
+                    <div class="contenedorCheckbox">
+                        <input class="d-none" v-model="filtroProductos" value="Medias" type="checkbox" id="medias">
+                        <label for="medias">Medias</label>
+                    </div>
+                </div>
+                <div class="album d-flex justify-content-center">
+                    <div class="container d-flex">
+                            <div v-for="producto in FiltroDeProductos" class="tamano-card">
+                                <div class="card shadow-sm">
+                                    <img v-bind:src="producto.urlImg" alt="imagen de producto" class="img-producto">                               
+                                    <h6 v-cloak class="text-center">{{producto.nombreProducto}}</h6>
+                                    <div class="d-flex flex-column justify-content-around align-items-center pb-1">                         
+                                        <select @click="obtenerTalle" class="selectTalle">
+                                            <option selected>Seleccione su talle</option>
+                                            <option v-for="talle in producto.talle" :value="talle">{{talle}}</option>                                        
+                                        </select>                                                     
+                                        <div class="d-flex justify-content-around w-100 align-items-center">
+                                                <p> Stock: {{producto.stock}}</p>
+                                                <p> Precio Unitario: ${{producto.precio}}</p>
+                                        </div>
+                                        <div class="d-flex justify-content-around align-items-center">
+                                            <button type="button" :value="producto.id" class="btn btn-dark" @click="agregarCarrito">Agregar
+                                                
+                                            </button>
+                                        </div>
                                     </div>
-
                                 </div>
                             </div>
-                        </div>
+                            <h5 v-if="noExiste" class="text-danger">No tenemos {{busqueda}}</h5>
+                    </div>
+                    
 
-                    </div>
-                </div>
-                <div v-if="existeProd" class="row justify-content-around">
-                    <div class="card shadow-sm">
-                        <p class="col-sm-12 col-md-10 text-center mt-5">No tenemos {{busqueda}}</p>
-                    </div>
                 </div>
             </div>
+            
 
             
             <!-- carrito de compras -->
-            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRightCompra" aria-labelledby="offcanvasRightLabel">
-                <div class="offcanvas-header">
-                    <h4 id="offcanvasRightLabel" v-if="carrito.length==0" class="col-12 text-center">Tu carrito está vacío</h4>
-                    <h4 id="offcanvasRightLabel" v-else class="col-12 text-center">Tu carrito</h4>
-                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRightCarrito" aria-labelledby="offcanvasRightLabel">
+                <div class="offcanvas-header headerCarrito">
+                  <h5 v-if="carrito.length>0" id="offcanvasRightLabel">Tu carrito</h5>
+                  <h5 v-else id="offcanvasRightLabel">Tu carrito está vacío</h5>
+                  <button ref="cerrar" type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
-                <div class="offcanvas-body">
-                    <div id="offcanvasRightLabel" v-if="carrito.length==0" class="col-12 row justify-content-center">
-                        <img src="../assets/carrito-triste.png" alt="icono carrito triste"
-                            class="carrito-miniatura col-8">
+                <div v-if="carrito.length==0" class="offcanvas-body d-flex justify-content-center align-items-center">
+                   <img class="imgCarrito" src="../assets/carrito-triste.png" alt="Carrito triste"> 
+                </div>
+                <div v-else class="offcanvas-body d-flex flex-column bodyCarrito">
+                    <div v-for="producto in carrito" class="contenedorProductoCarrito d-flex justify-content-between mb-3">
+                        <div class="contenedorImgProductoCarrito">
+                            <img :src="producto.url" alt="Imagen del producto">
+                        </div>
+                        <div class="contenedorInfoProductoCarrito">
+                            <h6>{{producto.nombreProducto}}</h6>
+                            <div class="d-flex justify-content-between">
+                                <p class="m-0">Unidades: {{producto.cantidad}}</p>
+                                <p class="m-0">Talle: {{producto.talleSeleccionado}}</p>
+                            </div>
+                        </div>
+                        <div class="contenedorBtnEliminar d-flex flex-column">
+                            <p class="m-0">Subtotal: ${{subtotal(producto)}}</p>
+                            <button @click="quitarCarrito" :value="producto.id" :data-id="producto.talleSeleccionado" class="btn btn-danger">Eliminar unidad</button>
+                        </div>
                     </div>
-                    <div v-if="!carrito.length==0">
-                        <div class="contenedor" v-for="producto in carrito">
-                            <div class="item-1 align-middle text-wrap">{{producto.nombreProducto}} Talle: {{producto.talle}}</div>
-                            <div class="item-2">Unidades: {{producto.cantidad}}</div>
-                            <div class="item-3"><button class="btn btn-dark btn-block btn-miniatura" @click="quitarUnidadDelCarrito(producto)">Eliminar Unidad</button></div>
-                            <div class="item-4 align-middle">Subtotal</div>
-                            <div class="item-5 align-middle">${{subtotal(producto)}}</div>
-                        </div>
-                        <div class="row justify-content-between">
-                            <p class="col-6 text-right">Total productos: {{totalProductosCarrito}}</p>
-                            <p class="col-6 text-right">Precio total: ${{precioTotal}}</p>
-                        </div>
-                        <div class="d-flex justify-content-around">
-                            <button class="btn btn-danger" @click="vaciarCarrito">Vaciar</button>
-                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Comprar</button>
-                        </div>
+                    <div class="contenedorTotalCarrito d-flex w-100 justify-content-around">
+                        <h5>Productos totales: {{totalProductosCarrito}}</h5>
+                        <h5>Precio total: ${{precioTotal}}</h5>
+                    </div>
+                    <div class="contenedorComprarCarrito mt-3 d-flex w-100 justify-content-around">
+                        <button @click="vaciarCarrito" class="btn btn-danger">Vaciar</button>
+                        <button @click="mostrarDatosTarjeta" class="btn btn-primary btnComprar">Comprar</button>
                     </div>
                 </div>
             </div>
-            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h3 class="modal-title" id="staticBackdropLabel">Medio de Pago</h3>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div v-if="verDatosTarjeta" class="contenedorPrincipalModal"> 
+                <div  class="contenedorModalAnimacion">
+                    <div class="contenedorDatosTarjeta">
+                        <h5 class="text-center mb-3">Datos de la tarjeta</h5>
+                        <div class="contenedorInputDatos d-flex justify-content-between align-items-center my-2">
+                            <label for="numTarjeta">Número de tarjeta</label>
+                            <input v-model="numeroDeTarjeta" type="text" id="numTarjeta" placeholder="0000-0000-0000-0000">
+                        </div>
+                        <div class="contenedorInputDatos d-flex justify-content-between align-items-center my-2">
+                            <label for="titular">Titular</label>
+                            <input v-model="titularTarjeta" type="text" id="titular" placeholder="Nombre Apellido">
+                        </div>
+                        <div class="contenedorInputDatos d-flex justify-content-between align-items-center my-2">
+                            <label for="vencimiento">Vencimiento</label>
+                            <input v-model="vencimiento" type="text" id="vencimiento" placeholder="2000-12">
+                        </div>
+                        <div class="contenedorInputDatos d-flex justify-content-between align-items-center my-2">
+                            <label for="cvv">Codigo Seguridad</label>
+                            <input v-model="cvc" type="number" id="cvv" placeholder="123">
+                        </div>
+                        <div class="contenedorInputDatos d-flex justify-content-between align-items-center my-2">
+                            <p v-if="mensajeCorrecto.length>0" class="m-0 text-center">{{mensajeCorrecto}}</p>
+                            <p v-if="errorMensaje.length>0" class="m-0 text-danger text-center">{{errorMensaje}}</p>
+                        </div>
+                        <div class="contenedorInputDatos d-flex justify-content-center align-items-center mt-4">
+                            <button @click="cancelarCompra" class="btn btn-primary mx-2">Cancelar</button>
+                            <button @click="comprarProductos" class="btn btn-primary mx-2">Comprar</button>
+                        </div>
+                        
                     </div>
-                    <div class="modal-body">
-                        <form action="">
-                            <div class="d-flex justify-content-center">
-                                <h4>Datos de la tarjeta</h4>
-                            </div>
-                            <div class="pt-2 d-flex justify-content-between ps-3 pe-5">
-                                <label class="pe-2" for="tarjeta">Número de tarjeta: </label>
-                                <input type="text" name="tarjeta" id="tarjeta" v-model="numeroDeTarjeta">
-                            </div>
-                            <div class="pt-2 d-flex justify-content-between ps-3 pe-5">
-                                <label class="pe-2" for="Titular">Titular: </label>
-                                <input type="text" name="Titular" id="Titular" v-model="titularTarjeta">
-                            </div>
-                            <div class="pt-2 d-flex justify-content-between ps-3 pe-5">
-                                <label class="pe-2" for="vencimiento">Vencimiento: </label>
-                                <input type="text" name="vencimiento" id="vencimiento" v-model="vencimiento">
-                            </div>
-                            <div class="pt-2 d-flex justify-content-between ps-3 pe-5">
-                                <label class="pe-2" for="CVC">Código de Seguridad: </label>
-                                <input type="number" name="CVC" id="CVC" v-model="cvc">
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-success">Pagar</button>
-                    </div>
-                  </div>
                 </div>
-              </div>
+            </div>    
+
         </main>
         <!-- Pie de página -->
         <footer>
@@ -232,16 +250,16 @@
             </section>
             <section class="row g-0 align-items-center" id="footer_suscribete">
                 <div class="col">
-                    <p class="familia">Forma parte de nuestro equipo.</p>
+                    <p class="familia">Forma parte de nuestra familia.</p>
                     <p style="font-size: small">Suscribite para recibir todas nuestras ofertas y novedades</p>
                 </div>
-                <form class="col-md-7" @submit.prevent="subscripcion">
+                <form class="col-md-7">
                     <div class="row g-0">
                         <div class="col" style=" margin-right: 1rem;">
-                            <input v-model="data.nombre" type="text" class="form-control" id="name" placeholder="Nombre">
+                            <input type="text" class="form-control" id="name" placeholder="Nombre">
                         </div>
                         <div class="col" style="margin-bottom: 1rem; margin-right: .5rem;">
-                            <input v-model="data.email" type="email" class="form-control" id="email" placeholder="Correo electrónico">
+                            <input type="email" class="form-control" id="email" placeholder="E-mail">
                         </div>
                         <div class="col-md-2 form-floating" id="enviar_footer">
                             <input class="btn btn-primary" type="submit" value="Enviar" id="footer_enviar">
@@ -260,8 +278,7 @@
                             <p class="fs-5 fw-semibold" style="text-align: center;">MENÚ PRINCIPAL</p>
                             <ul class="list-unstyled ps-0">
                                 <li class="mb-1">
-                                    <a class="nav-link" id="footer" href="tienda.html">Marketplace</a>
-                                    <a class="nav-link" id="footer" href="misCompras.html">Mis compras</a>
+                                    <a class="nav-link" id="footer" href="">Tienda</a>
                                     <a class="nav-link" id="footer" href="canchasReservas.html">Reservas</a>
                                     <a class="nav-link" id="footer" href="contacto.html">Contacto</a>
                                 </li>
@@ -276,9 +293,6 @@
                             <ul class="list-unstyled ps-0">
                                 <li class="mb-1">
                                     <a class="nav-link" id="footer" href="sobre-nosotros.html">Sobre nosotros</a>
-                                </li>
-                                <li class="mb-1">
-                                    <a class="nav-link" id="footer" href="" @click.prevent="signOut">Cerrar sesión <img src="../assets/logout.png" alt="Sign Out"></a>
                                 </li>
                             </ul>
                         </div>

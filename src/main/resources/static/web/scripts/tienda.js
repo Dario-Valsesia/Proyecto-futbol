@@ -9,16 +9,14 @@ const app = Vue.createApp({
 
             /* busqueda */
             busqueda:"",
-            existeProd: false,
-
+            noExiste: false,
             productos:[],
-
-
+            //FILTROS
+            filtroProductos:[],
+            filtroPrecio:'',
             /* carrito */
             carrito: [],
             talleSeleccionado:'',
-
-
             /* pago carrito */
             verDatosTarjeta:false,
             numeroDeTarjeta:"",
@@ -217,14 +215,104 @@ const app = Vue.createApp({
 
     },
     computed:{
-        busquedaProductos() {
-            let productosFiltrados = this.productos.filter(producto => producto.nombreProducto.toLowerCase().includes(this.busqueda.toLowerCase()))
-            if(productosFiltrados.length == 0){
-                this.existeProd = true
-            }else {
-                this.existeProd= false
-                return productosFiltrados
+       
+        FiltroDeProductos(){
+            if(this.filtroProductos.length==0 && this.busqueda =='' && this.filtroPrecio ==''){
+                return this.productos
             }
+            if(this.busqueda != ''){
+                let filtroBusqueda = this.productos.filter(prod=>prod.nombreProducto.toLowerCase().includes(this.busqueda.toLowerCase()))
+                if(filtroBusqueda.length==0){
+                    return this.noExiste = true;
+                }
+                if(this.filtroPrecio==''){ 
+                    return filtroBusqueda;
+                }else if(this.filtroPrecio=="menor"){
+                    return filtroBusqueda.sort((a,b)=>{
+                        if(a.precio<b.precio){
+                            return -1
+                        }
+                        if(a.precio>b.precio){
+                            return 1
+                        }
+                        return 0
+                    })
+                }else{
+                    return filtroBusqueda.sort((a,b)=>{
+                        if(a.precio<b.precio){
+                            return 1
+                        }
+                        if(a.precio>b.precio){
+                            return -1
+                        }
+                        return 0
+                    })
+                }
+                
+            }         
+            if(this.filtroProductos.length>0 && this.filtroPrecio != ''){
+                let filtro = this.productos.filter(prod=>{
+                    return this.filtroProductos.includes(prod.name);
+                })
+                if(this.filtroPrecio == 'menor'){
+                    filtro.sort((a,b)=>{
+                        if(a.precio<b.precio){
+                            return -1
+                        }
+                        if(a.precio>b.precio){
+                            return 1
+                        }
+                        return 0
+                    })
+                    return filtro
+                }else{
+                    filtro.sort((a,b)=>{
+                        if(a.precio<b.precio){
+                            return 1
+                        }
+                        if(a.precio>b.precio){
+                            return -1
+                        }
+                        return 0
+                    })
+                    return filtro
+                }
+               
+            }   
+            if(this.filtroProductos.length>0){
+                let filtro = this.productos.filter(prod=>{
+                    return this.filtroProductos.includes(prod.name);
+                })
+                return filtro;
+            }
+            
+            if(this.filtroPrecio!=''){
+                if(this.filtroPrecio=='menor'){
+                    this.productos.sort((a,b)=>{
+                        if(a.precio<b.precio){
+                            return -1
+                        }
+                        if(a.precio>b.precio){
+                            return 1
+                        }
+                        return 0 
+                    })
+                    return this.productos
+                }
+                if(this.filtroPrecio=='mayor'){
+                    this.productos.sort((a,b)=>{
+                        if(a.precio<b.precio){
+                            return 1
+                        }
+                        if(a.precio>b.precio){
+                            return -1
+                        }
+                        return 0 
+                    })
+                    return this.productos
+                }
+            }  
+
         },
         pintarCarrito(){
             let carrito = this.productos.filter(producto=>producto.cantidad>0);

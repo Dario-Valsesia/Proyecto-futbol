@@ -43,23 +43,23 @@ public class ProyectoFinalApplication {
 			repositorioReserva.save(reserva4);
 
 
-			Producto camiseta1 = new Camiseta("camiseta liverpool", "Camiseta Liverpool", 1500, 3000, 10, "Nike", new String[]{"S","M","L","XL"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638898137/pngwing.com_21_d8f911.png", "Liverpool");
+			Producto camiseta1 = new Camiseta("Camiseta", "Camiseta Liverpool", 1500, 3000, 10, "Nike", new String[]{"S","M","L","XL"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638898137/pngwing.com_21_d8f911.png", "Liverpool");
 			repositorioProducto.save(camiseta1);
-			Producto camiseta2 = new Camiseta("camiseta Argentina", "Camiseta Argentina", 1800, 3500, 20, "Adidas", new String[]{"S","M","L","XL","XXL"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638898138/pngwing.com_23_bi4t9w.png", "Adidas");
+			Producto camiseta2 = new Camiseta("Camiseta", "Camiseta Argentina", 1800, 3500, 20, "Adidas", new String[]{"S","M","L","XL","XXL"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638898138/pngwing.com_23_bi4t9w.png", "Adidas");
 			repositorioProducto.save(camiseta2);
-			Producto camiseta3 = new Camiseta("camiseta Chelsea", "Camiseta Chelsea", 1400, 2800, 5, "Adidas", new String[]{"M","L","XL"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638898138/pngwing.com_22_ixjszy.png", "Adidas");
+			Producto camiseta3 = new Camiseta("Camiseta", "Camiseta Chelsea", 1400, 2800, 5, "Adidas", new String[]{"M","L","XL"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638898138/pngwing.com_22_ixjszy.png", "Adidas");
 			repositorioProducto.save(camiseta3);
-			Producto camiseta4 = new Camiseta("camiseta Brasi", "Camiseta Brasil", 1600, 3000, 10, "Nike", new String[]{"M","L","XL"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638898138/pngwing.com_26_zilbxm.png", "Nike");
+			Producto camiseta4 = new Camiseta("Camiseta", "Camiseta Brasil", 1600, 3000, 10, "Nike", new String[]{"M","L","XL"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638898138/pngwing.com_26_zilbxm.png", "Nike");
 			repositorioProducto.save(camiseta4);
-			Producto camiseta5 = new Camiseta("camiseta Alemania", "Camiseta Alemania", 1400, 2800, 5, "Adidas", new String[]{"S","M","L","XL"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638898138/pngwing.com_27_ibv41x.png", "Adidas");
+			Producto camiseta5 = new Camiseta("Camiseta", "Camiseta Alemania", 1400, 2800, 5, "Adidas", new String[]{"S","M","L","XL"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638898138/pngwing.com_27_ibv41x.png", "Adidas");
 			repositorioProducto.save(camiseta5);
-			Producto camiseta6 = new Camiseta("camiseta Arquero", "Camiseta Arquero", 1200, 2400, 20, "Nike", new String[]{"M","L","XL","XXL"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638898139/pngwing.com_29_cnqqf9.png", "Nike");
+			Producto camiseta6 = new Camiseta("Camiseta", "Camiseta Arquero", 1200, 2400, 20, "Nike", new String[]{"M","L","XL","XXL"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638898139/pngwing.com_29_cnqqf9.png", "Nike");
 			repositorioProducto.save(camiseta6);
-			Producto camiseta7 = new Camiseta("camiseta Arquero Manga Corta", "Camiseta Arquero Manga Corta", 1000, 2000, 15, "Veto", new String[]{"S","M","L","XL","XXL"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638898139/pngwing.com_25_o0ncdu.png", "Veto");
+			Producto camiseta7 = new Camiseta("Camiseta", "Camiseta Arquero Manga Corta", 1000, 2000, 15, "Veto", new String[]{"S","M","L","XL","XXL"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638898139/pngwing.com_25_o0ncdu.png", "Veto");
 			repositorioProducto.save(camiseta7);
-			Producto camiseta8 = new Camiseta("camiseta Esquipo Chino", "Camiseta Futbol Chino", 900, 1800, 30, "Nike", new String[]{"S","M","L","XL","XXL"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638898139/pngwing.com_28_dnzy0h.png", "Nike");
+			Producto camiseta8 = new Camiseta("Camiseta", "Camiseta Futbol Chino", 900, 1800, 30, "Nike", new String[]{"S","M","L","XL","XXL"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638898139/pngwing.com_28_dnzy0h.png", "Nike");
 			repositorioProducto.save(camiseta8);
-			Producto camiseta10 = new Camiseta("camiseta Real Madrid", "Camiseta Real Madrid", 1700, 3400, 5, "Adidas", new String[]{"S","M","L","XL","XXL"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638898139/pngwing.com_20_jw3sb1.png", "Adidas");
+			Producto camiseta10 = new Camiseta("Camiseta", "Camiseta Real Madrid", 1700, 3400, 5, "Adidas", new String[]{"S","M","L","XL","XXL"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638898139/pngwing.com_20_jw3sb1.png", "Adidas");
 			repositorioProducto.save(camiseta10);
 
 			Producto botin1 = new Botin("Botin","Botin Azul",2500, 5000, 10, "Adidas", new String[]{"38","40","42","44"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638897293/pngwing.com_16_rlhinn.png", "Futbol 11");

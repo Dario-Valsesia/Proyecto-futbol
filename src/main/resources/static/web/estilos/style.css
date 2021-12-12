@@ -598,8 +598,42 @@ input#form-cambiar:hover{
     font-size: 32px;
 }
 /*TARJETAS*/
+.contenedorTarjetasYFiltro{
+    width: 100 !important;
+}
+.contenedorFiltros{
+    width: 20%;
+    height: 30rem;
+    position: sticky;
+    top: 0;
+}
+.contenedorFiltros label{
+    cursor: pointer;
+    width: 7rem;
+    background-color: #D8E9A8;
+    border: 1px solid #1E5128;
+    text-align: center;
+    padding: .5rem;
+    border-radius: .5rem;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    font-weight: 900;
+}
+.contenedorInputPrecio label{
+    cursor: pointer;
+    width: 7.5rem;
+    padding: .5rem;
+    background-color: #D8E9A8;
+    border: 1px solid #1E5128;
+    text-align: center;
+    font-weight: 600;
+    margin-left: .5rem;
+    border-radius: .5rem;
+}
+.contenedorFiltros input:checked~label,.contenedorInputPrecio input:checked~label{
+    box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.75) inset;
+}
 .album{
-    width: 100%;
+    width: 80%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -650,10 +684,11 @@ input#form-cambiar:hover{
     z-index: 30;
 }
 .divInputBuscar{
+    width: 30rem;
     height: 3rem;
 }
 .buscarProducto input{
-    width: 30rem;
+    width: 100%;
     height: 100%;
     border: 1px solid #1E5128;
 }
@@ -663,6 +698,13 @@ input#form-cambiar:hover{
 }
 .buscarProducto button{
     border: 1px solid #1E5128;
+}
+
+.contenedorFiltroPrecio{
+    width: 18rem;
+}
+.contenedorInputPrecio{
+    width: 50%;
 }
 
 /*MODAL CREADO*/
@@ -866,7 +908,22 @@ input#form-cambiar:hover{
     }
     .buscarProducto input{
         width: 16rem;
-        margin-top: .7rem;
+    }
+    .contenedorTarjetasYFiltro{
+        flex-direction: column;
+        align-items: center;
+    }
+    .contenedorFiltros{
+        width: 100%;
+        height: auto !important;
+        display: flex;
+        flex-direction: row !important;
+        flex-wrap: wrap;
+        position: unset;
+    }
+    .contenedorCheckbox{
+        margin: 0 !important;
+        margin: .5rem 0 !important;
     }
     .tamano-card,.container{
         width: 20rem;
