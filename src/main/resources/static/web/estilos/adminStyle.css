@@ -9,7 +9,7 @@
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    min-height: 100vh;
+    height: 100vh;
 }
 .gray_background{
     background-color: #122234;
@@ -35,4 +35,20 @@ input[type=number]{
 }
 .red_hover:hover{
     color: red !important;
+}
+.scroll_bar{
+    overflow-y: scroll;
+    height: 74vh;
+    width: 100vw;
+    position: relative;
+}
+#tabla{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.alturaDeCelda{
+    height: 41px !important;
 }

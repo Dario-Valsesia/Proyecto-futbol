@@ -7,6 +7,7 @@ const app = Vue.createApp({
             modificarOAgregarProducto: "",
             productoModificado: 0,
             productoEliminado: "",
+            buscarProducto: "",
             // PARAMETROS DEL REQUEST
             idProducto: 0,
             nombreProducto: "",
@@ -99,7 +100,7 @@ const app = Vue.createApp({
                 })
                 .then(response => {
                     swal({
-                        text: response.data,
+                        text: "Producto registrado con éxito",
                         icon: "success",
                         button: false,
                     })
@@ -109,7 +110,7 @@ const app = Vue.createApp({
                 })
                 .catch(error => {
                     swal({
-                        text: error.response.data,
+                        text: "Hubo un error en el registro",
                         timer: 3000,
                         icon: "error"
                     })
@@ -170,7 +171,7 @@ const app = Vue.createApp({
             })
             .catch(error => {
                 swal({
-                    text: error.response.data,
+                    text: "Error en la modificación",
                     icon: "error",
                     button: false,
                 })
@@ -192,7 +193,7 @@ const app = Vue.createApp({
             })
             .catch(error => {
                 swal({
-                    text: error.response.data,
+                    text: "Error al eliminar producto",
                     icon: "error",
                     button: false,
                 })
@@ -207,19 +208,28 @@ const app = Vue.createApp({
                 this.costo = 0
                 this.tallesProducto = []
                 this.imagenProducto = ""
+                this.buscarProducto = ""
             }
             else if(this.modificarOAgregarProducto === "modificarProducto" || this.modificarOAgregarProducto === "eliminarProducto"){
                 this.modificarOAgregarProducto = ""
+                this.buscarProducto = ""
             }
             else if(this.nombreProducto != "" && this.modificarOAgregarProducto === "nuevoProducto"){
                 this.nombreProducto = ""
+                this.buscarProducto = ""
             }
             else if(this.modificarOAgregarProducto === "nuevoProducto" && this.nombreProducto === ""){
                 this.modificarOAgregarProducto = ""
+                this.buscarProducto = ""
+
             }else if(this.panelPrincipal === true){
                 this.panelPrincipal = false
+                this.buscarProducto = ""
+
             }else {
                 this.panelPrincipal = true
+                this.buscarProducto = ""
+                
             }
         },
         desloguearse(){
@@ -280,6 +290,22 @@ const app = Vue.createApp({
                         this.idProducto = 0
                     }
                 })
+            }
+        },
+
+        filtroDeBusqueda(){
+            if(this.buscarProducto === ""){
+                return this.tablaProductos
+            }
+            if(this.buscarProducto != ''){
+                let tablaProductosFiltrada = this.tablaProductos.filter(producto => producto.nombreProducto.toLowerCase().includes(this.buscarProducto.toLowerCase()))
+                
+                if(tablaProductosFiltrada.length === 0){
+                    return false
+                }
+                else if(tablaProductosFiltrada.length > 0){
+                    return tablaProductosFiltrada
+                }
             }
         }
     }

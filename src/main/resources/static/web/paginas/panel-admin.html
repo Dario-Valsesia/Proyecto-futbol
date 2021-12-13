@@ -1,78 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../estilos/adminStyle.css">
     <title>Nuevos Productos</title>
 </head>
+
 <body class="body_background text-white">
     <div id="app" v-cloak>
 
         <header class="d-flex flex-row justify-content-between">
-            <button @click="volverAOpcionAnterior()" class="bg-transparent border-0 fs-5 text-white text-start ms-1 ms-md-2 blue_hover">
-                <i class="bi bi-arrow-left fs-3 fs-md-5 me-1"></i><span v-if="modificarOAgregarProducto != ''" class="d-none d-md-inline">Volver</span><span v-if="modificarOAgregarProducto === '' && panelPrincipal === false" class="d-none d-md-inline">Inicio</span><span v-if="panelPrincipal === true" class="d-none d-md-inline">Tienda</span>
+            <button @click="volverAOpcionAnterior()"
+                class="bg-transparent border-0 fs-3 text-white text-start ms-1 ms-md-2 blue_hover">
+                <i class="bi bi-arrow-left fs-3 me-1"></i><span v-if="modificarOAgregarProducto != ''"
+                    class="d-none d-md-inline pb-2">Volver</span><span
+                    v-if="modificarOAgregarProducto === '' && panelPrincipal === false"
+                    class="d-none d-md-inline pb-2">Inicio</span><span v-if="panelPrincipal === true"
+                    class="d-none d-md-inline">Tienda</span>
             </button>
             <h1 v-if="panelPrincipal === false" class="text-center my-4">Administrar Tienda</h1>
             <h1 v-if="panelPrincipal === true" class="text-center my-4">Planilla de Stock</h1>
-            <button @click="desloguearse" class="bg-transparent border-0 fs-5 text-white text-start me-1 me-md-2 red_hover">
-                <i class="bi bi-box-arrow-right fs-3 fs-md-5 me-1"></i><span class="d-none d-md-inline">Salir</span>
+            <button @click="desloguearse"
+                class="bg-transparent border-0 fs-3 text-white text-start me-1 me-md-2 red_hover">
+                <span class="d-none d-md-inline me-1">Salir</span><i class="bi bi-box-arrow-right fs-3"></i>
             </button>
         </header>
 
         <main>
 
             <!-- SELECCIÓN DE ACCIÓN -->
-            <section v-if="modificarOAgregarProducto === '' && panelPrincipal === false" class="d-flex flex-row flex-wrap justify-content-evenly">
+            <section v-if="modificarOAgregarProducto === '' && panelPrincipal === false"
+                class="d-flex flex-row flex-wrap justify-content-evenly">
                 <h2 class="fs-5 col-12 text-center mb-5">Elija una opción</h2>
 
-                    <label for="nuevoProducto" class="d-flex align-items-center justify-content-between col-10 col-md-5 gray_background border borde_celeste p-3 mb-4 rounded pointer">
-                        <span>Agregar nuevo producto</span><span><i class="bi bi-plus-circle fs-3 text-success"></i></span>
-                    </label>
-                    <input v-model="modificarOAgregarProducto" type="radio" id="nuevoProducto" class="d-none" value="nuevoProducto">
+                <label for="nuevoProducto"
+                    class="d-flex align-items-center justify-content-between col-10 col-md-5 gray_background border borde_celeste p-3 mb-4 rounded pointer">
+                    <span>Agregar nuevo producto</span><span><i class="bi bi-plus-circle fs-3 text-success"></i></span>
+                </label>
+                <input v-model="modificarOAgregarProducto" type="radio" id="nuevoProducto" class="d-none"
+                    value="nuevoProducto">
 
-                    <label for="modificarProducto" class="d-flex align-items-center justify-content-between col-10 col-md-5 gray_background border borde_celeste p-3 mb-4 rounded pointer">
-                        <span>Modificar características de producto existente</span><span><i class="bi bi-search fs-3 col-3 text-end text-primary"></i></span>
-                    </label>
-                    <input v-model="modificarOAgregarProducto" type="radio" id="modificarProducto" class="d-none" value="modificarProducto">
+                <label for="modificarProducto"
+                    class="d-flex align-items-center justify-content-between col-10 col-md-5 gray_background border borde_celeste p-3 mb-4 rounded pointer">
+                    <span>Modificar características de producto existente</span><span><i
+                            class="bi bi-search fs-3 col-3 text-end text-primary"></i></span>
+                </label>
+                <input v-model="modificarOAgregarProducto" type="radio" id="modificarProducto" class="d-none"
+                    value="modificarProducto">
 
-                    <label for="eliminarProducto" class="d-flex align-items-center justify-content-between col-10 col-md-5 gray_background border borde_celeste p-3 mb-4 rounded pointer">
-                        <span>Eliminar producto de la tienda</span><span><i class="bi bi-x-circle fs-3 col-3 text-end text-danger"></i></span>
-                    </label>
-                    <input v-model="modificarOAgregarProducto" type="radio" id="eliminarProducto" class="d-none" value="eliminarProducto">
+                <label for="eliminarProducto"
+                    class="d-flex align-items-center justify-content-between col-10 col-md-5 gray_background border borde_celeste p-3 mb-4 rounded pointer">
+                    <span>Eliminar producto de la tienda</span><span><i
+                            class="bi bi-x-circle fs-3 col-3 text-end text-danger"></i></span>
+                </label>
+                <input v-model="modificarOAgregarProducto" type="radio" id="eliminarProducto" class="d-none"
+                    value="eliminarProducto">
             </section>
             <!-- ------------------ -->
 
             <!-- AGREGAR PRODUCTO -->
 
-                <!-- SELECCIÓN TIPO DE PRODUCTO -->
-            <section v-if="modificarOAgregarProducto === 'nuevoProducto' && nombreProducto === ''" class="d-flex flex-wrap justify-content-around mt-4 mb-3">
-                <h2 class="fs-5 col-12 text-center mb-3 mb-md-4 mb-lg-5">Seleccione la clase de producto que desea agregar</h2>
+            <!-- SELECCIÓN TIPO DE PRODUCTO -->
+            <section v-if="modificarOAgregarProducto === 'nuevoProducto' && nombreProducto === ''"
+                class="d-flex flex-wrap justify-content-around mt-4 mb-3">
+                <h2 class="fs-5 col-12 text-center mb-3 mb-md-4 mb-lg-5">Seleccione la clase de producto que desea
+                    agregar</h2>
 
-                    <label for="botin" class="d-flex align-items-center justify-content-around col-6 col-md-4 col-lg-3 gray_background border borde_celeste text-center p-3 rounded m-3 pointer">Botín</label>
-                    <input v-model="nombreProducto" type="radio" id="botin" value="Botin" class="d-none">
+                <label for="botin"
+                    class="d-flex align-items-center justify-content-around col-6 col-md-4 col-lg-3 gray_background border borde_celeste text-center p-3 rounded m-3 pointer">Botín</label>
+                <input v-model="nombreProducto" type="radio" id="botin" value="Botin" class="d-none">
 
-                    <label for="camiseta" class="d-flex align-items-center justify-content-around col-6 col-md-4 col-lg-3 gray_background border borde_celeste text-center p-3 rounded m-3 pointer">Camiseta</label>
-                    <input v-model="nombreProducto" type="radio" id="camiseta" value="Camiseta" class="d-none">
+                <label for="camiseta"
+                    class="d-flex align-items-center justify-content-around col-6 col-md-4 col-lg-3 gray_background border borde_celeste text-center p-3 rounded m-3 pointer">Camiseta</label>
+                <input v-model="nombreProducto" type="radio" id="camiseta" value="Camiseta" class="d-none">
 
 
-                    <label for="medias" class="d-flex align-items-center justify-content-around col-6 col-md-4 col-lg-3 gray_background border borde_celeste text-center p-3 rounded m-3 pointer">Medias</label>
-                    <input v-model="nombreProducto" type="radio" id="medias" value="Medias" class="d-none">
+                <label for="medias"
+                    class="d-flex align-items-center justify-content-around col-6 col-md-4 col-lg-3 gray_background border borde_celeste text-center p-3 rounded m-3 pointer">Medias</label>
+                <input v-model="nombreProducto" type="radio" id="medias" value="Medias" class="d-none">
 
-                    <label for="pelota" class="d-flex align-items-center justify-content-around col-6 col-md-4 col-lg-3 gray_background border borde_celeste text-center p-3 rounded m-3 pointer">Pelota</label>
-                    <input v-model="nombreProducto" type="radio" id="pelota" value="Pelota" class="d-none">
+                <label for="pelota"
+                    class="d-flex align-items-center justify-content-around col-6 col-md-4 col-lg-3 gray_background border borde_celeste text-center p-3 rounded m-3 pointer">Pelota</label>
+                <input v-model="nombreProducto" type="radio" id="pelota" value="Pelota" class="d-none">
 
-                    <label for="short" class="d-flex align-items-center justify-content-around col-6 col-md-4 col-lg-3 gray_background border borde_celeste text-center p-3 rounded m-3 pointer">Short</label>
-                    <input v-model="nombreProducto" type="radio" id="short" value="Short" class="d-none">
+                <label for="short"
+                    class="d-flex align-items-center justify-content-around col-6 col-md-4 col-lg-3 gray_background border borde_celeste text-center p-3 rounded m-3 pointer">Short</label>
+                <input v-model="nombreProducto" type="radio" id="short" value="Short" class="d-none">
 
             </section>
-                <!-- --------------------------- -->
+            <!-- --------------------------- -->
 
-                <!-- FORMULARIO DATOS DEL PRODUCTO -->
-            <section v-if="nombreProducto != '' && modificarOAgregarProducto === 'nuevoProducto'" class="d-flex flex-column align-items-center mb-4">
+            <!-- FORMULARIO DATOS DEL PRODUCTO -->
+            <section v-if="nombreProducto != '' && modificarOAgregarProducto === 'nuevoProducto'"
+                class="d-flex flex-column align-items-center mb-4">
                 <h2 class="fs-5 mb-4 mb-lg-5 text-center">Complete todos los campos para registrar el producto</h2>
                 <form class="d-flex flex-column col-8 col-md-7 gray_background border borde_celeste p-3 rounded col-11">
 
@@ -81,7 +107,8 @@
 
                     <legend class="fs-5">Elija un nombre para el producto</legend>
                     <label for="nombreProducto"></label>
-                    <input v-model="descripcionProducto" class="mb-3 px-1" type="text" id="nombreProducto" placeholder="Camiseta de Boca Juniors">
+                    <input v-model="descripcionProducto" class="mb-3 px-1" type="text" id="nombreProducto"
+                        placeholder="Camiseta de Boca Juniors">
 
                     <legend class="fs-5">¿Cuánto le costó cada unidad de este producto?</legend>
                     <label for="costo"></label>
@@ -89,7 +116,8 @@
 
                     <legend class="fs-5">¿Cuál será el margen de ganancia?</legend>
                     <label for="porcentajeGanancia"></label>
-                    <input v-model="porcentajeGanancia" class="px-1" type="number" id="porcentajeGanancia" :class="[calcularPrecio === 0 ? 'mb-3' : '']">
+                    <input v-model="porcentajeGanancia" class="px-1" type="number" id="porcentajeGanancia"
+                        :class="[calcularPrecio === 0 ? 'mb-3' : '']">
                     <p v-if="calcularPrecio != 0" class="mb-3">El precio final del producto será ${{calcularPrecio}}</p>
 
                     <legend class="fs-5">¿De cuántas unidades del producto dispone?</legend>
@@ -98,80 +126,109 @@
 
                     <fieldset>
                         <legend class="fs-5 col-12">¿De cuáles talles del producto dispone?</legend>
-                        <label v-for="talles in devolverTalles" class="me-3"><input v-model="tallesProducto" type="checkbox" :value="talles" class="me-1">{{talles}}</label>
+                        <label v-for="talles in devolverTalles" class="me-3"><input v-model="tallesProducto"
+                                type="checkbox" :value="talles" class="me-1">{{talles}}</label>
                     </fieldset>
 
                     <fieldset v-if="nombreProducto === 'Camiseta' || nombreProducto === 'Short'">
                         <legend class="fs-5 mt-3 col-12">¿De qué equipo es el producto?</legend>
                         <label for="equipo"></label>
-                        <input v-model="equipoProducto" class="mb-3 col-12 px-1" type="text" id="equipo" placeholder="Chacarita">
+                        <input v-model="equipoProducto" class="mb-3 col-12 px-1" type="text" id="equipo"
+                            placeholder="Chacarita">
                     </fieldset>
-                    
+
                     <fieldset v-if="nombreProducto === 'Botin'">
                         <legend class="fs-5 mt-3 col-12">¿Qué tipo de botín es?</legend>
                         <label for="tipoProducto"></label>
-                        <input v-model="tipoProducto" class="mb-3 col-12 px-1" type="text" id="tipoProducto" placeholder="Fútbol 5">
+                        <input v-model="tipoProducto" class="mb-3 col-12 px-1" type="text" id="tipoProducto"
+                            placeholder="Fútbol 5">
                     </fieldset>
 
-                    <fieldset :class="nombreProducto === 'Camiseta' || nombreProducto === 'Short' || nombreProducto === 'Botin' ? '' : 'mt-3'">
+                    <fieldset
+                        :class="nombreProducto === 'Camiseta' || nombreProducto === 'Short' || nombreProducto === 'Botin' ? '' : 'mt-3'">
                         <legend class="fs-5 col-12">Elija una foto del navegador y copie su dirección aquí</legend>
                         <label for="imagenProducto"></label>
-                        <input v-model="imagenProducto" class="mb-3 col-12 px-1" type="text" id="imagenProducto" placeholder="https://http2.mlstatic.com/D_NQ_NP_926362.webp">
+                        <input v-model="imagenProducto" class="mb-3 col-12 px-1" type="text" id="imagenProducto"
+                            placeholder="https://http2.mlstatic.com/D_NQ_NP_926362.webp">
                     </fieldset>
 
                     <button @click.prevent="guardarProducto" class="mt-4 rounded">Guardar producto</button>
                 </form>
 
             </section>
-                <!-- ------------------------------ -->
+            <!-- ------------------------------ -->
 
             <!-- ------------------------------- -->
 
             <!-- MODIFICAR PRODUCTO -->
 
-                <!-- TABLA MODIFICACION PRODUCTO -->
-            <section v-if="(modificarOAgregarProducto === 'modificarProducto' || modificarOAgregarProducto === 'eliminarProducto' || panelPrincipal === true) && 1 > buscarProductoModificar.length" class="d-flex flex-column align-items-center" :class="[panelPrincipal === true ? 'mt-5' : '']">
-                <h2 v-if="modificarOAgregarProducto === 'modificarProducto'" class="mb-5">Elegir producto a modificar</h2>
-                <h2 v-if="modificarOAgregarProducto === 'eliminarProducto'" class="mb-5">Elegir producto a eliminar</h2>
-                <!-- <label for="searcher">Buscador</label>
-                <input type="search" id="searcher" class="col-4"> -->
-                <table class="text-white text-center col-11 gray_background rounded border borde_celeste mb-4">
-                    <tr class="border border-top-0 border-start-0 border-end-0">
-                        <th class="pb-2 col-3 col-md-2">Producto</th>
-                        <th class="pb-2">Marca</th>
-                        <th class="d-none d-md-table-cell py-2">Costo</th>
-                        <th class="d-none d-md-table-cell py-2 col-1">Precio</th>
-                        <th class="d-none d-md-table-cell py-2">Talle</th>
-                        <th class="d-none d-md-table-cell py-2">Tipo</th>
-                        <th class="d-none d-md-table-cell py-2">Equipo</th>
-                        <th class="pb-y col-lg-1">Stock</th>
-                        <th v-if="modificarOAgregarProducto === 'modificarProducto'" class="py-2">Editar</th>
-                        <th v-if="modificarOAgregarProducto === 'eliminarProducto'" class="py-2">Eliminar</th>
-                    </tr>
-                    <tr v-for="producto in tablaProductos" class="border border-top-0 border-start-0 border-end-0">
-                        <td class="text-start py-2 ps-2">{{producto.nombreProducto}}</td>
-                        <td>{{producto.marca}}</td>
-                        <td class="d-none d-md-table-cell">${{producto.costo}}</td>
-                        <td class="d-none d-md-table-cell">${{producto.precio}}</td>
-                        <td class="d-none d-md-table-cell">{{(producto.talle.toString())}}</td>
-                        <td class="d-none d-md-table-cell" :class="[producto.tipo === null ? 'text-danger' : '']">{{producto.tipo === null ? "X" : producto.tipo}}</td>
-                        <td class="d-none d-md-table-cell" :class="[producto.equipo === null ? 'text-danger' : '']">{{producto.equipo === null ? "X" : producto.equipo}}</td>
-                        <td>{{producto.stock}}</td>
-                        <td v-if="modificarOAgregarProducto === 'modificarProducto'"><button @click="elegirProducto(producto.id)" class="gray_background text-white rounded"><i class="bi bi-card-list px-2"></i></button></td>
-                        <td v-if="modificarOAgregarProducto === 'eliminarProducto'"><button @click="productoElegidoParaEliminar(producto.id)" class="gray_background text-white rounded"><i class="bi bi-card-list px-2"></i></button></td>
-                    </tr>
-                </table>
-            </section>
-                <!-- -------------------------------------------- -->
+            <!-- TABLA MODIFICACION PRODUCTO -->
+            <section
+                v-if="(modificarOAgregarProducto === 'modificarProducto' || modificarOAgregarProducto === 'eliminarProducto' || panelPrincipal === true) && 1 > buscarProductoModificar.length"
+                class="d-flex flex-column align-items-center" :class="[panelPrincipal === true ? 'mt-2' : '']">
 
-                <!-- FORMULARIO MODIFICACION PRODUCTO -->
+                <h2 v-if="modificarOAgregarProducto === 'modificarProducto'" class="mb-5">Elegir producto a modificar
+                </h2>
+                <h2 v-if="modificarOAgregarProducto === 'eliminarProducto'" class="mb-5">Elegir producto a eliminar</h2>
+
+                <label for="buscador"></label>
+                <input v-model="buscarProducto" type="text" id="buscador" class="col-8 col-md-4 p-1 rounded mb-3 mt-0" placeholder="Buscar">
+                <div class="d-flex justify-content-center align-items-center scroll_bar">
+                    <table v-if="filtroDeBusqueda != false" id="tabla" class="text-white text-center gray_background rounded border borde_celeste mb-4 me-0">
+                        <tr class="border border-top-0 border-start-0 border-end-0">
+                            <th class="py-2 col-3 col-md-2"
+                                :class="[modificarOAgregarProducto === 'modificarProducto' || modificarOAgregarProducto === 'eliminarProducto' ? 'col-4' : 'col-6']">
+                                Producto</th>
+                            <th class="py-2 col-3 col-md-1">Marca</th>
+                            <th class="d-none d-md-table-cell py-2 col-1">Costo</th>
+                            <th class="d-none d-md-table-cell py-2 col-1">Precio</th>
+                            <th class="d-none d-md-table-cell py-2 col-md-2">Talle</th>
+                            <th class="d-none d-md-table-cell py-2 col-md-1">Tipo</th>
+                            <th class="d-none d-md-table-cell py-2 col-md-1">Equipo</th>
+                            <th class="py-2 col-2 col-md-1"
+                                :class="[modificarOAgregarProducto === 'eliminarProducto' ? 'col-2' : 'col-3']">Stock
+                            </th>
+                            <th v-if="modificarOAgregarProducto === 'modificarProducto'" class="py-2 col-2 col-md-1">
+                                Editar</th>
+                            <th v-if="modificarOAgregarProducto === 'eliminarProducto'" class="py-2 col-2 col-md-2">
+                                Eliminar</th>
+                        </tr>
+                        <tr v-for="producto in filtroDeBusqueda"
+                            class="border border-top-0 border-start-0 border-end-0">
+                            <td class="py-2 ps-2">{{producto.nombreProducto}}</td>
+                            <td>{{producto.marca}}</td>
+                            <td class="d-none d-md-table-cell">${{producto.costo}}</td>
+                            <td class="d-none d-md-table-cell">${{producto.precio}}</td>
+                            <td class="d-none d-md-table-cell">{{(producto.talle.toString())}}</td>
+                            <td class="d-none d-md-table-cell" :class="[producto.tipo === null ? 'text-danger' : '']">
+                                {{producto.tipo === null ? "X" : producto.tipo}}</td>
+                            <td class="d-none d-md-table-cell" :class="[producto.equipo === null ? 'text-danger' : '']">
+                                {{producto.equipo === null ? "X" : producto.equipo}}</td>
+                            <td>{{producto.stock}}</td>
+                            <td v-if="modificarOAgregarProducto === 'modificarProducto'"><button
+                                    @click="elegirProducto(producto.id)" class="gray_background text-white rounded"><i
+                                        class="bi bi-card-list px-2"></i></button></td>
+                            <td v-if="modificarOAgregarProducto === 'eliminarProducto'"><button
+                                    @click="productoElegidoParaEliminar(producto.id)"
+                                    class="gray_background text-white rounded"><i
+                                        class="bi bi-card-list px-2"></i></button></td>
+                        </tr>
+                    </table>
+                    <p v-if="filtroDeBusqueda === false" class="text-danger fs-5 text-center">No existen productos con esta descripción</p>
+                </div>
+            </section>
+            <!-- -------------------------------------------- -->
+
+            <!-- FORMULARIO MODIFICACION PRODUCTO -->
             <section v-if="buscarProductoModificar.length > 0" class="d-flex flex-column align-items-center mb-4">
-                <h2 class="fs-5 mb-4 mb-lg-5 text-center">Haga cambios <span class="text-warning">SOLO</span> en los campos que desee modificar</h2>
+                <h2 class="fs-5 mb-4 mb-lg-5 text-center">Haga cambios <span class="text-warning">SOLO</span> en los
+                    campos que desee modificar</h2>
                 <form class="d-flex flex-column col-8 col-md-7 gray_background border borde_celeste p-3 rounded col-11">
 
                     <legend class="fs-5">¿Desea cambiar el nombre del producto en la tienda?</legend>
                     <label for="nombreProducto"></label>
-                    <input v-model="descripcionProducto" class="mb-3 px-1" type="text" id="nombreProducto" placeholder="Botín de cuero reforzado">
+                    <input v-model="descripcionProducto" class="mb-3 px-1" type="text" id="nombreProducto"
+                        placeholder="Botín de cuero reforzado">
 
                     <legend class="fs-5">¿Cambió el costo del producto?</legend>
                     <label for="costo"></label>
@@ -180,20 +237,26 @@
                     <legend class="fs-5">¿Desea modificar el porcentaje de ganancia?</legend>
                     <label for="porcentajeGanancia"></label>
                     <input v-model="porcentajeGanancia" class="px-1" type="number" id="porcentajeGanancia">
-                    <p class="mb-3 text-warning">*El precio actual del producto es ${{buscarProductoModificar[0].precio}}. <span v-if="porcentajeGanancia != 0">El nuevo precio sería ${{calcularPrecio}}</span></p>
+                    <p class="mb-3 text-warning">*El precio actual del producto es
+                        ${{buscarProductoModificar[0].precio}}. <span v-if="porcentajeGanancia != 0">El nuevo precio
+                            sería ${{calcularPrecio}}</span></p>
 
                     <legend class="fs-5">¿Cuántas unidades ingresaron?</legend>
                     <label for="stock"></label>
                     <input v-model="stock" class="px-1" type="number" id="stock">
-                    <p class="mb-3 text-warning">*Actualmente hay {{buscarProductoModificar[0].stock}} unidades. <span v-if="stock != 0">Con el nuevo ingreso serían {{buscarProductoModificar[0].stock + stock}} unidades</span></p>
+                    <p class="mb-3 text-warning">*Actualmente hay {{buscarProductoModificar[0].stock}} unidades. <span
+                            v-if="stock != 0">Con el nuevo ingreso serían {{buscarProductoModificar[0].stock + stock}}
+                            unidades</span></p>
 
                     <fieldset>
-                        <legend class="fs-5 col-12">Indique el cambio en los talles. Recuerde separarlos con ","(coma)</legend>
+                        <legend class="fs-5 col-12">Indique el cambio en los talles. Recuerde separarlos con ","(coma)
+                        </legend>
                         <label for="modificarTalles"></label>
                         <input v-model="tallesProducto" class="col-12 px-1" type="text" id="modificarTalles">
                     </fieldset>
 
-                    <fieldset :class="nombreProducto === 'Camiseta' || nombreProducto === 'Short' || nombreProducto === 'Botin' ? '' : 'mt-3'">
+                    <fieldset
+                        :class="nombreProducto === 'Camiseta' || nombreProducto === 'Short' || nombreProducto === 'Botin' ? '' : 'mt-3'">
                         <legend class="fs-5 col-12">¿Desea cambiar la foto del producto en la tienda?</legend>
                         <label for="imagenProducto"></label>
                         <input v-model="imagenProducto" class="mb-3 col-12 px-1" type="text" id="imagenProducto">
@@ -202,15 +265,18 @@
                     <button @click.prevent="confirmarModificacion" class="mt-4 rounded">Guardar cambios</button>
                 </form>
             </section>
-                <!-- ------------------------------------ -->
+            <!-- ------------------------------------ -->
 
             <!-- ------------------------------ -->
         </main>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/vue@next"></script>
     <script src="../scripts/panel-admin.js"></script>
 </body>
+
 </html>
