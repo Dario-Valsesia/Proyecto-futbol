@@ -25,7 +25,7 @@
                             <a class="btn btn-primary" role="button" href="home.html" id="navegation" style="margin-right: .3rem;">Inicio</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navegation" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="margin-right: .3rem;">Tienda</a>
+                            <a class="nav-link dropdown-toggle link-activo" id="navegation" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="margin-right: .3rem;">Tienda</a>
                             <ul class="dropdown-menu shadow" aria-labelledby="navegation">
                                 <li><a class="dropdown-item" href="tienda.html" id="go-to">Marketplace</a></li>
                                 <li><a class="dropdown-item" href="misCompras.html" id="go-to">Mis compras</a></li>
@@ -110,26 +110,10 @@
                   </div>
                 </div>         
               </div>     <!-- FIN CONTENEDOR ACORDION -->
-                 <!-- <div class="misCompras">
-                    <div class="accordion" id="accordionExample" v-for="producto in productos">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingOne">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    <h6 v-cloak></h6>
-                                </button>
-                            </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <p></p>
-                                    <p> Talle: </p>
-                                    <p>Subtotal:</p>
-                                    <p>Unidades:</p>                                                                    
-                                    <p>Total:</p>   
-                                </div>
-                            </div>
-                        </div>                        
-                    </div>
-                </div>  -->
+              <div v-if="productos.length==0" class="d-flex justify-content-center aling-items-center">
+                    <h4 class="text-danger">Usted no tiene compras</h4>
+              </div>
+               
         </main>
         <!-- Pie de página -->
         <footer>

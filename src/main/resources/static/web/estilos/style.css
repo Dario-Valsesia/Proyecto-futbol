@@ -790,6 +790,9 @@ input#form-cambiar:hover{
 .accordion-button{
     font-size: 22px;
 }
+.link-activo{
+    color: #D8E9A8 !important;
+}
 
 
 
