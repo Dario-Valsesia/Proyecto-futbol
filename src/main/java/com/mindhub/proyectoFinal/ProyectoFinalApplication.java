@@ -63,7 +63,7 @@ public class ProyectoFinalApplication {
 			repositorioProducto.save(camiseta7);
 			Producto camiseta8 = new Camiseta("Camiseta", "Camiseta Futbol Chino", 900, 1800, 30, "Nike", new String[]{"S","M","L","XL","XXL"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638898139/pngwing.com_28_dnzy0h.png", "Nike");
 			repositorioProducto.save(camiseta8);
-			Producto camiseta10 = new Camiseta("Camiseta", "Camiseta Real Madrid", 1700, 3400, 5, "Adidas", new String[]{"S","M","L","XL","XXL"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638898139/pngwing.com_20_jw3sb1.png", "Adidas");
+			Producto camiseta10 = new Camiseta("Camiseta", "Camiseta Real Madrid", 1700, 3400, 5, "Adidas", new String[]{"S","M","L","XL","XXL"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638898139/pngwing.com_20_jw3sb1.png", null);
 			repositorioProducto.save(camiseta10);
 
 			Producto botin1 = new Botin("Botin","Botin Azul",2500, 5000, 10, "Adidas", new String[]{"38","40","42","44"},"https://res.cloudinary.com/dboyuvklh/image/upload/v1638897293/pngwing.com_16_rlhinn.png", "Futbol 11");
