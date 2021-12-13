@@ -67,7 +67,7 @@ public class ControladorMail {
         String asunto1 = "Solicitud de cambio de contraseña";
 
         String parrafo1 = "Hola, hemos recibido tu solicitud de cambio de contraseña. Sigue el siguiente link para continuar con tu cambio:\n\n";
-        String parrafo2 = "https://localhost:8080/web/recuperar-contraseña.html\n\n";
+        String parrafo2 = "https://ballon-dor.herokuapp.com/web/recuperar-contraseña.html\n\n";
         String redesSociales = "Facebook: https://www.facebook.com\n"+"Instragram: https://www.instagram.com\n"+"Whatsapp: 3514526354";
 
         String cuerpoEmail = parrafo1 + parrafo2 + redesSociales;

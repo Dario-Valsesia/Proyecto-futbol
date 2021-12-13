@@ -254,16 +254,16 @@
             </section>
             <section class="row g-0 align-items-center" id="footer_suscribete">
                 <div class="col">
-                    <p class="familia">Forma parte de nuestra familia.</p>
+                    <p class="familia">Forma parte de nuestro equipo.</p>
                     <p style="font-size: small">Suscribite para recibir todas nuestras ofertas y novedades</p>
                 </div>
-                <form class="col-md-7">
+                <form class="col-md-7" @submit.prevent="subscripcion">
                     <div class="row g-0">
                         <div class="col" style=" margin-right: 1rem;">
-                            <input type="text" class="form-control" id="name" placeholder="Nombre">
+                            <input v-model="data.nombre" type="text" class="form-control" id="name" placeholder="Nombre">
                         </div>
                         <div class="col" style="margin-bottom: 1rem; margin-right: .5rem;">
-                            <input type="email" class="form-control" id="email" placeholder="E-mail">
+                            <input v-model="data.email" type="email" class="form-control" id="email" placeholder="Correo electrónico">
                         </div>
                         <div class="col-md-2 form-floating" id="enviar_footer">
                             <input class="btn btn-primary" type="submit" value="Enviar" id="footer_enviar">
@@ -282,7 +282,8 @@
                             <p class="fs-5 fw-semibold" style="text-align: center;">MENÚ PRINCIPAL</p>
                             <ul class="list-unstyled ps-0">
                                 <li class="mb-1">
-                                    <a class="nav-link" id="footer" href="">Tienda</a>
+                                    <a class="nav-link" id="footer" href="tienda.html">Marketplace</a>
+                                    <a class="nav-link" id="footer" href="misCompras.html">Mis compras</a>
                                     <a class="nav-link" id="footer" href="canchasReservas.html">Reservas</a>
                                     <a class="nav-link" id="footer" href="contacto.html">Contacto</a>
                                 </li>
@@ -297,6 +298,9 @@
                             <ul class="list-unstyled ps-0">
                                 <li class="mb-1">
                                     <a class="nav-link" id="footer" href="sobre-nosotros.html">Sobre nosotros</a>
+                                </li>
+                                <li class="mb-1">
+                                    <a class="nav-link" id="footer" href="" @click.prevent="signOut">Cerrar sesión <img src="../assets/logout.png" alt="Sign Out"></a>
                                 </li>
                             </ul>
                         </div>
