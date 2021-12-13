@@ -24,7 +24,7 @@ public class PdfServicio {
         documento.setMargins(0,0,15,0);
         documento.open();
         documento.addTitle("Ball D`or");
-        Image logo = Image.getInstance("https://ballon-dor.herokuapp.com/web/assets/logo.png");
+        Image logo = Image.getInstance("src/main/resources/static/web/assets/logo.png");
         logo.setAbsolutePosition(460,765);
         logo.scaleToFit(60,60);
         Font fuenteTitulo = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
